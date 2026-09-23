@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-latin: var(--font-inter), system-ui, sans-serif;
+  --font-urdu: var(--font-naskh), serif;
+}
+
+body {
+  background: #ffffff;
+  color: #171717;
+}
+
+article h2 { @apply mt-4 text-lg font-semibold; }
+article h3 { @apply mt-3 font-semibold; }
+article ul { @apply list-disc ps-5; }
+article ol { @apply list-decimal ps-5; }
+article p { @apply my-2; }
