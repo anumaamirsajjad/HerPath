@@ -71,3 +71,31 @@ class PasswordResetConfirmView(APIView):
         user.set_password(d["password"])
         user.save()
         return Response({"ok": True})
+
+
+from django.shortcuts import get_object_or_404  # noqa: E402
+
+from .models import Profile  # noqa: E402
+from .serializers import ProfileSerializer  # noqa: E402
+
+
+class ProfileView(APIView):
+    def get(self, request):
+        return Response(ProfileSerializer(get_object_or_404(Profile, user=request.user)).data)
+
+    def put(self, request):
+        profile = Profile.objects.filter(user=request.user).first()
+        old = profile.data if profile else None
+        s = ProfileSerializer(profile, data=request.data)
+        s.is_valid(raise_exception=True)
+        profile = s.save(user=request.user)
+        from counters.diff import record_profile_change
+
+        record_profile_change(request.user, old, profile.data)
+        return Response(ProfileSerializer(profile).data)
+
+    def patch(self, request):
+        profile = get_object_or_404(Profile, user=request.user)
+        s = ProfileSerializer(profile, data=request.data, partial=True)
+        s.is_valid(raise_exception=True)
+        return Response(ProfileSerializer(s.save()).data)
