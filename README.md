@@ -62,7 +62,7 @@ HerPath is built in two stages. **Version 1** is the complete core loop: profile
 ### Version 1: the core loop
 
 #### 4.1 Saved Profile
-A short, friendly form (about 3 minutes) creates her profile, which is saved on her device so she never has to re-enter her details. She can update it anytime, for example when new exam results arrive. She can also **browse and filter scholarships without creating a profile**, so the first visit has no barrier.
+A short, friendly form (about 3 minutes) creates her profile, which is saved to her HerPath account so she never has to re-enter her details, on any phone. She can update it anytime, for example when new exam results arrive. She can also **browse and filter scholarships without creating a profile**, so the first visit has no barrier.
 
 The profile is built around Pakistan's education system:
 
@@ -267,22 +267,17 @@ A website that waits to be found repeats the problem it's trying to solve. HerPa
 
 ## 8. Privacy and Safety
 
-Many HerPath users will be teenage girls, so privacy is built in from the start:
+Many HerPath users will be teenage girls, so the data HerPath holds is kept to the minimum:
 
-- **No personal data is sent to a server.** Her profile is saved only in her own browser.
-- **No document uploads.** The checklist only records whether she has a document, never the document itself.
-- **No contact details, photos or location tracking.**
-- **No accounts and no passwords.**
-- **No AI and no third-party tracking.** All matching is done with transparent rules she can see and understand.
+- **An account is an email and a password.** No phone number, no photo, no CNIC number, no location.
+- **The profile holds facts, not documents.** Marks, income, and a yes/no for each document. Nothing is ever uploaded.
+- **Delete everything in one tap** from Settings. The account and profile are removed immediately.
+- **No AI and no third-party tracking.** Matching uses transparent rules she can read on every scholarship page.
 - HerPath is **free**. It never charges to find or apply for scholarships.
 
-**Shared phones.** Many girls will use a parent's or sibling's phone. So HerPath adds:
+**Shared phones.** Many girls will use a parent's or sibling's phone. Logging out removes her profile from the device, and she can log in again on any phone. Resetting her password logs out every other device.
 
-- An optional **4-digit PIN** that hides her profile from anyone else who picks up the phone.
-- A **"Delete my profile"** button that clears everything in one tap.
-- **Export and import.** She can save her profile as a small file (or a short code) and load it on another device, without ever creating an account.
-
-**What HerPath does count.** To know whether it's working, HerPath keeps a small set of **anonymous, aggregate counters** on its own server: how many profiles were created, how many gaps were marked closed, how many Family Mode pages were shared. These are plain numbers with no identifiers, no IP addresses and no cookies. Nothing about any individual girl ever leaves her phone, and the counters can be switched off in settings.
+**What HerPath counts.** To know whether it's working, HerPath keeps a small set of **anonymous, aggregate counters**: profiles created, gaps closed, scholarships moved to "Apply now", and Family Mode pages shared. These are plain numbers with no identifiers. Any user can switch them off in Settings.
 
 ---
 
@@ -290,10 +285,10 @@ Many HerPath users will be teenage girls, so privacy is built in from the start:
 
 HerPath runs entirely on **transparent, rule-based logic**. There is no AI in the product.
 
-1. **Scholarship database:** a curated JSON file where each scholarship's requirements are stored as structured rules.
-2. **Profile:** saved in the browser using local storage, optionally behind a PIN.
-3. **Matching engine:** plain JavaScript compares the profile to each rule and returns a status for every requirement. Rules can be grouped as "all of" or "any of," and a rule can apply only under a condition.
-4. **Readiness score:** if any fixed requirement fails, the scholarship is marked "Not eligible" and not scored. Otherwise the score reflects how many fixable gaps remain and whether each can be closed before the deadline.
+1. **Scholarship database:** scholarships are curated in an admin panel and seeded from JSON files in Git. Each scholarship's requirements are stored as structured rules, and an invalid rule cannot be saved.
+2. **Profile:** stored in the HerPath database against her account.
+3. **Matching engine:** a Python rule engine on the server compares the profile to each rule and returns a status for every requirement. Rules can be grouped as "all of" or "any of," and a rule can apply only under a condition.
+4. **Readiness score:** if any fixed requirement fails, the scholarship is marked "Not eligible" and not scored. If it only fails because she hasn't answered a question yet, it is shown as "Needs more information" instead, with a link back to her profile. Otherwise the score reflects how many fixable gaps remain and whether each can be closed before the deadline.
 5. **Start-by dates:** for each fixable gap, deadline minus the typical processing time for that step. If the start-by date has passed, the gap becomes "Fixable later" and the scholarship moves to Future goals for the next cycle.
 
 **Example scholarship entry:**
@@ -311,11 +306,11 @@ HerPath runs entirely on **transparent, rule-based logic**. There is no AI in th
   "allowsOtherScholarship": false,
   "requirements": [
     { "field": "domicile", "rule": "in", "value": ["Punjab"], "fixable": false,
-      "message": "Only for students with Punjab domicile" },
+      "message": { "en": "Only for students with Punjab domicile", "ur": "…" } },
     { "field": "interPercent", "rule": ">=", "value": 60, "fixable": false,
-      "message": "Minimum 60% in Intermediate" },
+      "message": { "en": "Minimum 60% in Intermediate", "ur": "…" } },
     { "field": "monthlyIncome", "rule": "<=", "value": 60000, "fixable": false,
-      "message": "Family income limit" },
+      "message": { "en": "Family income limit", "ur": "…" } },
     { "field": "documents.incomeCertificate", "rule": "has", "fixable": true,
       "fixGuide": "income-certificate", "daysNeeded": 14 }
   ],
@@ -338,7 +333,7 @@ HerPath runs entirely on **transparent, rule-based logic**. There is no AI in th
     { "field": "documents.englishMediumLetter", "rule": "has", "fixable": true,
       "fixGuide": "english-medium-letter", "daysNeeded": 10 }
   ],
-  "message": "Proof of English: IELTS 6.5, TOEFL 80, or an English-medium instruction letter"
+  "message": { "en": "Proof of English: IELTS 6.5, TOEFL 80, or an English-medium instruction letter", "ur": "…" }
 }
 ```
 
@@ -349,7 +344,7 @@ When she meets none of them, HerPath shows the **fastest** option first, here th
 ```json
 { "appliesWhen": { "field": "level", "rule": "==", "value": "masters" },
   "field": "age", "rule": "<=", "value": 35, "fixable": false,
-  "message": "Master's applicants must be 35 or under" }
+  "message": { "en": "Master's applicants must be 35 or under", "ur": "…" } }
 ```
 
 _Values shown are for illustration. Final values will be verified against official sources._
@@ -360,15 +355,15 @@ _Values shown are for illustration. Final values will be verified against offici
 
 | Purpose | Tool |
 |---|---|
-| Frontend | Next.js, exported as a static site |
-| Styling | Tailwind CSS with right-to-left support for Urdu |
-| Data | Hand-curated JSON scholarship database, versioned in Git with a change log |
-| Logic | JavaScript rule engine (matching, gap analysis, scoring, start-by dates) |
-| Profile storage | Browser local storage, optional PIN, export/import |
-| Languages | English and Urdu (i18n), Naskh Urdu web font |
-| Usage counters | Self-hosted, cookie-free aggregate counters (no personal data) |
+| Frontend | Next.js (App Router), Tailwind CSS with right-to-left support, next-intl |
+| Backend | Django, Django REST Framework, JWT authentication |
+| Database | PostgreSQL |
+| Data | Scholarships and guides curated in Django admin, seeded from JSON and Markdown files versioned in Git, with a public change log |
+| Logic | Python rule engine (matching, gap analysis, scoring, start-by dates) |
+| Languages | English and Urdu, Noto Naskh Arabic web font |
+| Usage counters | Aggregate counters in the database, no identifiers, opt-out in Settings |
 | Design | Figma |
-| Hosting | Vercel |
+| Hosting | Vercel (frontend), Railway (backend and PostgreSQL) |
 | Version control | GitHub, with a public issue tracker for data corrections |
 | Planning and research | AI assistant (used for research and planning only; the product contains no AI) |
 
@@ -388,7 +383,6 @@ HerPath measures success with anonymous aggregate counts and voluntary follow-up
 
 ## 12. Future Plans
 
-- Optional accounts so a profile can sync across devices
 - Deadline reminders by SMS or WhatsApp
 - More regional languages: Punjabi, Sindhi, Pashto and Balochi
 - A provider portal so scholarship organizations can submit and update their own listings
@@ -404,6 +398,39 @@ HerPath measures success with anonymous aggregate counts and voluntary follow-up
 3. _Gap Analyzer for a scholarship, with start-by dates_
 4. _Document checklist with "unlocks N more"_
 5. _Family Mode in Urdu_
+
+---
+
+---
+
+## 14. Running HerPath locally
+
+Requirements: Python 3.12+, Node 22+, PostgreSQL 16 (or Docker).
+
+```bash
+# Database
+docker run -d --name herpath-pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=herpath -p 5432:5432 postgres:16
+
+# Backend (http://localhost:8000)
+cd backend
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+export DEBUG=1 DATABASE_URL=postgres://postgres:postgres@localhost:5432/herpath
+python manage.py migrate
+python manage.py seed              # 15 scholarships, 5 fix-it guides
+python manage.py createsuperuser   # for /admin/
+python manage.py runserver
+pytest -q
+
+# Frontend (http://localhost:3000)
+cd frontend
+cp .env.local.example .env.local   # NEXT_PUBLIC_API_URL=http://localhost:8000/api
+npm install
+npm run dev
+npm test && npm run lint
+```
+
+**Deploying.** Backend: Railway with a PostgreSQL plugin, root directory `backend`, and `SECRET_KEY`, `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, `FRONTEND_URL` and SMTP `EMAIL_*` variables set; run `python manage.py seed` once. Frontend: Vercel with root directory `frontend` and `NEXT_PUBLIC_API_URL` pointing at the Railway API.
 
 ---
 
