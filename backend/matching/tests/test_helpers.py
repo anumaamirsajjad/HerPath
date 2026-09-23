@@ -50,3 +50,15 @@ def test_validate_errors():
     assert any("empty" in e for e in errs)
     errs = validate_requirements([{"field": "age", "rule": "<=", "value": 1, "fixable": False}])
     assert any("message" in e for e in errs)
+
+
+def test_unlocks_ignores_documents_inside_met_group():
+    scholarships = [{"slug": "a", "deadline": None, "requirements": [{"anyOf": [doc("passport"), doc("cnic")], "message": MSG}]}]
+    assert unlocks({"documents": {"cnic": True}}, scholarships, TODAY) == {}
+
+
+def test_validate_rejects_bool_and_negative_days():
+    errs = validate_requirements([{"field": "documents.x", "rule": "has", "fixable": True, "fixGuide": "g", "daysNeeded": True, "message": MSG}])
+    assert any("daysNeeded" in e for e in errs)
+    errs = validate_requirements([{"field": "documents.x", "rule": "has", "fixable": True, "fixGuide": "g", "daysNeeded": -1, "message": MSG}])
+    assert any("daysNeeded" in e for e in errs)

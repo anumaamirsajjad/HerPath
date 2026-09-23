@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.db.models.functions import Lower
 
 
 class UserManager(BaseUserManager):
@@ -12,6 +13,9 @@ class UserManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+
+    def get_by_natural_key(self, email):
+        return self.get(email__iexact=email)
 
     def create_superuser(self, email, password=None, **extra):
         extra.setdefault("is_staff", True)
@@ -28,6 +32,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+    class Meta:
+        constraints = [models.UniqueConstraint(Lower("email"), name="unique_email_ci")]
 
     def __str__(self):
         return self.email

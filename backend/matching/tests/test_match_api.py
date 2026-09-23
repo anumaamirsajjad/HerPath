@@ -67,3 +67,10 @@ def test_unlocks(client, data):
 
 def test_match_requires_auth(data):
     assert APIClient().get("/api/match").status_code == 401
+
+
+def test_match_rows_carry_missing_count_and_needs_info(client):
+    make_scholarship(slug="q", requirements=[{"field": "interPercent", "rule": ">=", "value": 60, "fixable": False, "message": MSG}])
+    client.put("/api/profile", {"data": {"documents": {}}}, format="json")
+    row = client.get("/api/match").data["tabs"]["not_eligible"][0]
+    assert row["missing_count"] == 1 and row["needs_info"] is True

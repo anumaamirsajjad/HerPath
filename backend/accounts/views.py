@@ -6,8 +6,11 @@ from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework import permissions, status
 from rest_framework.response import Response
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
+from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import PasswordResetConfirmSerializer, PasswordResetSerializer, SignupSerializer
 
@@ -19,8 +22,19 @@ def tokens_for(user):
     return {"access": str(refresh.access_token), "refresh": str(refresh)}
 
 
+class AuthThrottle(ScopedRateThrottle):
+    scope = "auth"
+
+
+class LoginView(TokenObtainPairView):
+    throttle_classes = [AuthThrottle]
+    throttle_scope = "auth"
+
+
 class SignupView(APIView):
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [AuthThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         s = SignupSerializer(data=request.data)
@@ -40,6 +54,8 @@ class MeView(APIView):
 
 class PasswordResetView(APIView):
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [AuthThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         s = PasswordResetSerializer(data=request.data)
@@ -57,6 +73,8 @@ class PasswordResetView(APIView):
 
 class PasswordResetConfirmView(APIView):
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [AuthThrottle]
+    throttle_scope = "auth"
 
     def post(self, request):
         s = PasswordResetConfirmSerializer(data=request.data)
@@ -70,6 +88,8 @@ class PasswordResetConfirmView(APIView):
             return Response({"detail": "Invalid or expired link."}, status=400)
         user.set_password(d["password"])
         user.save()
+        for t in OutstandingToken.objects.filter(user=user):  # log out every device
+            BlacklistedToken.objects.get_or_create(token=t)
         return Response({"ok": True})
 
 
@@ -95,6 +115,8 @@ class ProfileView(APIView):
         return Response(ProfileSerializer(profile).data)
 
     def patch(self, request):
+        if "data" in request.data:
+            return Response({"data": ["Use PUT to change profile data."]}, status=400)
         profile = get_object_or_404(Profile, user=request.user)
         s = ProfileSerializer(profile, data=request.data, partial=True)
         s.is_valid(raise_exception=True)

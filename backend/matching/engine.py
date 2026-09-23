@@ -45,7 +45,7 @@ def _best(results):
 def _eval_leaf(node, profile, deadline, today):
     passed, missing = _passes(node, profile)
     days = node.get("daysNeeded")
-    start_by = deadline - timedelta(days=days) if deadline and node.get("fixable") and days else None
+    start_by = deadline - timedelta(days=days) if deadline and node.get("fixable") and days is not None else None
     if passed:
         status = "met"
     elif not node.get("fixable"):
@@ -64,11 +64,17 @@ def _eval_leaf(node, profile, deadline, today):
 
 def _eval_node(node, profile, deadline, today):
     cond = node.get("appliesWhen")
-    if cond and not _passes(cond, profile)[0]:
-        return None
+    cond_missing = False
+    if cond:
+        applies, cond_missing = _passes(cond, profile)
+        # Unknown condition (field not in profile) is not "does not apply": evaluate and flag it.
+        if not applies and not cond_missing:
+            return None
     if "anyOf" in node or "allOf" in node:
         kind = "anyOf" if "anyOf" in node else "allOf"
         children = [c for c in (_eval_node(n, profile, deadline, today) for n in node[kind]) if c]
+        if not children:
+            return None
         if kind == "anyOf":
             met = any(c["status"] == "met" for c in children)
             if not met:
@@ -76,8 +82,36 @@ def _eval_node(node, profile, deadline, today):
             status = "met" if met else _best(children)
         else:
             status = _worst(children)
-        return {"kind": kind, "status": status, "message": node.get("message", {}), "options": children}
-    return _eval_leaf(node, profile, deadline, today)
+        result = {"kind": kind, "status": status, "message": node.get("message", {}), "options": children,
+                  "missingFromProfile": False}
+    else:
+        result = _eval_leaf(node, profile, deadline, today)
+    if cond_missing:
+        result["missingFromProfile"] = True
+        result["conditionField"] = cond["field"]
+    return result
+
+
+def _missing_leaves(results):
+    """Unmet results whose outcome depends on data she has not entered yet."""
+    out = []
+    for r in results:
+        if r["status"] == "met":
+            continue
+        if r.get("missingFromProfile"):
+            out.append(r)
+        elif r["kind"] != "leaf":
+            out += _missing_leaves(r["options"])
+    return out
+
+
+def _unmet_leaves(results):
+    out = []
+    for r in results:
+        if r["status"] == "met":
+            continue
+        out += [r] if r["kind"] == "leaf" or r.get("missingFromProfile") else _unmet_leaves(r["options"])
+    return out
 
 
 def evaluate(requirements, profile, deadline, today):
@@ -87,14 +121,20 @@ def evaluate(requirements, profile, deadline, today):
     worst = _worst(results) if results else "met"
     tab = {"met": "apply_now", "fixable": "almost", "fixable_later": "future", "not_eligible": "not_eligible"}[worst]
     score = None if tab == "not_eligible" else (round(100 * met / total) if total else 100)
-    return {"requirements": results, "met_count": met, "total_count": total, "tab": tab, "score": score}
+    missing = len(_missing_leaves(results))
+    blocked = [r for r in _unmet_leaves(results) if r["status"] == "not_eligible"]
+    needs_info = tab == "not_eligible" and bool(blocked) and all(r.get("missingFromProfile") for r in blocked)
+    return {"requirements": results, "met_count": met, "total_count": total, "tab": tab, "score": score,
+            "missing_count": missing, "needs_info": needs_info}
 
 
 def unmet_document_fields(result):
     out = set()
     for r in result["requirements"] if "requirements" in result else [result]:
+        if r["status"] == "met":
+            continue  # a satisfied anyOf unlocks nothing more
         if r["kind"] == "leaf":
-            if r["status"] != "met" and r["field"].startswith("documents."):
+            if r["field"].startswith("documents."):
                 out.add(r["field"].split(".", 1)[1])
         else:
             for o in r["options"]:
@@ -137,8 +177,9 @@ def _validate_leaf(n, path, errs, require_message=True):
         if not isinstance(n.get("fixable"), bool):
             errs.append(f"{path}: fixable must be true or false")
         if n.get("fixable"):
-            if not isinstance(n.get("daysNeeded"), int):
-                errs.append(f"{path}: fixable rules need integer daysNeeded")
+            d = n.get("daysNeeded")
+            if isinstance(d, bool) or not isinstance(d, int) or d < 0:
+                errs.append(f"{path}: fixable rules need a non-negative integer daysNeeded")
             if not isinstance(n.get("fixGuide"), str):
                 errs.append(f"{path}: fixable rules need a fixGuide slug")
 

@@ -61,3 +61,10 @@ def test_patch_opt_out(auth_client):
 
 def test_profile_requires_auth():
     assert APIClient().get("/api/profile").status_code == 401
+
+
+def test_patch_rejects_data_key(auth_client):
+    auth_client.put("/api/profile", {"data": GOOD}, format="json")
+    r = auth_client.patch("/api/profile", {"data": {"documents": {"passport": True}}}, format="json")
+    assert r.status_code == 400
+    assert auth_client.get("/api/profile").data["data"]["domicile"] == "Punjab"

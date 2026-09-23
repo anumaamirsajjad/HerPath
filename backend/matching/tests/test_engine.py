@@ -11,7 +11,7 @@ def leaf(field, rule, value=None, fixable=False, days=None, guide=None, **extra)
     if value is not None:
         n["value"] = value
     if fixable:
-        n["daysNeeded"] = days or 14
+        n["daysNeeded"] = days if days is not None else 14
         n["fixGuide"] = guide or "g"
     return n
 
@@ -116,3 +116,34 @@ def test_tab_and_score():
     assert res["tab"] == "apply_now" and res["score"] == 100
     res = evaluate(rules, {"age": 40, "documents": {}}, None, TODAY)
     assert res["tab"] == "not_eligible" and res["score"] is None
+
+
+def test_group_with_all_children_skipped_is_skipped():
+    cond = {"field": "level", "rule": "==", "value": "masters"}
+    g = {"anyOf": [leaf("tests.ielts", ">=", 6.5, fixable=True, appliesWhen=cond)], "message": MSG}
+    res = evaluate([g, {"allOf": [leaf("age", "<=", 30, appliesWhen=cond)], "message": MSG}], {"level": "bachelors", "age": 20}, None, TODAY)
+    assert res["requirements"] == [] and res["tab"] == "apply_now"
+
+
+def test_days_needed_zero_with_past_deadline_is_fixable_later():
+    res = evaluate([leaf("documents.passport", "has", fixable=True, days=0)], {"documents": {}}, dt.date(2020, 1, 1), TODAY)
+    assert res["requirements"][0]["status"] == "fixable_later" and res["tab"] == "future"
+
+
+def test_applies_when_on_missing_field_does_not_silently_skip():
+    rule = leaf("age", "<=", 21, appliesWhen={"field": "level", "rule": "==", "value": "intermediate"})
+    res = evaluate([rule, leaf("documents.passport", "has", fixable=True)], {"age": 40, "documents": {"passport": True}}, None, TODAY)
+    assert res["total_count"] == 2
+    r = res["requirements"][0]
+    assert r["status"] == "not_eligible" and r["missingFromProfile"] is True and r["conditionField"] == "level"
+    assert res["tab"] != "apply_now"
+
+
+def test_missing_count_and_needs_info():
+    rules = [leaf("interPercent", ">=", 60), leaf("domicile", "in", ["Punjab"]), leaf("documents.cnic", "has", fixable=True)]
+    res = evaluate(rules, {"domicile": "Punjab", "documents": {"cnic": True}}, None, TODAY)
+    assert res["tab"] == "not_eligible" and res["missing_count"] == 1 and res["needs_info"] is True
+    res = evaluate(rules, {"domicile": "Sindh", "documents": {"cnic": True}}, None, TODAY)
+    assert res["tab"] == "not_eligible" and res["missing_count"] == 1 and res["needs_info"] is False
+    res = evaluate(rules, {"interPercent": 70, "domicile": "Punjab", "documents": {"cnic": True}}, None, TODAY)
+    assert res["missing_count"] == 0 and res["needs_info"] is False

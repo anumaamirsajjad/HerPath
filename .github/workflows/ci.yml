@@ -16,4 +16,4 @@ jobs:
         with: { python-version: "3.13" }
       - run: pip install -r requirements.txt
       - run: pytest -q
-        env: { DATABASE_URL: postgres://postgres:postgres@localhost:5432/herpath }
+        env: { DATABASE_URL: postgres://postgres:postgres@localhost:5432/herpath, DEBUG: "1" }

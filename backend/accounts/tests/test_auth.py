@@ -64,3 +64,27 @@ def test_password_reset_flow(client, settings):
 def test_password_reset_unknown_email_still_200(client):
     r = client.post("/api/auth/password-reset", {"email": "nobody@x.com"}, format="json")
     assert r.status_code == 200
+
+
+def test_login_accepts_mixed_case_email(client):
+    client.post("/api/auth/signup", {"email": "aisha@example.com", "password": "pass12345"}, format="json")
+    r = client.post("/api/auth/login", {"email": "Aisha@Example.com", "password": "pass12345"}, format="json")
+    assert r.status_code == 200
+
+
+def test_password_reset_invalidates_old_refresh_token(client, settings):
+    settings.EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+    old = client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json").data
+    client.post("/api/auth/password-reset", {"email": "a@x.com"}, format="json")
+    query = mail.outbox[0].body.split("reset-password?")[1].strip()
+    uid, token = [p.split("=")[1] for p in query.split("&")]
+    client.post("/api/auth/password-reset/confirm", {"uid": uid, "token": token, "password": "newpass123"}, format="json")
+    r = client.post("/api/auth/refresh", {"refresh": old["refresh"]}, format="json")
+    assert r.status_code == 401
+
+
+def test_login_is_throttled(client):
+    client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json")
+    codes = [client.post("/api/auth/login", {"email": "a@x.com", "password": "wrong-pass"}, format="json").status_code
+             for _ in range(25)]
+    assert 429 in codes

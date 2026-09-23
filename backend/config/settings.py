@@ -6,8 +6,12 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-insecure-key-do-not-use-in-production-0123456789")
-DEBUG = os.environ.get("DEBUG", "1") == "1"
+DEBUG = os.environ.get("DEBUG") == "1"  # off unless explicitly enabled
+SECRET_KEY = os.environ.get("SECRET_KEY") or "dev-insecure-key-do-not-use-in-production-0123456789"
+if not DEBUG and SECRET_KEY.startswith("dev-"):
+    from django.core.exceptions import ImproperlyConfigured
+
+    raise ImproperlyConfigured("Set SECRET_KEY: the built-in dev key is only allowed when DEBUG=1.")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://localhost:3000")
 
@@ -20,6 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.postgres",
     "rest_framework",
+    "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
     "accounts",
     "scholarships",
@@ -76,12 +81,14 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication"],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
-    "DEFAULT_THROTTLE_RATES": {"reports": "5/hour", "anon": "60/min"},
+    "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
+    "DEFAULT_THROTTLE_RATES": {"anon": "300/min", "auth": "20/min", "reports": "5/hour"},
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
     "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
 }
 
 CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(",")

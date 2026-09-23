@@ -30,7 +30,8 @@ class MatchList(APIView):
         for slug, res in results.items():
             row = ScholarshipListSerializer(by_slug[slug], context={"request": request}).data
             row.update(score=res["score"], met_count=res["met_count"], total_count=res["total_count"],
-                       gap_count=res["total_count"] - res["met_count"], tab=res["tab"])
+                       gap_count=res["total_count"] - res["met_count"], tab=res["tab"],
+                       missing_count=res["missing_count"], needs_info=res["needs_info"])
             tabs[res["tab"]].append(row)
         for t in TABS:
             tabs[t].sort(key=lambda r: (-(r["score"] or 0), r["name"]))
