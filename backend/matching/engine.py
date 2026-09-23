@@ -90,5 +90,82 @@ def evaluate(requirements, profile, deadline, today):
     return {"requirements": results, "met_count": met, "total_count": total, "tab": tab, "score": score}
 
 
-def validate_requirements(rules):  # replaced in Task 6
-    return []
+def unmet_document_fields(result):
+    out = set()
+    for r in result["requirements"] if "requirements" in result else [result]:
+        if r["kind"] == "leaf":
+            if r["status"] != "met" and r["field"].startswith("documents."):
+                out.add(r["field"].split(".", 1)[1])
+        else:
+            for o in r["options"]:
+                out |= unmet_document_fields(o)
+    return out
+
+
+def unlocks(profile, scholarships, today):
+    have = (profile or {}).get("documents") or {}
+    counts = {}
+    for s in scholarships:
+        res = evaluate(s["requirements"], profile, s["deadline"], today)
+        if res["tab"] == "not_eligible":
+            continue
+        for key in unmet_document_fields(res):
+            if not have.get(key):
+                counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
+def conflicts(saved):
+    out = []
+    for i, a in enumerate(saved):
+        for b in saved[i + 1:]:
+            if not (a["allows_other_scholarship"] and b["allows_other_scholarship"]):
+                out.append([a["slug"], b["slug"]])
+    return out
+
+
+def _validate_leaf(n, path, errs, require_message=True):
+    if not isinstance(n.get("field"), str):
+        errs.append(f"{path}: field must be a string")
+    if n.get("rule") not in OPS:
+        errs.append(f"{path}: rule must be one of {sorted(OPS)}")
+    if n.get("rule") != "has" and "value" not in n:
+        errs.append(f"{path}: value is required for rule {n.get('rule')}")
+    if require_message and (not isinstance(n.get("message"), dict) or "en" not in n["message"]):
+        errs.append(f"{path}: message must be an object with an 'en' key")
+    if require_message:
+        if not isinstance(n.get("fixable"), bool):
+            errs.append(f"{path}: fixable must be true or false")
+        if n.get("fixable"):
+            if not isinstance(n.get("daysNeeded"), int):
+                errs.append(f"{path}: fixable rules need integer daysNeeded")
+            if not isinstance(n.get("fixGuide"), str):
+                errs.append(f"{path}: fixable rules need a fixGuide slug")
+
+
+def _validate_node(n, path, errs):
+    if not isinstance(n, dict):
+        errs.append(f"{path}: must be an object")
+        return
+    if "appliesWhen" in n:
+        _validate_leaf(n["appliesWhen"], f"{path}.appliesWhen", errs, require_message=False)
+    kind = "anyOf" if "anyOf" in n else "allOf" if "allOf" in n else None
+    if kind:
+        if not isinstance(n[kind], list) or not n[kind]:
+            errs.append(f"{path}.{kind}: must be a non-empty list")
+        else:
+            for i, c in enumerate(n[kind]):
+                _validate_node(c, f"{path}.{kind}[{i}]", errs)
+        if not isinstance(n.get("message"), dict) or "en" not in n["message"]:
+            errs.append(f"{path}: message must be an object with an 'en' key")
+    else:
+        _validate_leaf(n, path, errs)
+
+
+def validate_requirements(rules):
+    if not isinstance(rules, list):
+        return ["requirements must be a list"]
+    errs = []
+    for i, n in enumerate(rules):
+        _validate_node(n, f"requirements[{i}]", errs)
+    return errs
