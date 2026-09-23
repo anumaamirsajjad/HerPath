@@ -1,0 +1,160 @@
+{
+  "slug": "hec-overseas-masters-phd",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Higher Education Commission",
+  "location": "abroad",
+  "country": "Various",
+  "name_en": "HEC Overseas Scholarship (Master's and PhD)",
+  "name_ur": "ایچ ای سی بیرونِ ملک اسکالرشپ (ماسٹرز اور پی ایچ ڈی)",
+  "summary_en": "Fully funded HEC scholarships for Master's leading to PhD or PhD abroad in partner countries.",
+  "summary_ur": "شراکت دار ممالک میں ماسٹرز سے پی ایچ ڈی یا پی ایچ ڈی کے لیے ایچ ای سی کی مکمل فنڈڈ اسکالرشپس۔",
+  "coverage_en": "Tuition, monthly living allowance, return airfare and health insurance for the length of the program.",
+  "coverage_ur": "پروگرام کی مدت تک ٹیوشن، ماہانہ رہائشی الاؤنس، واپسی ہوائی ٹکٹ اور صحت انشورنس۔",
+  "who_for_en": "Pakistani nationals with a 16-year degree and CGPA 3.0 or above. Age limits depend on the level applied for. Selection through a written test and interview.",
+  "who_for_ur": "16 سالہ ڈگری اور سی جی پی اے 3.0 یا زیادہ رکھنے والی پاکستانی شہری۔ عمر کی حد سطح پر منحصر۔ تحریری ٹیسٹ اور انٹرویو سے انتخاب۔",
+  "application_steps_en": "1. Create a profile on the HEC e-portal.\n2. Apply for the scholarship program when it opens and pay the processing fee.\n3. Upload attested degrees, CNIC, passport and English test scores.\n4. Sit the HEC aptitude test, then attend the interview.",
+  "application_steps_ur": "1. ایچ ای سی ای پورٹل پر پروفائل بنائیں۔\n2. پروگرام کھلنے پر درخواست دیں اور پروسیسنگ فیس ادا کریں۔\n3. تصدیق شدہ ڈگریاں، شناختی کارڈ، پاسپورٹ اور انگریزی ٹیسٹ اسکور اپ لوڈ کریں۔\n4. ایچ ای سی ایپٹی ٹیوڈ ٹیسٹ دیں، پھر انٹرویو دیں۔",
+  "family_summary_en": "This is a Government of Pakistan scholarship. It is free apart from a small processing fee. It pays tuition, living costs, flights and insurance. Your daughter studies abroad and returns to serve in Pakistan afterwards.",
+  "family_summary_ur": "یہ حکومتِ پاکستان کی اسکالرشپ ہے۔ معمولی پروسیسنگ فیس کے علاوہ مفت ہے۔ یہ ٹیوشن، رہائش، ہوائی ٹکٹ اور انشورنس دیتی ہے۔ آپ کی بیٹی بیرونِ ملک پڑھے گی اور بعد میں پاکستان واپس آ کر خدمات انجام دے گی۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "required_documents": [
+    "cnic",
+    "passport",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 3.0,
+      "fixable": false,
+      "message": {
+        "en": "CGPA 3.0 or above",
+        "ur": "سی جی پی اے 3.0 یا اس سے زیادہ"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 35,
+      "fixable": false,
+      "message": {
+        "en": "Age 35 or under for Master's-leading-to-PhD applicants",
+        "ur": "ماسٹرز سے پی ایچ ڈی کے لیے عمر 35 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "bachelors"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 40,
+      "fixable": false,
+      "message": {
+        "en": "Age 40 or under for PhD applicants",
+        "ur": "پی ایچ ڈی کے لیے عمر 40 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "masters"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.5,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.5",
+            "ur": "آئیلٹس 6.5"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 79,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 79",
+            "ur": "ٹوفل 79"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.5 or TOEFL 79",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.5 یا ٹوفل 79"
+      }
+    }
+  ],
+  "official_link": "https://www.hec.gov.pk/english/scholarshipsgrants/Pages/default.aspx",
+  "usual_opening_month": 5,
+  "next_check": "2027-04-15"
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "erasmus-mundus",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "European Union",
+  "location": "abroad",
+  "country": "Europe",
+  "name_en": "Erasmus Mundus Joint Master's",
+  "name_ur": "ایراسمس منڈس مشترکہ ماسٹرز",
+  "summary_en": "Fully funded Master's taught across two or more European universities, with an EU scholarship for students from outside Europe.",
+  "summary_ur": "دو یا زیادہ یورپی یونیورسٹیوں میں پڑھایا جانے والا مکمل فنڈڈ ماسٹرز، یورپ سے باہر کی طالبات کے لیے یورپی یونین کی اسکالرشپ۔",
+  "coverage_en": "Full tuition, monthly stipend of about EUR 1,400, travel and installation costs, and insurance. 1 to 2 years across several countries.",
+  "coverage_ur": "پوری ٹیوشن، تقریباً 1,400 یورو ماہانہ وظیفہ، سفر اور آبادکاری کا خرچ، اور انشورنس۔ کئی ممالک میں 1 سے 2 سال۔",
+  "who_for_en": "Graduates with a 16-year degree. Each program sets its own field and English requirement; most ask for IELTS 6.5 or equivalent.",
+  "who_for_ur": "16 سالہ ڈگری والی گریجویٹس۔ ہر پروگرام اپنا شعبہ اور انگریزی کی شرط طے کرتا ہے؛ زیادہ تر آئیلٹس 6.5 یا مساوی مانگتے ہیں۔",
+  "application_steps_en": "1. Search the Erasmus Mundus catalogue and pick up to 3 programs.\n2. Apply directly to each program's website, usually between October and January.\n3. Upload transcripts, passport, CV, motivation letter, 2 recommendation letters and English test.",
+  "application_steps_ur": "1. ایراسمس منڈس کیٹلاگ میں تلاش کریں اور 3 تک پروگرام چنیں۔\n2. ہر پروگرام کی ویب سائٹ پر براہِ راست درخواست دیں، عام طور پر اکتوبر سے جنوری کے درمیان۔\n3. ٹرانسکرپٹس، پاسپورٹ، سی وی، ترغیبی خط، 2 سفارشی خطوط اور انگریزی ٹیسٹ اپ لوڈ کریں۔",
+  "family_summary_en": "This scholarship is funded by the European Union. It is free to apply. It pays tuition, a monthly allowance, travel and insurance. Your daughter studies in two or more European countries over 1 to 2 years.",
+  "family_summary_ur": "یہ اسکالرشپ یورپی یونین دیتی ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ماہانہ خرچ، سفر اور انشورنس دیتی ہے۔ آپ کی بیٹی 1 سے 2 سال میں دو یا زیادہ یورپی ممالک میں پڑھے گی۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "required_documents": [
+    "passport",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.5,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.5",
+            "ur": "آئیلٹس 6.5"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 90,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 90",
+            "ur": "ٹوفل 90"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.5 or TOEFL 90",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.5 یا ٹوفل 90"
+      }
+    }
+  ],
+  "official_link": "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-scholarships",
+  "usual_opening_month": 10,
+  "next_check": "2027-09-15"
+}

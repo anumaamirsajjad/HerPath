@@ -1,0 +1,108 @@
+{
+  "slug": "seef-undergraduate",
+  "funding": "partial",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [
+    "Sindh"
+  ],
+  "income_limit": 50000,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Sindh Educational Endowment Fund",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "SEEF Undergraduate Scholarship",
+  "name_ur": "سیف انڈرگریجویٹ اسکالرشپ",
+  "summary_en": "Need-and-merit scholarship from the Government of Sindh for Sindh-domiciled undergraduate students.",
+  "summary_ur": "حکومتِ سندھ کی ضرورت اور میرٹ پر مبنی اسکالرشپ سندھ ڈومیسائل رکھنے والی انڈرگریجویٹ طالبات کے لیے۔",
+  "coverage_en": "Tuition fee plus a monthly stipend for the length of the degree, renewed each year on results.",
+  "coverage_ur": "ڈگری کی مدت تک ٹیوشن فیس اور ماہانہ وظیفہ، نتائج پر ہر سال تجدید۔",
+  "who_for_en": "Students with Sindh domicile, at least 60% in Intermediate, from families earning up to about PKR 50,000 a month.",
+  "who_for_ur": "سندھ ڈومیسائل، انٹرمیڈیٹ میں کم از کم 60% نمبر، اور ماہانہ گھریلو آمدنی تقریباً 50,000 روپے تک رکھنے والی طالبات۔",
+  "application_steps_en": "1. Apply online on the SEEF portal when the cycle opens.\n2. Upload domicile, income certificate, CNIC or B-Form, and Intermediate result.\n3. Submit the printed form to your university focal person.",
+  "application_steps_ur": "1. سائیکل کھلنے پر سیف پورٹل پر آن لائن درخواست دیں۔\n2. ڈومیسائل، آمدنی سرٹیفکیٹ، شناختی کارڈ یا بے فارم اور انٹرمیڈیٹ رزلٹ اپ لوڈ کریں۔\n3. پرنٹ شدہ فارم یونیورسٹی کے فوکل پرسن کو جمع کروائیں۔",
+  "family_summary_en": "SEEF is run by the Government of Sindh. It is free to apply. It pays the university fee and a monthly allowance. Your daughter studies at a university in Sindh.",
+  "family_summary_ur": "سیف حکومتِ سندھ کا ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ یونیورسٹی کی فیس اور ماہانہ خرچ دیتا ہے۔ آپ کی بیٹی سندھ کی یونیورسٹی میں پڑھے گی۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need",
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "required_documents": [
+    "cnic",
+    "domicile",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "domicile",
+      "rule": "in",
+      "value": [
+        "Sindh"
+      ],
+      "fixable": false,
+      "message": {
+        "en": "Only for students with Sindh domicile",
+        "ur": "صرف سندھ ڈومیسائل رکھنے والی طالبات کے لیے"
+      }
+    },
+    {
+      "field": "interPercent",
+      "rule": ">=",
+      "value": 60,
+      "fixable": false,
+      "message": {
+        "en": "Minimum 60% in Intermediate",
+        "ur": "انٹرمیڈیٹ میں کم از کم 60% نمبر"
+      }
+    },
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 50000,
+      "fixable": false,
+      "message": {
+        "en": "Monthly household income up to PKR 50,000",
+        "ur": "ماہانہ گھریلو آمدنی 50,000 روپے تک"
+      }
+    },
+    {
+      "field": "documents.domicile",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "domicile-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Domicile certificate",
+        "ur": "ڈومیسائل سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    }
+  ],
+  "official_link": "https://seef.gos.pk",
+  "usual_opening_month": 3,
+  "next_check": "2027-02-15"
+}

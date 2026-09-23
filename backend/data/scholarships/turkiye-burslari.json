@@ -1,0 +1,143 @@
+{
+  "slug": "turkiye-burslari",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Presidency for Turks Abroad and Related Communities",
+  "location": "abroad",
+  "country": "Türkiye",
+  "name_en": "Türkiye Bursları",
+  "name_ur": "ترکیہ برسلاری",
+  "summary_en": "Fully funded undergraduate, Master's and PhD scholarships from the Turkish government, including hostel and a Turkish language year.",
+  "summary_ur": "ترک حکومت کی مکمل فنڈڈ انڈرگریجویٹ، ماسٹرز اور پی ایچ ڈی اسکالرشپس، ہاسٹل اور ایک سالہ ترکی زبان کورس سمیت۔",
+  "coverage_en": "Tuition, monthly stipend, university dormitory, return airfare, health insurance and one year of Turkish language study.",
+  "coverage_ur": "ٹیوشن، ماہانہ وظیفہ، یونیورسٹی ہاسٹل، واپسی ہوائی ٹکٹ، صحت انشورنس اور ایک سال ترکی زبان کی تعلیم۔",
+  "who_for_en": "Undergraduate applicants under 21 with at least 70% marks; Master's under 30; PhD under 35. No English or Turkish test required to apply.",
+  "who_for_ur": "انڈرگریجویٹ درخواست دہندگان 21 سال سے کم عمر اور کم از کم 70% نمبر؛ ماسٹرز 30 سے کم؛ پی ایچ ڈی 35 سے کم۔ درخواست کے لیے انگریزی یا ترکی ٹیسٹ ضروری نہیں۔",
+  "application_steps_en": "1. Apply online at turkiyeburslari.gov.tr in January or February.\n2. Upload passport or CNIC, transcripts, a photo and a letter of intent.\n3. Shortlisted candidates are interviewed at the Turkish Embassy or online.",
+  "application_steps_ur": "1. جنوری یا فروری میں turkiyeburslari.gov.tr پر آن لائن درخواست دیں۔\n2. پاسپورٹ یا شناختی کارڈ، ٹرانسکرپٹس، تصویر اور ارادے کا خط اپ لوڈ کریں۔\n3. منتخب امیدواروں کا ترک سفارت خانے میں یا آن لائن انٹرویو ہوتا ہے۔",
+  "family_summary_en": "This is the Turkish government's scholarship. It is free to apply. It pays tuition, a monthly allowance, a dormitory room, flights and insurance. Your daughter lives in a university dormitory in Türkiye, a Muslim-majority country.",
+  "family_summary_ur": "یہ ترک حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ماہانہ خرچ، ہاسٹل کا کمرہ، ہوائی ٹکٹ اور انشورنس دیتی ہے۔ آپ کی بیٹی ترکیہ میں یونیورسٹی کے ہاسٹل میں رہے گی، جو ایک مسلم اکثریتی ملک ہے۔",
+  "levels": [
+    "undergraduate",
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "hostel",
+    "airfare",
+    "insurance"
+  ],
+  "required_documents": [
+    "passport"
+  ],
+  "requirements": [
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 21,
+      "fixable": false,
+      "message": {
+        "en": "Age 21 or under for undergraduate applicants",
+        "ur": "انڈرگریجویٹ کے لیے عمر 21 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "intermediate"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 30,
+      "fixable": false,
+      "message": {
+        "en": "Age 30 or under for Master's applicants",
+        "ur": "ماسٹرز کے لیے عمر 30 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "bachelors"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 35,
+      "fixable": false,
+      "message": {
+        "en": "Age 35 or under for PhD applicants",
+        "ur": "پی ایچ ڈی کے لیے عمر 35 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "masters"
+      }
+    },
+    {
+      "field": "interPercent",
+      "rule": ">=",
+      "value": 70,
+      "fixable": false,
+      "message": {
+        "en": "Minimum 70% in Intermediate for undergraduate applicants",
+        "ur": "انڈرگریجویٹ کے لیے انٹرمیڈیٹ میں کم از کم 70% نمبر"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "intermediate"
+      }
+    },
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 3.0,
+      "fixable": false,
+      "message": {
+        "en": "CGPA 3.0 or above for Master's and PhD applicants",
+        "ur": "ماسٹرز اور پی ایچ ڈی کے لیے سی جی پی اے 3.0 یا زیادہ"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "in",
+        "value": [
+          "bachelors",
+          "masters"
+        ]
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    }
+  ],
+  "official_link": "https://www.turkiyeburslari.gov.tr",
+  "usual_opening_month": 1,
+  "next_check": "2026-12-15"
+}

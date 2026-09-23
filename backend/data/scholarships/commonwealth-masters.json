@@ -1,0 +1,139 @@
+{
+  "slug": "commonwealth-masters",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Commonwealth Scholarship Commission in the UK",
+  "location": "abroad",
+  "country": "UK",
+  "name_en": "Commonwealth Master's Scholarship",
+  "name_ur": "کامن ویلتھ ماسٹرز اسکالرشپ",
+  "summary_en": "Fully funded Master's in the UK for students from Commonwealth countries who could not otherwise afford to study there.",
+  "summary_ur": "دولتِ مشترکہ کے ممالک کی ان طالبات کے لیے برطانیہ میں مکمل فنڈڈ ماسٹرز جو ورنہ وہاں پڑھنے کا خرچ نہیں اٹھا سکتیں۔",
+  "coverage_en": "Full tuition, monthly stipend, return airfare, thesis grant and study travel grant. One year.",
+  "coverage_ur": "پوری ٹیوشن، ماہانہ وظیفہ، واپسی ہوائی ٹکٹ، تھیسس گرانٹ اور مطالعاتی سفر گرانٹ۔ ایک سال۔",
+  "who_for_en": "Pakistani citizens with an upper second class (about CGPA 3.0) undergraduate degree, in one of the CSC development themes. Nominated through HEC.",
+  "who_for_ur": "اپر سیکنڈ کلاس (تقریباً سی جی پی اے 3.0) انڈرگریجویٹ ڈگری والی پاکستانی شہری، سی ایس سی کے ترقیاتی موضوعات میں۔ ایچ ای سی کے ذریعے نامزدگی۔",
+  "application_steps_en": "1. Apply on the CSC online system between September and October.\n2. Also apply to HEC as the nominating agency before its deadline.\n3. Upload transcripts, passport, and 2 references.\n4. Apply separately for admission to your chosen UK university.",
+  "application_steps_ur": "1. ستمبر سے اکتوبر کے درمیان سی ایس سی کے آن لائن سسٹم پر درخواست دیں۔\n2. نامزد کرنے والے ادارے ایچ ای سی کو بھی اس کی آخری تاریخ سے پہلے درخواست دیں۔\n3. ٹرانسکرپٹس، پاسپورٹ اور 2 حوالہ جات اپ لوڈ کریں۔\n4. اپنی منتخب برطانوی یونیورسٹی میں داخلے کے لیے الگ درخواست دیں۔",
+  "family_summary_en": "This scholarship is funded by the UK government for Commonwealth countries. It is free to apply. It pays for everything for one year in the UK.",
+  "family_summary_ur": "یہ اسکالرشپ برطانوی حکومت دولتِ مشترکہ کے ممالک کے لیے دیتی ہے۔ درخواست دینا مفت ہے۔ یہ برطانیہ میں ایک سال کا سارا خرچ دیتی ہے۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit",
+    "need"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare"
+  ],
+  "required_documents": [
+    "passport",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 3.0,
+      "fixable": false,
+      "message": {
+        "en": "Upper second class or equivalent (about CGPA 3.0)",
+        "ur": "اپر سیکنڈ کلاس یا مساوی (تقریباً سی جی پی اے 3.0)"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.5,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.5",
+            "ur": "آئیلٹس 6.5"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 79,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 79",
+            "ur": "ٹوفل 79"
+          }
+        },
+        {
+          "field": "documents.englishMediumLetter",
+          "rule": "has",
+          "fixable": true,
+          "fixGuide": "english-medium-letter",
+          "daysNeeded": 10,
+          "message": {
+            "en": "English-medium instruction letter",
+            "ur": "انگریزی میڈیم تعلیم کا خط"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.5 or TOEFL 79, or an English-medium instruction letter",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.5 یا ٹوفل 79، یا انگریزی میڈیم تعلیم کا خط"
+      }
+    }
+  ],
+  "official_link": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships/",
+  "usual_opening_month": 9,
+  "next_check": "2027-08-15"
+}

@@ -1,0 +1,82 @@
+{
+  "slug": "ihsan-trust-loan",
+  "funding": "tuition_only",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": true,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": 80000,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Ihsan Trust",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "Ihsan Trust Interest-Free Education Loan",
+  "name_ur": "احسان ٹرسٹ بلاسود تعلیمی قرض",
+  "summary_en": "An interest-free loan (Qarz-e-Hasna) that pays the university fee now and is repaid in small instalments after graduation.",
+  "summary_ur": "بلاسود قرضِ حسنہ جو ابھی یونیورسٹی کی فیس ادا کرتا ہے اور گریجویشن کے بعد چھوٹی قسطوں میں واپس کیا جاتا ہے۔",
+  "coverage_en": "Tuition fee for the remaining semesters, paid directly to the university. No interest. Repayment starts about 6 months after graduation.",
+  "coverage_ur": "باقی سمسٹرز کی ٹیوشن فیس براہِ راست یونیورسٹی کو ادا۔ کوئی سود نہیں۔ ادائیگی گریجویشن کے تقریباً 6 ماہ بعد شروع ہوتی ہے۔",
+  "who_for_en": "Undergraduate and Master's students at partner universities whose families cannot afford the fee, with monthly income up to about PKR 80,000.",
+  "who_for_ur": "شراکت دار یونیورسٹیوں کی انڈرگریجویٹ اور ماسٹرز طالبات جن کے خاندان فیس برداشت نہیں کر سکتے، ماہانہ آمدنی تقریباً 80,000 روپے تک۔",
+  "application_steps_en": "1. Check that your university is an Ihsan Trust partner.\n2. Apply online on ihsantrust.org with your fee challan.\n3. Attach income certificate, CNIC or B-Form, and a guarantor's CNIC.\n4. Attend the interview; the loan is paid to the university.",
+  "application_steps_ur": "1. دیکھیں کہ آپ کی یونیورسٹی احسان ٹرسٹ کی شراکت دار ہے۔\n2. فیس چالان کے ساتھ ihsantrust.org پر آن لائن درخواست دیں۔\n3. آمدنی سرٹیفکیٹ، شناختی کارڈ یا بے فارم اور ضامن کا شناختی کارڈ لگائیں۔\n4. انٹرویو دیں؛ قرض یونیورسٹی کو ادا کیا جاتا ہے۔",
+  "family_summary_en": "This is an interest-free loan from a registered charity, not a gift. It is free to apply. It pays the fee now; your daughter repays it in small instalments after she starts working. It can be combined with other scholarships.",
+  "family_summary_ur": "یہ ایک رجسٹرڈ فلاحی ادارے کا بلاسود قرض ہے، تحفہ نہیں۔ درخواست دینا مفت ہے۔ یہ ابھی فیس ادا کرتا ہے؛ آپ کی بیٹی کام شروع کرنے کے بعد چھوٹی قسطوں میں واپس کرتی ہے۔ اسے دوسری اسکالرشپس کے ساتھ ملایا جا سکتا ہے۔",
+  "levels": [
+    "undergraduate",
+    "masters"
+  ],
+  "types": [
+    "need"
+  ],
+  "covers": [
+    "tuition"
+  ],
+  "required_documents": [
+    "cnic",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 80000,
+      "fixable": false,
+      "message": {
+        "en": "Monthly household income up to PKR 80,000",
+        "ur": "ماہانہ گھریلو آمدنی 80,000 روپے تک"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    }
+  ],
+  "official_link": "https://ihsantrust.org",
+  "usual_opening_month": 1,
+  "next_check": "2026-12-15"
+}

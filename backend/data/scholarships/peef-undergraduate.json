@@ -1,0 +1,111 @@
+{
+  "slug": "peef-undergraduate",
+  "funding": "partial",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "partner",
+  "provinces": [
+    "Punjab"
+  ],
+  "income_limit": 60000,
+  "test_requirement": "none",
+  "special_categories": [
+    "orphan",
+    "disability"
+  ],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Punjab Educational Endowment Fund",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "PEEF Undergraduate Scholarship",
+  "name_ur": "پیف انڈرگریجویٹ اسکالرشپ",
+  "summary_en": "Need-and-merit scholarship for Punjab-domiciled students in partner universities, covering tuition and a stipend for the length of the degree.",
+  "summary_ur": "پنجاب ڈومیسائل رکھنے والی طالبات کے لیے ضرورت اور میرٹ پر مبنی اسکالرشپ، جو شراکت دار یونیورسٹیوں میں ٹیوشن فیس اور وظیفہ دیتی ہے۔",
+  "coverage_en": "Tuition fee paid to the university plus a monthly stipend (about PKR 5,000 to 8,000). Renewed each year on satisfactory results.",
+  "coverage_ur": "یونیورسٹی کی ٹیوشن فیس اور ماہانہ وظیفہ (تقریباً 5,000 سے 8,000 روپے)۔ اچھے نتائج پر ہر سال تجدید ہوتی ہے۔",
+  "who_for_en": "Students with Punjab domicile, at least 60% in Intermediate, from families earning up to about PKR 60,000 a month, admitted to a PEEF partner university.",
+  "who_for_ur": "پنجاب ڈومیسائل، انٹرمیڈیٹ میں کم از کم 60% نمبر، ماہانہ گھریلو آمدنی تقریباً 60,000 روپے تک، اور پیف کی شراکت دار یونیورسٹی میں داخلہ رکھنے والی طالبات۔",
+  "application_steps_en": "1. Get admission to a partner university.\n2. Collect the PEEF form from the university financial aid office or download it from peef.org.pk.\n3. Attach domicile, income certificate, CNIC or B-Form, and Intermediate result.\n4. Submit to the university focal person before the deadline.",
+  "application_steps_ur": "1. شراکت دار یونیورسٹی میں داخلہ لیں۔\n2. یونیورسٹی کے فنانشل ایڈ آفس سے پیف فارم لیں یا peef.org.pk سے ڈاؤن لوڈ کریں۔\n3. ڈومیسائل، آمدنی سرٹیفکیٹ، شناختی کارڈ یا بے فارم اور انٹرمیڈیٹ رزلٹ لگائیں۔\n4. آخری تاریخ سے پہلے یونیورسٹی کے فوکل پرسن کو جمع کروائیں۔",
+  "family_summary_en": "PEEF is run by the Government of Punjab. It is free to apply. It pays the university fee directly and gives a monthly allowance. Your daughter studies at a university in Punjab; hostel is not covered by this scholarship.",
+  "family_summary_ur": "پیف حکومتِ پنجاب کا ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ یونیورسٹی کی فیس براہِ راست ادا کرتا ہے اور ماہانہ خرچ دیتا ہے۔ آپ کی بیٹی پنجاب کی یونیورسٹی میں پڑھے گی؛ ہاسٹل کا خرچ اس اسکالرشپ میں شامل نہیں۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need",
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "required_documents": [
+    "cnic",
+    "domicile",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "domicile",
+      "rule": "in",
+      "value": [
+        "Punjab"
+      ],
+      "fixable": false,
+      "message": {
+        "en": "Only for students with Punjab domicile",
+        "ur": "صرف پنجاب ڈومیسائل رکھنے والی طالبات کے لیے"
+      }
+    },
+    {
+      "field": "interPercent",
+      "rule": ">=",
+      "value": 60,
+      "fixable": false,
+      "message": {
+        "en": "Minimum 60% in Intermediate",
+        "ur": "انٹرمیڈیٹ میں کم از کم 60% نمبر"
+      }
+    },
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 60000,
+      "fixable": false,
+      "message": {
+        "en": "Monthly household income up to PKR 60,000",
+        "ur": "ماہانہ گھریلو آمدنی 60,000 روپے تک"
+      }
+    },
+    {
+      "field": "documents.domicile",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "domicile-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Domicile certificate",
+        "ur": "ڈومیسائل سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    }
+  ],
+  "official_link": "https://www.peef.org.pk",
+  "usual_opening_month": 2,
+  "next_check": "2027-01-15"
+}

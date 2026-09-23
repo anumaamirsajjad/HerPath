@@ -1,0 +1,129 @@
+{
+  "slug": "csc-chinese-government",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "China Scholarship Council",
+  "location": "abroad",
+  "country": "China",
+  "name_en": "Chinese Government Scholarship (CSC)",
+  "name_ur": "چینی حکومت اسکالرشپ (سی ایس سی)",
+  "summary_en": "Fully funded Master's and PhD at Chinese universities, applied through the Chinese Embassy or directly to universities.",
+  "summary_ur": "چینی یونیورسٹیوں میں مکمل فنڈڈ ماسٹرز اور پی ایچ ڈی، چینی سفارت خانے یا براہِ راست یونیورسٹیوں کے ذریعے درخواست۔",
+  "coverage_en": "Tuition, university dormitory, monthly stipend (about CNY 3,000 for Master's, 3,500 for PhD) and health insurance. Airfare is not covered.",
+  "coverage_ur": "ٹیوشن، یونیورسٹی ہاسٹل، ماہانہ وظیفہ (ماسٹرز کے لیے تقریباً 3,000 اور پی ایچ ڈی کے لیے 3,500 یوآن) اور صحت انشورنس۔ ہوائی ٹکٹ شامل نہیں۔",
+  "who_for_en": "Applicants with a 16-year degree, under 35 for Master's and under 40 for PhD. Many programs are taught in English.",
+  "who_for_ur": "16 سالہ ڈگری والی درخواست دہندگان، ماسٹرز کے لیے 35 اور پی ایچ ڈی کے لیے 40 سال سے کم عمر۔ کئی پروگرام انگریزی میں ہیں۔",
+  "application_steps_en": "1. Get a pre-admission or acceptance letter from a Chinese university (contact a professor first for PhD).\n2. Apply on the CSC portal (campuschina.org) between December and March.\n3. Submit the printed form with attested degrees, passport, study plan, 2 recommendation letters and a medical form to the Chinese Embassy or the university.",
+  "application_steps_ur": "1. کسی چینی یونیورسٹی سے پری ایڈمیشن یا قبولیت کا خط لیں (پی ایچ ڈی کے لیے پہلے پروفیسر سے رابطہ کریں)۔\n2. دسمبر سے مارچ کے درمیان سی ایس سی پورٹل (campuschina.org) پر درخواست دیں۔\n3. پرنٹ شدہ فارم تصدیق شدہ ڈگریوں، پاسپورٹ، مطالعاتی منصوبے، 2 سفارشی خطوط اور میڈیکل فارم کے ساتھ چینی سفارت خانے یا یونیورسٹی کو جمع کروائیں۔",
+  "family_summary_en": "This is the Chinese government's scholarship. It is free to apply. It pays tuition, a dormitory room, a monthly allowance and insurance. Your daughter lives in a university dormitory in China. Flights are paid by the family.",
+  "family_summary_ur": "یہ چینی حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ہاسٹل کا کمرہ، ماہانہ خرچ اور انشورنس دیتی ہے۔ آپ کی بیٹی چین میں یونیورسٹی کے ہاسٹل میں رہے گی۔ ہوائی ٹکٹ خاندان ادا کرتا ہے۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "hostel",
+    "insurance"
+  ],
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 35,
+      "fixable": false,
+      "message": {
+        "en": "Age 35 or under for Master's applicants",
+        "ur": "ماسٹرز کے لیے عمر 35 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "bachelors"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 40,
+      "fixable": false,
+      "message": {
+        "en": "Age 40 or under for PhD applicants",
+        "ur": "پی ایچ ڈی کے لیے عمر 40 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "masters"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    }
+  ],
+  "official_link": "https://www.campuschina.org",
+  "usual_opening_month": 12,
+  "next_check": "2026-11-15"
+}

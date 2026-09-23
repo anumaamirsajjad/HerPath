@@ -1,0 +1,141 @@
+{
+  "slug": "daad-epos",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "waiver_possible",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "German Academic Exchange Service (DAAD)",
+  "location": "abroad",
+  "country": "Germany",
+  "name_en": "DAAD Development-Related Postgraduate Courses (EPOS)",
+  "name_ur": "ڈی اے اے ڈی ترقیاتی پوسٹ گریجویٹ کورسز (ای پی او ایس)",
+  "summary_en": "Fully funded Master's in Germany in development-related fields for professionals from developing countries.",
+  "summary_ur": "ترقی پذیر ممالک کے پیشہ ور افراد کے لیے جرمنی میں ترقیاتی شعبوں میں مکمل فنڈڈ ماسٹرز۔",
+  "coverage_en": "Monthly stipend of about EUR 992, health insurance, travel allowance and tuition where charged. 12 to 24 months.",
+  "coverage_ur": "تقریباً 992 یورو ماہانہ وظیفہ، صحت انشورنس، سفری الاؤنس اور جہاں لاگو ہو ٹیوشن۔ 12 سے 24 ماہ۔",
+  "who_for_en": "Graduates with a 16-year degree completed within the last 6 years and at least 2 years of relevant work experience. Many courses are in English; German is not required.",
+  "who_for_ur": "گزشتہ 6 سال میں مکمل 16 سالہ ڈگری اور کم از کم 2 سال متعلقہ کام کے تجربے والی گریجویٹس۔ زیادہ تر کورس انگریزی میں ہیں؛ جرمن ضروری نہیں۔",
+  "application_steps_en": "1. Pick up to 3 EPOS courses from the DAAD list.\n2. Apply directly to each university with the DAAD form, CV, motivation letter, and references.\n3. Universities shortlist and DAAD confirms the scholarship.",
+  "application_steps_ur": "1. ڈی اے اے ڈی کی فہرست سے 3 تک ای پی او ایس کورس چنیں۔\n2. ہر یونیورسٹی کو ڈی اے اے ڈی فارم، سی وی، ترغیبی خط اور حوالہ جات کے ساتھ براہِ راست درخواست دیں۔\n3. یونیورسٹیاں منتخب کرتی ہیں اور ڈی اے اے ڈی اسکالرشپ کی تصدیق کرتا ہے۔",
+  "family_summary_en": "DAAD is the German government's scholarship body. It is free to apply. It pays a monthly allowance, insurance and travel. Most public universities in Germany charge no tuition. Your daughter studies in Germany for 1 to 2 years.",
+  "family_summary_ur": "ڈی اے اے ڈی جرمن حکومت کا اسکالرشپ ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ ماہانہ خرچ، انشورنس اور سفر دیتا ہے۔ جرمنی کی زیادہ تر سرکاری یونیورسٹیاں ٹیوشن نہیں لیتیں۔ آپ کی بیٹی 1 سے 2 سال جرمنی میں پڑھے گی۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "required_documents": [
+    "passport",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "workYears",
+      "rule": ">=",
+      "value": 2,
+      "fixable": true,
+      "fixGuide": "work-experience",
+      "daysNeeded": 365,
+      "message": {
+        "en": "At least 2 years of work experience",
+        "ur": "کم از کم 2 سال کا کام کا تجربہ"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.0,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.0",
+            "ur": "آئیلٹس 6.0"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 80,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 80",
+            "ur": "ٹوفل 80"
+          }
+        },
+        {
+          "field": "documents.englishMediumLetter",
+          "rule": "has",
+          "fixable": true,
+          "fixGuide": "english-medium-letter",
+          "daysNeeded": 10,
+          "message": {
+            "en": "English-medium instruction letter",
+            "ur": "انگریزی میڈیم تعلیم کا خط"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.0 or TOEFL 80, or an English-medium instruction letter",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.0 یا ٹوفل 80، یا انگریزی میڈیم تعلیم کا خط"
+      }
+    }
+  ],
+  "official_link": "https://www.daad.de/en/study-and-research-in-germany/scholarships/development-related-postgraduate-courses/",
+  "usual_opening_month": 8,
+  "next_check": "2027-07-15"
+}

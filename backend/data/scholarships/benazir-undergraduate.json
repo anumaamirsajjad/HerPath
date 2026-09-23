@@ -1,0 +1,107 @@
+{
+  "slug": "benazir-undergraduate",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": true,
+  "allows_other_scholarship": false,
+  "university_type": "public",
+  "provinces": [],
+  "income_limit": 45000,
+  "test_requirement": "none",
+  "special_categories": [
+    "bisp"
+  ],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Pakistan Poverty Alleviation Fund / HEC",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "Benazir Undergraduate Scholarship",
+  "name_ur": "بینظیر انڈرگریجویٹ اسکالرشپ",
+  "summary_en": "Fully funded need-based scholarship for undergraduate students in public universities. Half of all awards are reserved for female students.",
+  "summary_ur": "سرکاری یونیورسٹیوں کی انڈرگریجویٹ طالبات کے لیے مکمل فنڈڈ ضرورت پر مبنی اسکالرشپ۔ آدھی اسکالرشپس خواتین کے لیے مخصوص ہیں۔",
+  "coverage_en": "Full tuition fee plus a monthly stipend of about PKR 4,000 for the length of the degree.",
+  "coverage_ur": "پوری ٹیوشن فیس اور ڈگری کی مدت تک تقریباً 4,000 روپے ماہانہ وظیفہ۔",
+  "who_for_en": "Students entering or in the first year of a 4 to 5 year undergraduate program at a public university, with monthly family income up to about PKR 45,000. Priority to BISP-registered families.",
+  "who_for_ur": "سرکاری یونیورسٹی کے 4 سے 5 سالہ انڈرگریجویٹ پروگرام میں داخل ہونے والی یا پہلے سال کی طالبات جن کی ماہانہ گھریلو آمدنی تقریباً 45,000 روپے تک ہو۔ بی آئی ایس پی میں رجسٹرڈ خاندانوں کو ترجیح۔",
+  "application_steps_en": "1. Get admission to a public university.\n2. Apply online on the HEC e-portal when the cycle opens, then submit the printed form to your university's focal person.\n3. Attach income certificate, CNIC or B-Form, and admission letter.\n4. The university committee interviews shortlisted students.",
+  "application_steps_ur": "1. سرکاری یونیورسٹی میں داخلہ لیں۔\n2. سائیکل کھلنے پر ایچ ای سی ای پورٹل پر آن لائن درخواست دیں، پھر پرنٹ شدہ فارم یونیورسٹی کے فوکل پرسن کو جمع کروائیں۔\n3. آمدنی سرٹیفکیٹ، شناختی کارڈ یا بے فارم اور داخلہ خط لگائیں۔\n4. یونیورسٹی کمیٹی منتخب طالبات کا انٹرویو لیتی ہے۔",
+  "family_summary_en": "This is a federal government scholarship. It is free to apply. It pays the full fee and a monthly allowance, and half of the scholarships are kept for girls. Your daughter studies at a public university in Pakistan.",
+  "family_summary_ur": "یہ وفاقی حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ پوری فیس اور ماہانہ خرچ دیتی ہے، اور آدھی اسکالرشپس لڑکیوں کے لیے رکھی گئی ہیں۔ آپ کی بیٹی پاکستان کی سرکاری یونیورسٹی میں پڑھے گی۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "required_documents": [
+    "cnic",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 45000,
+      "fixable": false,
+      "message": {
+        "en": "Monthly household income up to PKR 45,000",
+        "ur": "ماہانہ گھریلو آمدنی 45,000 روپے تک"
+      }
+    },
+    {
+      "field": "universityType",
+      "rule": "==",
+      "value": "public",
+      "fixable": false,
+      "message": {
+        "en": "Must be enrolled in a public-sector university",
+        "ur": "سرکاری یونیورسٹی میں داخلہ ضروری ہے"
+      }
+    },
+    {
+      "field": "level",
+      "rule": "in",
+      "value": [
+        "intermediate",
+        "bachelors"
+      ],
+      "fixable": false,
+      "message": {
+        "en": "For students entering or in an undergraduate program",
+        "ur": "انڈرگریجویٹ پروگرام میں داخل ہونے والی یا زیرِ تعلیم طالبات کے لیے"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    }
+  ],
+  "official_link": "https://pass.gov.pk",
+  "usual_opening_month": 10,
+  "next_check": "2027-09-15"
+}

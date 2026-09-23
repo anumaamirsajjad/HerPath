@@ -1,0 +1,142 @@
+{
+  "slug": "stipendium-hungaricum",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "waiver_possible",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Tempus Public Foundation, Hungary",
+  "location": "abroad",
+  "country": "Hungary",
+  "name_en": "Stipendium Hungaricum",
+  "name_ur": "اسٹائپنڈیم ہنگیریکم",
+  "summary_en": "Fully funded undergraduate, Master's and PhD at Hungarian universities under the Hungary–Pakistan agreement, nominated through HEC.",
+  "summary_ur": "ہنگری–پاکستان معاہدے کے تحت ہنگری کی یونیورسٹیوں میں مکمل فنڈڈ انڈرگریجویٹ، ماسٹرز اور پی ایچ ڈی، ایچ ای سی کے ذریعے نامزدگی۔",
+  "coverage_en": "Tuition, monthly stipend (about HUF 43,700 for Bachelor's and Master's), dormitory or housing allowance, and health insurance.",
+  "coverage_ur": "ٹیوشن، ماہانہ وظیفہ (بیچلرز اور ماسٹرز کے لیے تقریباً 43,700 فورنٹ)، ہاسٹل یا رہائشی الاؤنس، اور صحت انشورنس۔",
+  "who_for_en": "Pakistani applicants nominated by HEC. Undergraduate applicants need at least 60% in Intermediate. Programs are taught in English; some universities accept an English-medium letter instead of a test.",
+  "who_for_ur": "ایچ ای سی کی نامزد کردہ پاکستانی درخواست دہندگان۔ انڈرگریجویٹ کے لیے انٹرمیڈیٹ میں کم از کم 60% نمبر۔ پروگرام انگریزی میں ہیں؛ کچھ یونیورسٹیاں ٹیسٹ کی جگہ انگریزی میڈیم خط قبول کرتی ہیں۔",
+  "application_steps_en": "1. Apply on the Stipendium Hungaricum portal between November and January.\n2. Also apply to HEC for nomination before its deadline.\n3. Upload transcripts, passport, motivation letter, medical certificate and proof of English.\n4. Universities hold online entrance exams or interviews in spring.",
+  "application_steps_ur": "1. نومبر سے جنوری کے درمیان اسٹائپنڈیم ہنگیریکم پورٹل پر درخواست دیں۔\n2. نامزدگی کے لیے ایچ ای سی کو بھی اس کی آخری تاریخ سے پہلے درخواست دیں۔\n3. ٹرانسکرپٹس، پاسپورٹ، ترغیبی خط، میڈیکل سرٹیفکیٹ اور انگریزی کا ثبوت اپ لوڈ کریں۔\n4. یونیورسٹیاں موسمِ بہار میں آن لائن داخلہ امتحان یا انٹرویو لیتی ہیں۔",
+  "family_summary_en": "This is the Hungarian government's scholarship, offered to Pakistan through HEC. It is free to apply. It pays tuition, a monthly allowance, a dormitory place and insurance. Your daughter studies in Hungary, in Europe.",
+  "family_summary_ur": "یہ ہنگری کی حکومت کی اسکالرشپ ہے جو ایچ ای سی کے ذریعے پاکستان کو دی جاتی ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ماہانہ خرچ، ہاسٹل اور انشورنس دیتی ہے۔ آپ کی بیٹی یورپ کے ملک ہنگری میں پڑھے گی۔",
+  "levels": [
+    "undergraduate",
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "hostel",
+    "insurance"
+  ],
+  "required_documents": [
+    "passport",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "interPercent",
+      "rule": ">=",
+      "value": 60,
+      "fixable": false,
+      "message": {
+        "en": "Minimum 60% in Intermediate for undergraduate applicants",
+        "ur": "انڈرگریجویٹ کے لیے انٹرمیڈیٹ میں کم از کم 60% نمبر"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "intermediate"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "in",
+        "value": [
+          "bachelors",
+          "masters"
+        ]
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.0,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.0",
+            "ur": "آئیلٹس 6.0"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 72,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 72",
+            "ur": "ٹوفل 72"
+          }
+        },
+        {
+          "field": "documents.englishMediumLetter",
+          "rule": "has",
+          "fixable": true,
+          "fixGuide": "english-medium-letter",
+          "daysNeeded": 10,
+          "message": {
+            "en": "English-medium instruction letter",
+            "ur": "انگریزی میڈیم تعلیم کا خط"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.0 or TOEFL 72, or an English-medium instruction letter",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.0 یا ٹوفل 72، یا انگریزی میڈیم تعلیم کا خط"
+      }
+    }
+  ],
+  "official_link": "https://stipendiumhungaricum.hu",
+  "usual_opening_month": 11,
+  "next_check": "2026-10-15"
+}

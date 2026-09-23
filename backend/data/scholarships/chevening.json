@@ -1,0 +1,97 @@
+{
+  "slug": "chevening",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "waiver_possible",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "UK Foreign, Commonwealth and Development Office",
+  "location": "abroad",
+  "country": "UK",
+  "name_en": "Chevening Scholarship",
+  "name_ur": "شیوننگ اسکالرشپ",
+  "summary_en": "Fully funded one-year Master's in the UK for future leaders with work experience.",
+  "summary_ur": "کام کے تجربے والی مستقبل کی رہنماؤں کے لیے برطانیہ میں ایک سالہ مکمل فنڈڈ ماسٹرز۔",
+  "coverage_en": "Full tuition, monthly living stipend, return airfare, visa and arrival allowances. One year.",
+  "coverage_ur": "پوری ٹیوشن، ماہانہ رہائشی وظیفہ، واپسی ہوائی ٹکٹ، ویزا اور آمد الاؤنس۔ ایک سال۔",
+  "who_for_en": "Pakistani citizens with an undergraduate degree and at least 2 years of work experience, who will return to Pakistan for 2 years after the course. English test may be waived at some universities.",
+  "who_for_ur": "انڈرگریجویٹ ڈگری اور کم از کم 2 سال کام کے تجربے والی پاکستانی شہری، جو کورس کے بعد 2 سال پاکستان واپس آئیں گی۔ کچھ یونیورسٹیوں میں انگریزی ٹیسٹ معاف ہو سکتا ہے۔",
+  "application_steps_en": "1. Apply online at chevening.org between August and November.\n2. Choose 3 UK Master's courses and write 4 essays (leadership, networking, study in UK, career plan).\n3. Upload degree, passport and 2 references.\n4. Interview at the British High Commission in spring.",
+  "application_steps_ur": "1. اگست سے نومبر کے درمیان chevening.org پر آن لائن درخواست دیں۔\n2. برطانیہ کے 3 ماسٹرز کورس چنیں اور 4 مضامین لکھیں (قیادت، نیٹ ورکنگ، برطانیہ میں تعلیم، کیریئر پلان)۔\n3. ڈگری، پاسپورٹ اور 2 حوالہ جات اپ لوڈ کریں۔\n4. موسمِ بہار میں برٹش ہائی کمیشن میں انٹرویو۔",
+  "family_summary_en": "Chevening is the UK government's flagship scholarship. It is free to apply. It pays for everything for one year in the UK. Your daughter must return to Pakistan for 2 years afterwards.",
+  "family_summary_ur": "شیوننگ برطانوی حکومت کی نمایاں اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ برطانیہ میں ایک سال کا سارا خرچ دیتی ہے۔ آپ کی بیٹی کو بعد میں 2 سال پاکستان واپس آنا ہو گا۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare"
+  ],
+  "required_documents": [
+    "passport",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "workYears",
+      "rule": ">=",
+      "value": 2,
+      "fixable": true,
+      "fixGuide": "work-experience",
+      "daysNeeded": 365,
+      "message": {
+        "en": "At least 2 years of work experience",
+        "ur": "کم از کم 2 سال کا کام کا تجربہ"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    }
+  ],
+  "official_link": "https://www.chevening.org/scholarship/pakistan/",
+  "usual_opening_month": 8,
+  "next_check": "2027-07-15"
+}

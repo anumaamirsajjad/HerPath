@@ -1,0 +1,131 @@
+{
+  "slug": "fulbright-masters",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "United States Educational Foundation in Pakistan",
+  "location": "abroad",
+  "country": "USA",
+  "name_en": "Fulbright Master's Degree Program",
+  "name_ur": "فلبرائٹ ماسٹرز ڈگری پروگرام",
+  "summary_en": "Fully funded Master's in the United States for Pakistanis in almost every field, funded by the US government.",
+  "summary_ur": "امریکی حکومت کی فنڈنگ سے پاکستانیوں کے لیے تقریباً ہر شعبے میں امریکہ میں مکمل فنڈڈ ماسٹرز۔",
+  "coverage_en": "Full tuition, monthly living stipend, return airfare, health insurance and books. Usually 2 years.",
+  "coverage_ur": "پوری ٹیوشن، ماہانہ رہائشی وظیفہ، واپسی ہوائی ٹکٹ، صحت انشورنس اور کتابیں۔ عام طور پر 2 سال۔",
+  "who_for_en": "Pakistani citizens living in Pakistan with a 16-year degree (or 4-year BS), a GRE score and strong English. Applicants must return to Pakistan for at least 2 years after the degree.",
+  "who_for_ur": "پاکستان میں رہنے والی پاکستانی شہری جن کے پاس 16 سالہ ڈگری (یا 4 سالہ بی ایس)، جی آر ای اسکور اور اچھی انگریزی ہو۔ ڈگری کے بعد کم از کم 2 سال پاکستان واپس آنا لازمی۔",
+  "application_steps_en": "1. Register on the USEFP online application when it opens (usually February to May).\n2. Write the study objective and personal statement essays.\n3. Upload attested transcripts, GRE score, and 3 recommendation letters.\n4. Shortlisted candidates are interviewed; an English test is taken later if needed.",
+  "application_steps_ur": "1. یو ایس ای ایف پی کی آن لائن درخواست کھلنے پر (عام طور پر فروری تا مئی) رجسٹر ہوں۔\n2. تعلیمی مقصد اور ذاتی بیان کے مضامین لکھیں۔\n3. تصدیق شدہ ٹرانسکرپٹس، جی آر ای اسکور اور 3 سفارشی خطوط اپ لوڈ کریں۔\n4. منتخب امیدواروں کا انٹرویو ہوتا ہے؛ ضرورت پر بعد میں انگریزی ٹیسٹ ہوتا ہے۔",
+  "family_summary_en": "Fulbright is the US government's oldest scholarship, run in Pakistan by USEFP. It is free to apply. It pays for everything: fees, living costs, flights and insurance. Your daughter studies in the United States for about 2 years and must return to Pakistan afterwards.",
+  "family_summary_ur": "فلبرائٹ امریکی حکومت کی سب سے پرانی اسکالرشپ ہے جسے پاکستان میں یو ایس ای ایف پی چلاتا ہے۔ درخواست دینا مفت ہے۔ یہ سب کچھ ادا کرتی ہے: فیس، رہائش، ہوائی ٹکٹ اور انشورنس۔ آپ کی بیٹی تقریباً 2 سال امریکہ میں پڑھے گی اور بعد میں پاکستان واپس آنا لازمی ہے۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance",
+    "books"
+  ],
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "tests.gre",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "gre",
+      "daysNeeded": 90,
+      "message": {
+        "en": "GRE General Test score",
+        "ur": "جی آر ای جنرل ٹیسٹ اسکور"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 7.0,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 7.0",
+            "ur": "آئیلٹس 7.0"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 90,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 90",
+            "ur": "ٹوفل 90"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 7.0 or TOEFL 90",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 7.0 یا ٹوفل 90"
+      }
+    }
+  ],
+  "official_link": "https://www.usefp.org/scholarships/fulbright-masters",
+  "usual_opening_month": 2,
+  "next_check": "2027-01-15"
+}

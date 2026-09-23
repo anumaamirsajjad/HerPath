@@ -1,0 +1,92 @@
+{
+  "slug": "hec-need-based",
+  "funding": "partial",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "public",
+  "provinces": [],
+  "income_limit": 45000,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-23",
+  "is_published": true,
+  "provider": "Higher Education Commission",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "HEC Need-Based Scholarship",
+  "name_ur": "ایچ ای سی ضرورت پر مبنی اسکالرشپ",
+  "summary_en": "Need-based support for undergraduate students in public universities whose families cannot afford the fees.",
+  "summary_ur": "سرکاری یونیورسٹیوں کی انڈرگریجویٹ طالبات کے لیے ضرورت پر مبنی مدد جن کے خاندان فیس برداشت نہیں کر سکتے۔",
+  "coverage_en": "Full tuition fee paid to the university and a monthly stipend (about PKR 6,000) for the length of the degree.",
+  "coverage_ur": "پوری ٹیوشن فیس یونیورسٹی کو ادا کی جاتی ہے اور ڈگری کی مدت تک ماہانہ وظیفہ (تقریباً 6,000 روپے) ملتا ہے۔",
+  "who_for_en": "Undergraduate students admitted to a public-sector university, with monthly family income up to about PKR 45,000. Applications go through the university financial aid office.",
+  "who_for_ur": "سرکاری یونیورسٹی میں داخل انڈرگریجویٹ طالبات جن کی ماہانہ گھریلو آمدنی تقریباً 45,000 روپے تک ہو۔ درخواست یونیورسٹی کے فنانشل ایڈ آفس کے ذریعے دی جاتی ہے۔",
+  "application_steps_en": "1. Get admission to a public university.\n2. Collect the HEC need-based form from the financial aid office (usually in the first semester).\n3. Attach income certificate, CNIC or B-Form, utility bills and admission letter.\n4. Submit before the university's internal deadline and attend the interview if called.",
+  "application_steps_ur": "1. سرکاری یونیورسٹی میں داخلہ لیں۔\n2. فنانشل ایڈ آفس سے ایچ ای سی ضرورت پر مبنی فارم لیں (عام طور پر پہلے سمسٹر میں)۔\n3. آمدنی سرٹیفکیٹ، شناختی کارڈ یا بے فارم، بجلی کے بل اور داخلہ خط لگائیں۔\n4. یونیورسٹی کی آخری تاریخ سے پہلے جمع کروائیں اور بلائے جانے پر انٹرویو دیں۔",
+  "family_summary_en": "This is a Government of Pakistan scholarship run by the Higher Education Commission. It is free to apply. It pays the full university fee and a monthly allowance. Your daughter studies at a public university in Pakistan.",
+  "family_summary_ur": "یہ حکومتِ پاکستان کی اسکالرشپ ہے جسے ہائر ایجوکیشن کمیشن چلاتا ہے۔ درخواست دینا مفت ہے۔ یہ یونیورسٹی کی پوری فیس اور ماہانہ خرچ دیتی ہے۔ آپ کی بیٹی پاکستان کی سرکاری یونیورسٹی میں پڑھے گی۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "required_documents": [
+    "cnic",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 45000,
+      "fixable": false,
+      "message": {
+        "en": "Monthly household income up to PKR 45,000",
+        "ur": "ماہانہ گھریلو آمدنی 45,000 روپے تک"
+      }
+    },
+    {
+      "field": "universityType",
+      "rule": "==",
+      "value": "public",
+      "fixable": false,
+      "message": {
+        "en": "Must be enrolled in a public-sector university",
+        "ur": "سرکاری یونیورسٹی میں داخلہ ضروری ہے"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    }
+  ],
+  "official_link": "https://www.hec.gov.pk/english/scholarshipsgrants/NBS/Pages/default.aspx",
+  "usual_opening_month": 9,
+  "next_check": "2027-08-15"
+}
