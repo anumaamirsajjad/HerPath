@@ -1,4 +1,5 @@
 from django.contrib.postgres.fields import ArrayField
+from django.core.exceptions import ValidationError
 from django.db import models
 
 LOCATIONS = [("pakistan", "Pakistan"), ("abroad", "Abroad")]
@@ -63,6 +64,13 @@ class Scholarship(models.Model):
 
     def __str__(self):
         return self.name_en
+
+    def clean(self):
+        from matching.engine import validate_requirements
+
+        errors = validate_requirements(self.requirements)
+        if errors:
+            raise ValidationError({"requirements": errors})
 
 
 class ChangeLog(models.Model):
