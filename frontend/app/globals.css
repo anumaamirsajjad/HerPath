@@ -10,7 +10,7 @@ body {
   color: #171717;
 }
 
-article h2 { @apply mt-4 text-lg font-semibold; }
+article h2 { @apply mt-4 mb-1 text-lg font-semibold; }
 article h3 { @apply mt-3 font-semibold; }
 article ul { @apply list-disc ps-5; }
 article ol { @apply list-decimal ps-5; }
