@@ -44,7 +44,7 @@ def test_match_groups_by_tab(client, data):
     assert [s["slug"] for s in tabs["not_eligible"]] == ["never"]
     assert tabs["almost"][0]["score"] == 0 and tabs["almost"][0]["gap_count"] == 1
     assert tabs["not_eligible"][0]["score"] is None
-    assert "name" in tabs["ready"][0] and "deadline" in tabs["ready"][0]
+    assert "name" in tabs["apply_now"][0] and "deadline" in tabs["apply_now"][0]
 
 
 def test_match_detail(client, data):
