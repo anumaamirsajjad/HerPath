@@ -12,6 +12,7 @@ function Saved() {
   const c = useTranslations("common");
   const lang = useLocale();
   const [s, setS] = useState<SavedList | null | "error">(null);
+  const [removeError, setRemoveError] = useState(false);
   const load = useCallback(() => { api<SavedList>("saved", { lang }).then(setS).catch(() => setS("error")); }, [lang]);
   useEffect(() => { load(); }, [load]);
   if (s === "error") return <p role="alert">{c("error")}</p>;
@@ -21,6 +22,7 @@ function Saved() {
   return (
     <div className="space-y-3">
       <h1 className="text-xl font-bold">{t("title")}</h1>
+      {removeError && <p role="alert" className="text-red-700">{c("error")}</p>}
       {s.conflicts.map(([a, b]) => <p key={a + b} className="rounded bg-yellow-100 p-2 text-sm">{t("conflict", { a: name(a), b: name(b) })}</p>)}
       {items.length === 0 && <p>{t("empty")}</p>}
       {items.map((r) => {
@@ -31,7 +33,10 @@ function Saved() {
               <span className={d != null && d < 0 ? "text-red-700" : "font-medium"}>
                 {d == null ? t("noDeadline") : d < 0 ? t("passed") : t("daysLeft", { count: d })}
               </span>
-              <button onClick={async () => { await api(`saved/${r.slug}`, { method: "DELETE" }); load(); }} className="underline">{t("remove")}</button>
+              <button onClick={async () => {
+                setRemoveError(false);
+                try { await api(`saved/${r.slug}`, { method: "DELETE" }); load(); } catch { setRemoveError(true); }
+              }} className="underline">{t("remove")}</button>
             </div>} />
         );
       })}

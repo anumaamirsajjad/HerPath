@@ -19,6 +19,7 @@ export default function Page() {
   const { user } = useAuth();
   const [s, setS] = useState<ScholarshipDetail | null | "missing" | "error">(null);
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState(false);
   useEffect(() => {
     api<ScholarshipDetail>(`scholarships/${slug}`, { lang }).then(setS)
       .catch((e) => setS(e instanceof ApiError && e.status === 404 ? "missing" : "error"));
@@ -30,9 +31,12 @@ export default function Page() {
   if (s === "error") return <p role="alert">{c("error")}</p>;
   if (!s) return <p>{c("loading")}</p>;
   async function toggleSave() {
-    if (saved) await api(`saved/${slug}`, { method: "DELETE" });
-    else await api("saved", { method: "POST", body: JSON.stringify({ slug }) });
-    setSaved(!saved);
+    setSaveError(false);
+    try {
+      if (saved) await api(`saved/${slug}`, { method: "DELETE" });
+      else await api("saved", { method: "POST", body: JSON.stringify({ slug }) });
+      setSaved(!saved);
+    } catch { setSaveError(true); }
   }
   const when = s.deadline
     ? ` · ${t("deadline")}: ${s.deadline}`
@@ -51,6 +55,7 @@ export default function Page() {
         <Link href={`/family/${slug}`} locale="ur" className="rounded border px-3 py-2">{t("family")}</Link>
         <a href={s.official_link} target="_blank" rel="noopener" className="rounded border px-3 py-2">{t("official")}</a>
       </div>
+      {saveError && <p role="alert" className="text-red-700">{c("error")}</p>}
       <section><h2>{t("gapTitle")}</h2>
         {user ? <GapAnalysis slug={slug} /> : <p className="text-sm"><Link href="/login" className="underline">{t("loginToCheck")}</Link></p>}
       </section>

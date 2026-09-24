@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { api, clearTokens, hasToken } from "./api";
+import { api, authEvents, clearTokens, hasToken } from "./api";
 import type { User } from "./types";
 
 type AuthState = { user: User | null; loading: boolean; refresh: () => Promise<void>; logout: () => void };
@@ -14,6 +14,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try { setUser(await api<User>("auth/me")); } catch { setUser(null); } finally { setLoading(false); }
   }, []);
   useEffect(() => { refresh(); }, [refresh]);
+  useEffect(() => {
+    const onLogout = () => setUser(null); // RequireAuth then sends her to /login
+    authEvents.addEventListener("logout", onLogout);
+    return () => authEvents.removeEventListener("logout", onLogout);
+  }, []);
   const logout = () => { clearTokens(); setUser(null); };
   return <Ctx.Provider value={{ user, loading, refresh, logout }}>{children}</Ctx.Provider>;
 }

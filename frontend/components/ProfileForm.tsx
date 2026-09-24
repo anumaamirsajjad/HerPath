@@ -21,12 +21,15 @@ export default function ProfileForm() {
   const router = useRouter();
   const { refresh } = useAuth();
   const [d, setD] = useState<ProfileData>(EMPTY);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState<boolean | "error">(false);
   const [step, setStep] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   useEffect(() => {
-    api<Profile>("profile").then((p) => setD({ ...EMPTY, ...p.data })).catch(() => {}).finally(() => setLoaded(true));
+    // Only a 404 means "no profile yet". Any other failure must not show an empty form she could save over her data.
+    api<Profile>("profile")
+      .then((p) => { setD({ ...EMPTY, ...p.data }); setLoaded(true); })
+      .catch((e) => setLoaded(e instanceof ApiError && e.status === 404 ? true : "error"));
   }, []);
   const set = <K extends keyof ProfileData>(k: K, v: ProfileData[K]) => setD((prev) => ({ ...prev, [k]: v }));
 
@@ -87,6 +90,7 @@ export default function ProfileForm() {
       router.push("/results");
     } catch (e) { setError(describe(e)); } finally { setBusy(false); }
   }
+  if (loaded === "error") return <p role="alert">{c("error")}</p>;
   if (!loaded) return <p>{c("loading")}</p>;
   const name = STEPS[step];
   return (

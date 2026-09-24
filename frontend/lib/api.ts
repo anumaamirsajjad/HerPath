@@ -1,8 +1,13 @@
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api";
 
 export class ApiError extends Error {
-  constructor(public status: number, public data: unknown) { super(`API ${status}`); }
+  status: number;
+  data: unknown;
+  constructor(status: number, data: unknown) { super(`API ${status}`); this.status = status; this.data = data; }
 }
+
+/** Fires "logout" when the session can no longer be refreshed, so the UI can drop the signed-in user. */
+export const authEvents = new EventTarget();
 
 const get = (k: string) => { try { return localStorage.getItem(k); } catch { return null; } };
 export function setTokens(t: { access: string; refresh: string }) {
@@ -18,7 +23,7 @@ function refresh(): Promise<boolean> {
     const r = get("refresh");
     if (!r) return false;
     const res = await fetch(`${BASE}/auth/refresh`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ refresh: r }) });
-    if (!res.ok) { clearTokens(); return false; }
+    if (!res.ok) { clearTokens(); authEvents.dispatchEvent(new Event("logout")); return false; }
     const data = await res.json();
     setTokens({ access: data.access, refresh: data.refresh ?? r });
     return true;
