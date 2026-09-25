@@ -14,6 +14,8 @@ const EMPTY: ProfileData = { categories: [], tests: {}, documents: {}, preferred
 const num = (v: string) => (v === "" ? null : Number(v));
 const input = field;
 const STEP_ICON = { personal: UserRound, school: School, university: GraduationCap, tests: NotebookPen, finances: Banknote, experience: Briefcase, documents: FileCheck2, preferences: Heart } as const;
+// Real-world max bounds for standardized tests
+const TEST_BOUNDS: Record<string, number> = { ielts: 9, toefl: 120, gre: 340, mdcat: 200, ecat: 300, nat: 200, gat: 100, hat: 100, duolingo: 160 };
 const STEP_FIELDS: Record<(typeof STEPS)[number], (keyof ProfileData)[]> = {
   personal: ["targetLevel", "age", "domicile", "district", "categories"], school: ["board", "matricPercent", "interPercent", "interStream"],
   university: ["level", "degree", "yearsOfEducation", "cgpa", "universityType", "enrolledUniversity"], tests: ["tests"], finances: ["monthlyIncome"],
@@ -84,7 +86,7 @@ export default function ProfileForm() {
       {selField("universityType", C.UNIVERSITY_TYPES, "universityTypes")}{txtField("enrolledUniversity")}</>,
     tests: <div className="grid gap-4 sm:grid-cols-3">{C.TESTS.map((k) => (
       <label key={k} className="block font-bold">{k.toUpperCase()}
-        <input type="number" inputMode="decimal" step="0.5" min={0} value={d.tests?.[k] ?? ""}
+        <input type="number" inputMode="decimal" step="0.5" min={0} max={TEST_BOUNDS[k] ?? 1000} value={d.tests?.[k] ?? ""}
           onChange={(e) => set("tests", { ...d.tests, [k]: num(e.target.value) })} className={input} /></label>))}</div>,
     finances: numField("monthlyIncome"),
     experience: <>{numField("workYears", "0.5")}{boolField("volunteering")}{boolField("leadership")}</>,
