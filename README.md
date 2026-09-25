@@ -147,7 +147,8 @@ HerPath is also **honest about gaps she can't fix**. If a scholarship is only fo
 #### 4.5 Readiness Score and Result Tabs
 Results are grouped into three tabs:
 
-- **🟢 Apply now:** she meets every requirement.
+- **🟢 Apply now:** she meets every requirement and the application window is open.
+- **🟢 Ready when it opens:** she meets every requirement; the cycle hasn't opened yet.
 - **🟡 Almost there:** she has gaps she can fix before the deadline.
 - **🔵 Future goals:** she can reach these in 1–2 years with a plan.
 
@@ -209,7 +210,7 @@ Bookmark scholarships and see a countdown to each deadline. When two saved schol
 ## 5. Scholarship Data
 
 ### 5.1 Coverage
-HerPath's database is **hand-curated and verified**, with every listing linked to its official source and marked with a "last verified" date. Version 1 launches with about 15 scholarships, chosen for the number of girls they can reach:
+HerPath's database is **hand-curated and verified**, with every listing linked to its official source and marked with a "last verified" date. Version 1 launches with 17 scholarships, chosen for the number of girls they can reach:
 
 **In Pakistan**
 - HEC Need-Based Scholarships
@@ -236,10 +237,10 @@ Scholarship programs change. In 2025, US funding cuts left the Fulbright program
 ### 5.3 How the data stays current
 A "last verified" badge tells her the data is stale. It doesn't stop it going stale. So HerPath commits to a maintenance routine:
 
-- **Cycle-based deadlines, not fixed dates.** Most Pakistani scholarships announce a new cycle every year. Each listing stores the month it usually opens and a status (open, closed, expected). A hard date is stored only once one is officially announced, so a listing never shows last year's deadline as if it were this year's.
-- **A verification calendar.** Every listing has a "next check" date set to about a month before its usual opening. A monthly review checks each listing that's due, against its official page.
-- **A public change log.** Every change to a listing is recorded with a date and source, so anyone can see what changed and why.
-- **Report a problem.** Each page has a one-tap link to report an error, which goes to a public issue tracker.
+- **Cycle-based deadlines, not fixed dates.** Most Pakistani scholarships announce a new cycle every year. Each listing stores the month it usually opens and a status (open, closed, expected). A hard date is stored only once one is officially announced, so a listing never shows last year's deadline as if it were this year's. Until then, HerPath estimates the next deadline as the usual opening month plus a 60-day window, and labels it as an estimate.
+- **A verification calendar.** Every listing has a "next check" date set to about a month before its usual opening. The admin panel lists every listing that's due, and a monthly review checks each one against its official page.
+- **A public change log.** Every change to a listing is recorded automatically with a date, the fields that changed and the source, so anyone can see what changed and why.
+- **Report a problem.** Each page has a one-tap link to report an error. Reports go to the curators' review queue, and a link to a public issue tracker appears when one is configured.
 - **Provider portal (later).** Version 2 adds a way for scholarship providers to submit and update their own listings, which is the long-term answer to keeping data fresh.
 
 ---
@@ -275,7 +276,7 @@ Many HerPath users will be teenage girls, so the data HerPath holds is kept to t
 - **No AI and no third-party tracking.** Matching uses transparent rules she can read on every scholarship page.
 - HerPath is **free**. It never charges to find or apply for scholarships.
 
-**Shared phones.** Many girls will use a parent's or sibling's phone. Logging out removes her profile from the device, and she can log in again on any phone. Resetting her password logs out every other device.
+**Shared phones.** Many girls will use a parent's or sibling's phone. Logging out removes her profile from the device and ends the session on the server, and she can log in again on any phone. Resetting her password logs out every other device.
 
 **What HerPath counts.** To know whether it's working, HerPath keeps a small set of **anonymous, aggregate counters**: profiles created, gaps closed, scholarships moved to "Apply now", and Family Mode pages shared. These are plain numbers with no identifiers. Any user can switch them off in Settings.
 
@@ -288,8 +289,9 @@ HerPath runs entirely on **transparent, rule-based logic**. There is no AI in th
 1. **Scholarship database:** scholarships are curated in an admin panel and seeded from JSON files in Git. Each scholarship's requirements are stored as structured rules, and an invalid rule cannot be saved.
 2. **Profile:** stored in the HerPath database against her account.
 3. **Matching engine:** a Python rule engine on the server compares the profile to each rule and returns a status for every requirement. Rules can be grouped as "all of" or "any of," and a rule can apply only under a condition.
-4. **Readiness score:** if any fixed requirement fails, the scholarship is marked "Not eligible" and not scored. If it only fails because she hasn't answered a question yet, it is shown as "Needs more information" instead, with a link back to her profile. Otherwise the score reflects how many fixable gaps remain and whether each can be closed before the deadline.
-5. **Start-by dates:** for each fixable gap, deadline minus the typical processing time for that step. If the start-by date has passed, the gap becomes "Fixable later" and the scholarship moves to Future goals for the next cycle.
+4. **Level match:** she says what she wants to study next (Bachelor's, Master's or PhD), and each scholarship is only matched for the levels it funds.
+5. **Readiness score:** if any fixed requirement fails, the scholarship is marked "Not eligible" and not scored. If it only fails because she hasn't answered a question yet, it is shown as "Needs more information" instead, with a link back to her profile. Otherwise the score reflects how many fixable gaps remain and whether each can be closed before the deadline.
+6. **Start-by dates:** for each fixable gap, deadline (official, or estimated from the usual opening month) minus the typical processing time for that step. If the start-by date has passed, the gap becomes "Fixable later" and the scholarship moves to Future goals for the next cycle.
 
 **Example scholarship entry:**
 
@@ -417,7 +419,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 export DEBUG=1 DATABASE_URL=postgres://postgres:postgres@localhost:5432/herpath
 python manage.py migrate
-python manage.py seed              # 15 scholarships, 5 fix-it guides
+python manage.py seed              # 17 scholarships, 13 fix-it guides
 python manage.py createsuperuser   # for /admin/
 python manage.py runserver
 pytest -q
@@ -428,9 +430,12 @@ cp .env.local.example .env.local   # NEXT_PUBLIC_API_URL=http://localhost:8000/a
 npm install
 npm run dev
 npm test && npm run lint
+
+# Browser tests (uses your installed Google Chrome; both servers running and seeded)
+E2E_WEB=http://localhost:3000 E2E_API=http://localhost:8000/api npm run e2e
 ```
 
-**Deploying.** Backend: Railway with a PostgreSQL plugin, root directory `backend`, and `SECRET_KEY`, `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, `FRONTEND_URL` and SMTP `EMAIL_*` variables set; run `python manage.py seed` once. Frontend: Vercel with root directory `frontend` and `NEXT_PUBLIC_API_URL` pointing at the Railway API.
+**Deploying.** Backend: Railway with a PostgreSQL plugin, root directory `backend`, and `SECRET_KEY`, `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, `FRONTEND_URL`, `NUM_PROXIES=1` and SMTP `EMAIL_BACKEND`/`EMAIL_*` variables set (the server refuses to start without a real email backend); run `python manage.py seed` once. Frontend: Vercel with root directory `frontend` and `NEXT_PUBLIC_API_URL` pointing at the Railway API. Set `NEXT_PUBLIC_ISSUES_URL` to show a public issue-tracker link next to "Report a problem".
 
 ---
 
