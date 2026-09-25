@@ -71,6 +71,8 @@
   "auth": {
     "email": "Email",
     "password": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
     "login": "Log in",
     "signup": "Create account",
     "forgot": "Forgot password?",

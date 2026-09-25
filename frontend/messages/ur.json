@@ -71,6 +71,8 @@
   "auth": {
     "email": "ای میل",
     "password": "پاس ورڈ",
+    "showPassword": "پاس ورڈ دکھائیں",
+    "hidePassword": "پاس ورڈ چھپائیں",
     "login": "لاگ ان",
     "signup": "اکاؤنٹ بنائیں",
     "forgot": "پاس ورڈ بھول گئیں؟",
