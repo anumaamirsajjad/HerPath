@@ -82,7 +82,10 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework_simplejwt.authentication.JWTAuthentication"],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
     "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
-    "DEFAULT_THROTTLE_RATES": {"anon": "300/min", "auth": "20/min", "reports": "5/hour"},
+    # auth is per IP and sized for a school lab behind one address; login is also limited per email.
+    "DEFAULT_THROTTLE_RATES": {"anon": "300/min", "auth": "60/min", "login": "10/min", "reports": "5/hour"},
+    # 0 = trust only REMOTE_ADDR (client-set X-Forwarded-For is ignored). Set NUM_PROXIES=1 behind Railway's proxy.
+    "NUM_PROXIES": int(os.environ.get("NUM_PROXIES", "0")),
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
@@ -111,4 +114,8 @@ EMAIL_PORT = int(os.environ.get("EMAIL_PORT", "587"))
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = True
+if not DEBUG and EMAIL_BACKEND.endswith(("console.EmailBackend", "locmem.EmailBackend", "dummy.EmailBackend")):
+    from django.core.exceptions import ImproperlyConfigured
+
+    raise ImproperlyConfigured("Set EMAIL_BACKEND to a real backend (e.g. smtp): password reset emails would be lost.")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "HerPath <no-reply@herpath.pk>")

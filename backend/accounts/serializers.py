@@ -12,7 +12,8 @@ class SignupSerializer(serializers.Serializer):
     def validate_email(self, v):
         v = v.lower()
         if User.objects.filter(email=v).exists():
-            raise serializers.ValidationError("An account with this email already exists.")
+            # Do not confirm that the address has an account.
+            raise serializers.ValidationError("We couldn't create an account with this email. If you already use HerPath, log in or reset your password.")
         return v
 
     def validate_password(self, v):
@@ -25,6 +26,7 @@ class SignupSerializer(serializers.Serializer):
 
 class PasswordResetSerializer(serializers.Serializer):
     email = serializers.EmailField()
+    lang = serializers.ChoiceField(["en", "ur"], default="en")
 
 
 class PasswordResetConfirmSerializer(serializers.Serializer):

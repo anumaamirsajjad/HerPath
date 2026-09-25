@@ -88,3 +88,52 @@ def test_login_is_throttled(client):
     codes = [client.post("/api/auth/login", {"email": "a@x.com", "password": "wrong-pass"}, format="json").status_code
              for _ in range(25)]
     assert 429 in codes
+
+
+def test_logout_revokes_refresh_token(client):
+    t = client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json").data
+    client.credentials(HTTP_AUTHORIZATION=f"Bearer {t['access']}")
+    assert client.post("/api/auth/logout", {"refresh": t["refresh"]}, format="json").status_code == 204
+    client.credentials()
+    assert client.post("/api/auth/refresh", {"refresh": t["refresh"]}, format="json").status_code == 401
+
+
+def test_logout_with_bad_token_still_204(client):
+    assert client.post("/api/auth/logout", {"refresh": "garbage"}, format="json").status_code == 204
+
+
+def test_duplicate_signup_message_does_not_confirm_account(client):
+    client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json")
+    r = client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json")
+    assert r.status_code == 400
+    assert "already exists" not in str(r.data)
+
+
+def test_reset_link_uses_requested_language(client, settings):
+    settings.EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+    client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json")
+    client.post("/api/auth/password-reset", {"email": "a@x.com", "lang": "ur"}, format="json")
+    assert "/ur/reset-password?" in mail.outbox[0].body
+
+
+def test_login_throttled_per_email_across_ips(client):
+    client.post("/api/auth/signup", {"email": "a@x.com", "password": "pass12345"}, format="json")
+    codes = [client.post("/api/auth/login", {"email": "a@x.com", "password": "wrong-pass"}, format="json",
+                         REMOTE_ADDR=f"10.0.0.{i}").status_code for i in range(15)]
+    assert 429 in codes
+
+
+def test_classroom_signups_from_one_ip_not_blocked(client):
+    codes = [client.post("/api/auth/signup", {"email": f"g{i}@x.com", "password": "pass12345"}, format="json").status_code
+             for i in range(35)]
+    assert 429 not in codes
+
+
+def test_throttle_ignores_spoofed_forwarded_for():
+    from rest_framework.test import APIRequestFactory
+    from rest_framework.throttling import AnonRateThrottle
+    t = AnonRateThrottle()
+    f = APIRequestFactory()
+    a = f.post("/x", HTTP_X_FORWARDED_FOR="1.1.1.1", REMOTE_ADDR="10.0.0.1")
+    b = f.post("/x", HTTP_X_FORWARDED_FOR="2.2.2.2", REMOTE_ADDR="10.0.0.1")
+    assert t.get_ident(a) == t.get_ident(b)

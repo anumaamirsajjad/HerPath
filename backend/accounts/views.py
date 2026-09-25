@@ -6,7 +6,8 @@ from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from rest_framework import permissions, status
 from rest_framework.response import Response
-from rest_framework.throttling import ScopedRateThrottle
+from rest_framework.throttling import ScopedRateThrottle, SimpleRateThrottle
+from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework.views import APIView
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -26,9 +27,32 @@ class AuthThrottle(ScopedRateThrottle):
     scope = "auth"
 
 
+class LoginEmailThrottle(SimpleRateThrottle):
+    """Limits password guesses against one account, whatever IP they come from."""
+    scope = "login"
+
+    def get_cache_key(self, request, view):
+        email = str(request.data.get("email", "")).strip().lower()
+        return self.cache_format % {"scope": self.scope, "ident": email} if email else None
+
+
 class LoginView(TokenObtainPairView):
+    throttle_classes = [AuthThrottle, LoginEmailThrottle]
+    throttle_scope = "auth"
+
+
+class LogoutView(APIView):
+    """Revokes the refresh token so a copied token stops working after she logs out."""
+    permission_classes = [permissions.AllowAny]
     throttle_classes = [AuthThrottle]
     throttle_scope = "auth"
+
+    def post(self, request):
+        try:
+            RefreshToken(str(request.data.get("refresh", ""))).blacklist()
+        except TokenError:
+            pass  # already invalid: nothing to revoke
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class SignupView(APIView):
@@ -64,7 +88,8 @@ class PasswordResetView(APIView):
         if user:
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = default_token_generator.make_token(user)
-            link = f"{settings.FRONTEND_URL}/en/reset-password?uid={uid}&token={token}"
+            lang = s.validated_data["lang"]
+            link = f"{settings.FRONTEND_URL}/{lang}/reset-password?uid={uid}&token={token}"
             send_mail("Reset your HerPath password",
                       f"Open this link to choose a new password:\n\n{link}",
                       None, [user.email])

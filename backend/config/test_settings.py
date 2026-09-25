@@ -7,7 +7,7 @@ BACKEND = Path(__file__).resolve().parent.parent
 
 
 def _check(**env):
-    base = {k: v for k, v in os.environ.items() if k not in ("DEBUG", "SECRET_KEY", "ALLOWED_HOSTS")}
+    base = {k: v for k, v in os.environ.items() if k not in ("DEBUG", "SECRET_KEY", "ALLOWED_HOSTS", "EMAIL_BACKEND")}
     return subprocess.run([sys.executable, "manage.py", "check"], cwd=BACKEND, env={**base, **env},
                           capture_output=True, text=True)
 
@@ -17,8 +17,13 @@ def test_debug_defaults_off_and_dev_key_refused():
     assert r.returncode != 0 and "SECRET_KEY" in r.stderr
 
 
-def test_prod_key_accepted():
+def test_prod_refuses_console_email():
     r = _check(SECRET_KEY="x" * 60, ALLOWED_HOSTS="example.com")
+    assert r.returncode != 0 and "EMAIL_BACKEND" in r.stderr
+
+
+def test_prod_key_accepted():
+    r = _check(SECRET_KEY="x" * 60, ALLOWED_HOSTS="example.com", EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend")
     assert r.returncode == 0, r.stderr
 
 
