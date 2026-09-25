@@ -125,3 +125,24 @@ def test_monthly_income_at_max_boundary(auth_client):
     good = dict(GOOD, monthlyIncome=10000000)
     r = auth_client.put("/api/profile", {"data": good}, format="json")
     assert r.status_code == 200, f"Max income should be accepted, got {r.status_code}: {r.data}"
+
+
+def test_preferred_countries_max_length(auth_client):
+    # preferredCountries list max is 50
+    bad = dict(GOOD, preferredCountries=[f"Country{i}" for i in range(51)])
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"51 countries should be rejected, got {r.status_code}"
+
+
+def test_preferred_countries_at_max_boundary(auth_client):
+    # Boundary: exactly 50 should pass
+    good = dict(GOOD, preferredCountries=[f"Country{i}" for i in range(50)])
+    r = auth_client.put("/api/profile", {"data": good}, format="json")
+    assert r.status_code == 200, f"50 countries should be accepted, got {r.status_code}: {r.data}"
+
+
+def test_fields_max_length(auth_client):
+    # fields list max is 50
+    bad = dict(GOOD, fields=[f"Field{i}" for i in range(51)])
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"51 fields should be rejected, got {r.status_code}"

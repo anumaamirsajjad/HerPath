@@ -108,8 +108,8 @@ class ProfileDataSerializer(serializers.Serializer):
     leadership = serializers.BooleanField(required=False)
     documents = DocumentsSerializer(required=False)
     studyIn = serializers.ChoiceField(choices.STUDY_IN, required=False, allow_null=True)
-    preferredCountries = serializers.ListField(child=serializers.CharField(max_length=60), required=False)
-    fields = serializers.ListField(child=serializers.CharField(max_length=60), required=False)
+    preferredCountries = serializers.ListField(child=serializers.CharField(max_length=60), max_length=50, required=False)
+    fields = serializers.ListField(child=serializers.CharField(max_length=60), max_length=50, required=False)
 
     def to_internal_value(self, data):
         # Nested serializers drop unknown keys silently; reject them so typos surface.
