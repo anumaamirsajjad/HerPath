@@ -47,7 +47,7 @@ class Scholarship(models.Model):
     special_categories = ArrayField(models.CharField(max_length=20), default=list, blank=True)
     required_documents = ArrayField(models.CharField(max_length=30), default=list, blank=True)
 
-    requirements = models.JSONField(default=list)
+    requirements = models.JSONField(default=list, blank=True)
 
     usual_opening_month = models.PositiveSmallIntegerField(null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS, default="expected")
@@ -87,6 +87,7 @@ class ProblemReport(models.Model):
     scholarship = models.ForeignKey(Scholarship, null=True, blank=True, on_delete=models.SET_NULL)
     message = models.TextField(max_length=2000)
     created_at = models.DateTimeField(auto_now_add=True)
+    resolved = models.BooleanField(default=False)
 
 
 class Guide(models.Model):
