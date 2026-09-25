@@ -91,5 +91,12 @@
   ],
   "official_link": "https://smu.punjab.gov.pk/honhaar-scholarships",
   "usual_opening_month": null,
-  "next_check": "2026-12-15"
+  "next_check": "2026-12-15",
+  "sources": [
+    {
+      "url": "https://smu.punjab.gov.pk/honhaar-scholarships",
+      "checked": "2026-09-25",
+      "note": "Domicile, income under PKR 300,000, marks, semesters, 100% tuition"
+    }
+  ]
 }

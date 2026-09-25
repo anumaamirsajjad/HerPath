@@ -125,5 +125,17 @@
   ],
   "official_link": "https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries/pakistan-information-for-intake",
   "usual_opening_month": 2,
-  "next_check": "2027-01-15"
+  "next_check": "2027-01-15",
+  "sources": [
+    {
+      "url": "https://www.studyaustralia.gov.au/en/tools-and-resources/news/australia-awards-scholarships-applications-2027",
+      "checked": "2026-09-25",
+      "note": "Coverage, 2-year return, 1 Feb to 30 Apr 2026 window"
+    },
+    {
+      "url": "https://arynews.tv/australia-opens-2027-scholarships-for-pakistani-professionals.amp",
+      "checked": "2026-09-25",
+      "note": "Pakistan rules (16 years, 5 years work, IELTS 6.5, age 45) reported from DFAT; DFAT page timed out, re-check there"
+    }
+  ]
 }

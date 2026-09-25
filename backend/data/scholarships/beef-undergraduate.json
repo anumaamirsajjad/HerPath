@@ -116,5 +116,12 @@
   ],
   "official_link": "https://beef.org.pk",
   "usual_opening_month": null,
-  "next_check": "2026-12-15"
+  "next_check": "2026-12-15",
+  "sources": [
+    {
+      "url": "https://beef.org.pk/",
+      "checked": "2026-09-25",
+      "note": "Programme exists; eligibility from BEEF and university notices (60%, age 23, government institution)"
+    }
+  ]
 }

@@ -115,5 +115,12 @@
   ],
   "usual_opening_month": 2,
   "next_check": "2027-01-15",
-  "official_link": "https://www.studyinkorea.go.kr"
+  "official_link": "https://www.studyinkorea.go.kr",
+  "sources": [
+    {
+      "url": "https://www.studyinkorea.go.kr",
+      "checked": "2026-09-25",
+      "note": "Initial entry. Values taken from the official page but not yet independently verified."
+    }
+  ]
 }

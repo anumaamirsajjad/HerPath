@@ -56,6 +56,8 @@ class Scholarship(models.Model):
     last_verified = models.DateField()
     next_check = models.DateField()
     is_published = models.BooleanField(default=True)
+    # Fingerprint of the values last loaded from backend/data; lets `seed` tell admin edits from file edits.
+    seed_hash = models.CharField(max_length=64, blank=True, default="", editable=False)
 
     objects = ScholarshipQuerySet.as_manager()
 
@@ -96,6 +98,7 @@ class Guide(models.Model):
     title_ur = models.CharField(max_length=200, blank=True, default="")
     body_en, body_ur = bilingual()
     days_needed = models.PositiveSmallIntegerField(default=14)
+    seed_hash = models.CharField(max_length=64, blank=True, default="", editable=False)
 
     def __str__(self):
         return self.title_en

@@ -100,5 +100,12 @@
   ],
   "official_link": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
   "usual_opening_month": 10,
-  "next_check": "2027-09-15"
+  "next_check": "2027-09-15",
+  "sources": [
+    {
+      "url": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
+      "checked": "2026-09-25",
+      "note": "Age 29 (Master's) and 35 (PhD); nominated by French institution"
+    }
+  ]
 }

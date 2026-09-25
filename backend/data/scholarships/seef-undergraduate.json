@@ -104,5 +104,12 @@
   ],
   "official_link": "https://seef.gos.pk",
   "usual_opening_month": 3,
-  "next_check": "2027-02-15"
+  "next_check": "2027-02-15",
+  "sources": [
+    {
+      "url": "https://seef.gos.pk",
+      "checked": "2026-09-23",
+      "note": "Initial entry. Values taken from the official page but not yet independently verified."
+    }
+  ]
 }

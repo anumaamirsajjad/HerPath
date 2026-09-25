@@ -245,6 +245,7 @@ A "last verified" badge tells her the data is stale. It doesn't stop it going st
 - **A verification calendar.** Every listing has a "next check" date set to about a month before its usual opening. The admin panel lists every listing that's due, and a monthly review checks each one against its official page.
 - **A public change log.** Every change to a listing is recorded automatically with a date, the fields that changed and the source, so anyone can see what changed and why.
 - **Report a problem.** Each page has a one-tap link to report an error. Reports go to the curators' review queue, and a link to a public issue tracker appears when one is configured.
+- **A documented update pipeline.** Listings live as files in Git, research runs are recorded as reports, and admin-panel edits are never silently overwritten. See [docs/SCHOLARSHIP_DATA.md](docs/SCHOLARSHIP_DATA.md).
 - **Provider portal (later).** Version 2 adds a way for scholarship providers to submit and update their own listings, which is the long-term answer to keeping data fresh.
 
 ---
@@ -436,6 +437,8 @@ docker compose down                                            # stop (data is k
 docker compose down -v                                         # stop and wipe the database
 ```
 
+If ports 3000, 8000 or 5432 are taken by another project, choose others: `WEB_PORT=3001 API_PORT=8001 DB_PORT=5433 docker compose up --build`.
+
 Backend code changes reload automatically. The site runs as a production build, so run `docker compose up --build frontend` after changing frontend code, or use `npm run dev` from the manual setup below for live reload.
 
 Browser tests run on the host against the running stack, using your installed Google Chrome:
@@ -468,6 +471,8 @@ npm run dev
 npm test && npm run lint
 npm run e2e                        # browser tests; both servers running
 ```
+
+**Adding or updating scholarships.** See [docs/SCHOLARSHIP_DATA.md](docs/SCHOLARSHIP_DATA.md), or run `/scholarships` in Claude Code to research and update listings.
 
 **Deploying.** Backend: Railway with a PostgreSQL plugin, root directory `backend`, and `SECRET_KEY`, `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, `FRONTEND_URL`, `NUM_PROXIES=1` and SMTP `EMAIL_BACKEND`/`EMAIL_*` variables set (the server refuses to start without a real email backend); run `python manage.py seed` once. Frontend: Vercel with root directory `frontend` and `NEXT_PUBLIC_API_URL` pointing at the Railway API. Set `NEXT_PUBLIC_ISSUES_URL` to show a public issue-tracker link next to "Report a problem".
 

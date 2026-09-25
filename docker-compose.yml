@@ -3,6 +3,8 @@
 # Admin login (once):      docker compose exec backend python manage.py createsuperuser
 # Backend tests:           docker compose exec backend pytest -q
 # Start over (wipe data):  docker compose down -v
+# Ports taken by another project? Pick others, e.g.:
+#   WEB_PORT=3001 API_PORT=8001 DB_PORT=5433 docker compose up --build
 services:
   db:
     image: postgres:16
@@ -10,7 +12,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: herpath
     ports:
-      - "5432:5432" # for psql / host-side tools; the app itself talks to db inside Docker
+      - "${DB_PORT:-5432}:5432" # for psql / host-side tools; the app itself talks to db inside Docker
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -25,10 +27,10 @@ services:
       DEBUG: "1"
       DATABASE_URL: postgres://postgres:postgres@db:5432/herpath
       ALLOWED_HOSTS: localhost,127.0.0.1,backend
-      CORS_ALLOWED_ORIGINS: http://localhost:3000
-      FRONTEND_URL: http://localhost:3000
+      CORS_ALLOWED_ORIGINS: http://localhost:${WEB_PORT:-3000}
+      FRONTEND_URL: http://localhost:${WEB_PORT:-3000}
     ports:
-      - "8000:8000"
+      - "${API_PORT:-8000}:8000"
     volumes:
       - ./backend:/app # backend code edits reload without a rebuild
     depends_on:
@@ -42,11 +44,14 @@ services:
       start_period: 10s
 
   frontend:
-    build: ./frontend # production build; rebuild after frontend changes (or use `npm run dev` on the host)
+    build: # production build; rebuild after frontend changes (or use `npm run dev` on the host)
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:${API_PORT:-8000}/api # the address browsers use
     environment:
       API_URL: http://backend:8000/api # server-rendered pages reach the API inside the Docker network
     ports:
-      - "3000:3000"
+      - "${WEB_PORT:-3000}:3000"
     depends_on:
       backend:
         condition: service_healthy

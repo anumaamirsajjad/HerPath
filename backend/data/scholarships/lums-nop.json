@@ -81,5 +81,12 @@
   ],
   "official_link": "https://nop.lums.edu.pk",
   "usual_opening_month": null,
-  "next_check": "2026-12-15"
+  "next_check": "2026-12-15",
+  "sources": [
+    {
+      "url": "https://nop.lums.edu.pk/faqs-nop",
+      "checked": "2026-09-25",
+      "note": "Eligibility (80% Matric, financial need), coverage and timeline"
+    }
+  ]
 }

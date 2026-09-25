@@ -104,5 +104,12 @@
   ],
   "usual_opening_month": 4,
   "next_check": "2027-03-15",
-  "official_link": "https://www.pk.emb-japan.go.jp"
+  "official_link": "https://www.pk.emb-japan.go.jp",
+  "sources": [
+    {
+      "url": "https://www.pk.emb-japan.go.jp",
+      "checked": "2026-09-25",
+      "note": "Initial entry. Values taken from the official page but not yet independently verified."
+    }
+  ]
 }
