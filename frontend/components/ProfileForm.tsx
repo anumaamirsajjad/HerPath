@@ -55,7 +55,7 @@ export default function ProfileForm() {
     <label key={k} className="flex gap-2"><input type="checkbox" checked={!!d[k]} onChange={(e) => set(k, e.target.checked)} />{tf(k)}</label>);
 
   const panels: Record<(typeof STEPS)[number], React.ReactNode> = {
-    personal: <>{numField("age")}{selField("domicile", C.PROVINCES, "provinces")}{txtField("district")}
+    personal: <>{selField("targetLevel", C.TARGET_LEVELS, "targetLevels")}{numField("age")}{selField("domicile", C.PROVINCES, "provinces")}{txtField("district")}
       <fieldset><legend>{tf("categories")}</legend>
         {C.CATEGORIES.map((cat) => (
           <label key={cat} className="flex gap-2"><input type="checkbox" checked={!!d.categories?.includes(cat)}

@@ -16,7 +16,7 @@ jobs:
         with: { python-version: "3.13" }
       - run: pip install -r requirements.txt
       - run: pytest -q
-        env: { DATABASE_URL: postgres://postgres:postgres@localhost:5432/herpath, DEBUG: "1" }
+        env: { DATABASE_URL: "postgres://postgres:postgres@localhost:5432/herpath", DEBUG: "1" }
   frontend:
     runs-on: ubuntu-latest
     defaults: { run: { working-directory: frontend } }
@@ -29,3 +29,36 @@ jobs:
       - run: npm run lint
       - run: npx tsc --noEmit
       - run: npm run build
+  e2e:
+    runs-on: ubuntu-latest  # has Google Chrome preinstalled, which playwright-core drives
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_PASSWORD: postgres, POSTGRES_DB: herpath }
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DEBUG: "1"
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/herpath
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: frontend/package-lock.json }
+      - name: Backend
+        working-directory: backend
+        run: |
+          python -m venv .venv && .venv/bin/pip install -r requirements.txt
+          .venv/bin/python manage.py migrate --noinput && .venv/bin/python manage.py seed
+          .venv/bin/python manage.py runserver 8000 &
+      - name: Frontend
+        working-directory: frontend
+        run: |
+          npm ci && npm run build
+          npx next start -p 3000 &
+          for i in $(seq 1 60); do curl -sf http://localhost:3000/en >/dev/null && curl -sf http://localhost:8000/api/health/ >/dev/null && break; sleep 1; done
+      - run: npm run e2e
+        working-directory: frontend

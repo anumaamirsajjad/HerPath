@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { api, authEvents, clearTokens, hasToken } from "./api";
+import { api, authEvents, hasToken, revokeSession } from "./api";
 import type { User } from "./types";
 
 type AuthState = { user: User | null; loading: boolean; refresh: () => Promise<void>; logout: () => void };
@@ -19,7 +19,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     authEvents.addEventListener("logout", onLogout);
     return () => authEvents.removeEventListener("logout", onLogout);
   }, []);
-  const logout = () => { clearTokens(); setUser(null); };
+  const logout = () => { revokeSession(); setUser(null); };
   return <Ctx.Provider value={{ user, loading, refresh, logout }}>{children}</Ctx.Provider>;
 }
 export const useAuth = () => useContext(Ctx);

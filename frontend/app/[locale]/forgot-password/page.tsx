@@ -1,17 +1,18 @@
 "use client";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { api, errorText } from "@/lib/api";
 
 export default function Page() {
   const t = useTranslations("auth");
   const c = useTranslations("common");
+  const lang = useLocale();
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   async function submit(e: React.FormEvent) {
     e.preventDefault(); setError(null);
-    try { await api("auth/password-reset", { method: "POST", body: JSON.stringify({ email }) }); setSent(true); }
+    try { await api("auth/password-reset", { method: "POST", body: JSON.stringify({ email, lang }) }); setSent(true); }
     catch (err) { setError(errorText(err, c("error"))); }
   }
   if (sent) return <p>{t("resetSent")}</p>;

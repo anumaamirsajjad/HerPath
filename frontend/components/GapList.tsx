@@ -1,6 +1,7 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { formatDate } from "@/lib/dates";
 import type { LeafResult, Msg, Result, Status } from "@/lib/types";
 
 const ICON: Record<Status, string> = { met: "✅", fixable: "⚠️", fixable_later: "⏳", not_eligible: "❌" };
@@ -13,11 +14,13 @@ function useMsg() {
 function MissingHint({ r }: { r: Result }) {
   const t = useTranslations("scholarship");
   if (!r.missingFromProfile || r.status === "met") return null;
-  return <p><Link href="/profile" className="underline">{r.conditionField === "level" ? t("addLevel") : t("addToProfile")}</Link></p>;
+  const aboutLevel = r.conditionField === "targetLevel" || (r.kind === "leaf" && r.field === "targetLevel");
+  return <p><Link href="/profile" className="underline">{aboutLevel ? t("addLevel") : t("addToProfile")}</Link></p>;
 }
 
 function Leaf({ r, fastest }: { r: LeafResult; fastest?: boolean }) {
   const t = useTranslations("scholarship");
+  const locale = useLocale();
   const msg = useMsg();
   return (
     <li className="py-1">
@@ -28,8 +31,8 @@ function Leaf({ r, fastest }: { r: LeafResult; fastest?: boolean }) {
         <div className="ms-6 text-sm text-gray-700">
           <MissingHint r={r} />
           {r.status !== "not_eligible" && r.fixGuide && (
-            <p>{t("fix")} <Link href={`/guides/${r.fixGuide}`} className="underline">{t("guide")}</Link>{r.daysNeeded ? ` (~${r.daysNeeded}d)` : ""}</p>)}
-          {r.startBy && <p>{t("startBy", { date: r.startBy })}</p>}
+            <p>{t("fix")} <Link href={`/guides/${r.fixGuide}`} className="underline">{t("guide")}</Link>{r.daysNeeded ? ` (${t("days", { count: r.daysNeeded })})` : ""}</p>)}
+          {r.startBy && <p>{t("startBy", { date: formatDate(r.startBy, locale) })}</p>}
         </div>)}
     </li>
   );

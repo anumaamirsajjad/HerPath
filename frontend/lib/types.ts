@@ -1,5 +1,5 @@
 export type Status = "met" | "fixable" | "fixable_later" | "not_eligible";
-export type Tab = "apply_now" | "almost" | "future" | "not_eligible";
+export type Tab = "apply_now" | "ready" | "almost" | "future" | "not_eligible";
 export type Msg = { en: string; ur?: string };
 
 export interface ScholarshipRow {
@@ -25,16 +25,17 @@ export interface MatchResult {
   has_profile: boolean; scholarship: string; requirements: Result[];
   met_count: number; total_count: number; tab: Tab; score: number | null;
   missing_count: number; needs_info: boolean;
+  deadline: string | null; deadline_estimated: boolean; is_open: boolean;
 }
 export interface MatchRow extends ScholarshipRow {
   score: number | null; met_count: number; total_count: number; gap_count: number; tab: Tab;
-  missing_count: number; needs_info: boolean;
+  missing_count: number; needs_info: boolean; effective_deadline: string | null; deadline_estimated: boolean;
 }
 export interface MatchList { has_profile: boolean; tabs: Record<Tab, MatchRow[]> }
 export interface ProfileData {
   age?: number | null; domicile?: string | null; district?: string | null; categories?: string[];
   board?: string | null; matricPercent?: number | null; interPercent?: number | null; interStream?: string | null;
-  level?: string | null; degree?: string | null; yearsOfEducation?: number | null; cgpa?: number | null;
+  level?: string | null; targetLevel?: string | null; degree?: string | null; yearsOfEducation?: number | null; cgpa?: number | null;
   universityType?: string | null; enrolledUniversity?: string | null;
   tests?: Record<string, number | null>; monthlyIncome?: number | null; workYears?: number | null;
   volunteering?: boolean; leadership?: boolean; documents?: Record<string, boolean>;

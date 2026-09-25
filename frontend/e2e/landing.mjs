@@ -1,0 +1,12 @@
+import { B, ok, open } from "./lib.mjs";
+const { browser, page, errors } = await open(null);
+await page.goto(`${B}/ur`);
+ok((await page.locator("h1").innerText()).includes("جانیں آپ کہاں کھڑی ہیں"), "urdu landing headline");
+await page.goto(`${B}/en`);
+await page.getByRole("link", { name: "Create my profile (3 minutes)" }).click();
+await page.waitForURL(/\/en\/signup/);
+ok(true, "landing CTA goes to signup");
+const r = await page.goto(`${B}/en/no-such-page`);
+ok(r.status() === 404 && (await page.getByRole("link", { name: "Scholarships" }).count()) >= 1, "unknown path: 404 with nav");
+ok(errors.length === 0, `no page errors ${JSON.stringify(errors)}`);
+await browser.close();

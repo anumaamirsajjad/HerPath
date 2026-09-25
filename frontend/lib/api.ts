@@ -16,6 +16,13 @@ export function setTokens(t: { access: string; refresh: string }) {
 export function clearTokens() { try { localStorage.removeItem("access"); localStorage.removeItem("refresh"); } catch {} }
 export const hasToken = () => !!get("access");
 
+/** Log out: revoke the refresh token on the server (best effort) and forget both tokens here. */
+export function revokeSession() {
+  const refresh = get("refresh");
+  clearTokens();
+  if (refresh) fetch(`${BASE}/auth/logout`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ refresh }) }).catch(() => {});
+}
+
 // Refresh tokens are single-use (rotated and blacklisted), so parallel 401s must share one refresh.
 let refreshing: Promise<boolean> | null = null;
 function refresh(): Promise<boolean> {

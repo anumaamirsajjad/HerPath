@@ -8,3 +8,4 @@ export const UNIVERSITY_TYPES = ["public", "private"];
 export const TESTS = ["mdcat", "ecat", "nat", "gat", "hat", "ielts", "toefl", "duolingo", "gre"];
 export const DOCUMENTS = ["cnic", "domicile", "passport", "incomeCertificate", "hecAttestation", "ibccEquivalence", "recommendationLetters", "englishMediumLetter"];
 export const STUDY_IN = ["pakistan", "abroad", "both"];
+export const TARGET_LEVELS = ["undergraduate", "masters", "phd"];

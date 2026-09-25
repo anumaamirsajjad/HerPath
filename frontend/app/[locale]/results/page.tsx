@@ -7,8 +7,8 @@ import { Link } from "@/i18n/routing";
 import { api } from "@/lib/api";
 import type { MatchList, MatchRow, Tab } from "@/lib/types";
 
-const TABS: Tab[] = ["apply_now", "almost", "future"];
-const EMPTY = { apply_now: "emptyApply", almost: "emptyAlmost", future: "emptyFuture" } as const;
+const TABS: Tab[] = ["apply_now", "ready", "almost", "future"];
+const EMPTY = { apply_now: "emptyApply", ready: "emptyReady", almost: "emptyAlmost", future: "emptyFuture" } as const;
 
 function Row({ r }: { r: MatchRow }) {
   const t = useTranslations("tabs");

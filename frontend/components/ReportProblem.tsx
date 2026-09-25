@@ -11,7 +11,12 @@ export default function ReportProblem({ slug }: { slug: string }) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   if (sent) return <p className="text-sm">{t("reportSent")}</p>;
-  if (!open) return <button onClick={() => setOpen(true)} className="text-sm underline">{t("report")}</button>;
+  const issues = process.env.NEXT_PUBLIC_ISSUES_URL;
+  if (!open) return (
+    <p className="text-sm">
+      <button onClick={() => setOpen(true)} className="underline">{t("report")}</button>
+      {issues && <> · <a href={issues} target="_blank" rel="noopener" className="underline">{t("reportPublic")}</a></>}
+    </p>);
   return (
     <form className="space-y-2" onSubmit={async (e) => {
       e.preventDefault(); setError(null);

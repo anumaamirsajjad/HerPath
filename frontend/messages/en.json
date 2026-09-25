@@ -103,12 +103,16 @@
     "fix": "Fix:",
     "fastest": "Fastest option",
     "addToProfile": "Add this to your profile to check.",
-    "addLevel": "Add your education level to your profile to check this.",
+    "addLevel": "Add what you want to study next to your profile to check this.",
     "guide": "See the guide",
     "guideSoon": "Guide coming soon",
     "notEligible": "Not eligible",
     "needsInfo": "We need more information from your profile to decide.",
-    "similar": "See similar scholarships"
+    "similar": "See similar scholarships",
+    "estimated": "Next deadline expected around {date} (estimated from the usual opening month)",
+    "days": "~{count} days",
+    "reportPublic": "Or report it on our public issue tracker",
+    "readyNote": "You meet every requirement. Apply as soon as it opens."
   },
   "status": {
     "met": "Met",
@@ -128,7 +132,9 @@
     "gaps": "{count} gaps",
     "score": "{score}% ready",
     "missing": "Answer {count} more questions",
-    "noProfile": "Fill your profile to see your results."
+    "noProfile": "Fill your profile to see your results.",
+    "ready": "Ready when it opens",
+    "emptyReady": "Nothing here yet."
   },
   "profile": {
     "title": "My profile",
@@ -167,7 +173,8 @@
       "leadership": "I have held a leadership role",
       "studyIn": "I want to study in",
       "preferredCountries": "Preferred countries (comma separated)",
-      "fields": "Fields of interest (comma separated)"
+      "fields": "Fields of interest (comma separated)",
+      "targetLevel": "What do you want to study next?"
     }
   },
   "checklist": {
@@ -270,6 +277,24 @@
       "pakistan": "Pakistan",
       "abroad": "Abroad",
       "both": "Both"
+    },
+    "targetLevels": {
+      "undergraduate": "Bachelor's (undergraduate)",
+      "masters": "Master's / MPhil",
+      "phd": "PhD"
     }
+  },
+  "countries": {
+    "Pakistan": "Pakistan",
+    "USA": "USA",
+    "UK": "UK",
+    "Germany": "Germany",
+    "Türkiye": "Türkiye",
+    "China": "China",
+    "Hungary": "Hungary",
+    "Europe": "Europe",
+    "Various": "Several countries",
+    "South Korea": "South Korea",
+    "Japan": "Japan"
   }
 }
