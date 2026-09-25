@@ -1,0 +1,119 @@
+{
+  "location": "abroad",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "test_requirement": "none",
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters"
+  ],
+  "slug": "global-korea-scholarship",
+  "provider": "National Institute for International Education (NIIED), Korea",
+  "country": "South Korea",
+  "name_en": "Global Korea Scholarship (Graduate)",
+  "name_ur": "گلوبل کوریا اسکالرشپ (گریجویٹ)",
+  "summary_en": "Fully funded Master's and PhD in South Korea from the Korean government, with a year of Korean language study first.",
+  "summary_ur": "کوریا کی حکومت کی جانب سے جنوبی کوریا میں مکمل فنڈڈ ماسٹرز اور پی ایچ ڈی، پہلے ایک سال کوریائی زبان کی تعلیم کے ساتھ۔",
+  "coverage_en": "Tuition, return airfare, monthly living allowance (about KRW 1,000,000), settlement allowance, medical insurance and one year of Korean language training.",
+  "coverage_ur": "ٹیوشن، واپسی ہوائی ٹکٹ، ماہانہ رہائشی الاؤنس (تقریباً 10 لاکھ کوریائی وون)، آبادکاری الاؤنس، طبی انشورنس اور ایک سال کوریائی زبان کی تربیت۔",
+  "who_for_en": "Applicants under 40 with a bachelor's degree for Master's (or a Master's for PhD) and a CGPA of at least 2.64 out of 4.0 (or 80%). No English test is required to apply, though scores help.",
+  "who_for_ur": "40 سال سے کم عمر درخواست دہندگان جن کے پاس ماسٹرز کے لیے بیچلرز (یا پی ایچ ڈی کے لیے ماسٹرز) اور کم از کم 2.64 سی جی پی اے (یا 80%) ہو۔ درخواست کے لیے انگریزی ٹیسٹ ضروری نہیں، اگرچہ اسکور مددگار ہے۔",
+  "application_steps_en": "1. Choose the Embassy track (apply through the Korean Embassy in Islamabad) or the University track (apply directly to a Korean university).\n2. Download the application guidelines from studyinkorea.go.kr when the cycle opens, usually in February.\n3. Prepare the personal statement, study plan, 2 recommendation letters, attested transcripts and passport copy.\n4. Shortlisted candidates are interviewed, then placed at a university.",
+  "application_steps_ur": "1. ایمبیسی ٹریک (اسلام آباد میں کوریائی سفارت خانے کے ذریعے) یا یونیورسٹی ٹریک (براہِ راست کوریائی یونیورسٹی کو) چنیں۔\n2. سائیکل کھلنے پر، عام طور پر فروری میں، studyinkorea.go.kr سے رہنما ہدایات ڈاؤن لوڈ کریں۔\n3. ذاتی بیان، مطالعاتی منصوبہ، 2 سفارشی خطوط، تصدیق شدہ ٹرانسکرپٹس اور پاسپورٹ کی کاپی تیار کریں۔\n4. منتخب امیدواروں کا انٹرویو ہوتا ہے، پھر یونیورسٹی میں جگہ ملتی ہے۔",
+  "family_summary_en": "This is the Korean government's scholarship. It is free to apply. It pays tuition, flights, a monthly allowance and insurance. Your daughter first studies Korean for a year, then her degree, in South Korea.",
+  "family_summary_ur": "یہ کوریا کی حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ہوائی ٹکٹ، ماہانہ خرچ اور انشورنس دیتی ہے۔ آپ کی بیٹی جنوبی کوریا میں پہلے ایک سال کوریائی زبان اور پھر اپنی ڈگری پڑھے گی۔",
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 39,
+      "fixable": false,
+      "message": {
+        "en": "Age under 40",
+        "ur": "عمر 40 سال سے کم"
+      }
+    },
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 2.64,
+      "fixable": false,
+      "message": {
+        "en": "CGPA 2.64 out of 4.0 or above",
+        "ur": "سی جی پی اے 4.0 میں سے 2.64 یا زیادہ"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    }
+  ],
+  "usual_opening_month": 2,
+  "next_check": "2027-01-15",
+  "official_link": "https://www.studyinkorea.go.kr"
+}

@@ -1,0 +1,108 @@
+{
+  "location": "abroad",
+  "funding": "full",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "university_type": "any",
+  "provinces": [],
+  "income_limit": null,
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "test_requirement": "none",
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters"
+  ],
+  "slug": "mext-research",
+  "provider": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+  "country": "Japan",
+  "name_en": "MEXT Japanese Government Scholarship (Research)",
+  "name_ur": "ایم ای ایکس ٹی جاپانی حکومت اسکالرشپ (ریسرچ)",
+  "summary_en": "Fully funded research study, Master's or PhD in Japan, selected through the Embassy of Japan in Pakistan.",
+  "summary_ur": "جاپان میں مکمل فنڈڈ ریسرچ، ماسٹرز یا پی ایچ ڈی، جاپانی سفارت خانہ پاکستان کے ذریعے انتخاب۔",
+  "coverage_en": "Tuition, a monthly allowance (about JPY 144,000 for Master's), and return airfare. Many universities offer dormitory rooms.",
+  "coverage_ur": "ٹیوشن، ماہانہ الاؤنس (ماسٹرز کے لیے تقریباً 1,44,000 جاپانی ین) اور واپسی ہوائی ٹکٹ۔ کئی یونیورسٹیاں ہاسٹل دیتی ہیں۔",
+  "who_for_en": "Applicants under 35 with 16 years of education. Selection includes a written test (English and Japanese) and an interview at the Embassy. Japanese is not required before you arrive.",
+  "who_for_ur": "35 سال سے کم عمر اور 16 سالہ تعلیم والی درخواست دہندگان۔ انتخاب میں سفارت خانے میں تحریری ٹیسٹ (انگریزی اور جاپانی) اور انٹرویو شامل ہیں۔ جاپان پہنچنے سے پہلے جاپانی زبان ضروری نہیں۔",
+  "application_steps_en": "1. Watch the Embassy of Japan in Pakistan website; the call usually opens in April or May.\n2. Submit the application form, field of study and research plan, attested transcripts, recommendation letter and medical form.\n3. Sit the written test and interview at the Embassy.\n4. If recommended, contact Japanese professors for a letter of acceptance.",
+  "application_steps_ur": "1. جاپانی سفارت خانہ پاکستان کی ویب سائٹ دیکھتی رہیں؛ اعلان عام طور پر اپریل یا مئی میں ہوتا ہے۔\n2. درخواست فارم، شعبہ اور تحقیقی منصوبہ، تصدیق شدہ ٹرانسکرپٹس، سفارشی خط اور میڈیکل فارم جمع کرائیں۔\n3. سفارت خانے میں تحریری ٹیسٹ اور انٹرویو دیں۔\n4. سفارش ملنے پر جاپانی پروفیسرز سے قبولیت کا خط لیں۔",
+  "family_summary_en": "This is the Japanese government's scholarship. It is free to apply. It pays tuition, a monthly allowance and flights. Your daughter studies at a university in Japan, and many universities provide dormitory rooms.",
+  "family_summary_ur": "یہ جاپانی حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ ٹیوشن، ماہانہ خرچ اور ہوائی ٹکٹ دیتی ہے۔ آپ کی بیٹی جاپان کی یونیورسٹی میں پڑھے گی، اور کئی یونیورسٹیاں ہاسٹل دیتی ہیں۔",
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 34,
+      "fixable": false,
+      "message": {
+        "en": "Age under 35",
+        "ur": "عمر 35 سال سے کم"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    }
+  ],
+  "usual_opening_month": 4,
+  "next_check": "2027-03-15",
+  "official_link": "https://www.pk.emb-japan.go.jp"
+}
