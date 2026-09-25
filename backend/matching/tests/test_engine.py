@@ -147,3 +147,10 @@ def test_missing_count_and_needs_info():
     assert res["tab"] == "not_eligible" and res["missing_count"] == 1 and res["needs_info"] is False
     res = evaluate(rules, {"interPercent": 70, "domicile": "Punjab", "documents": {"cnic": True}}, None, TODAY)
     assert res["missing_count"] == 0 and res["needs_info"] is False
+
+
+def test_all_met_but_not_open_is_ready_not_apply_now():
+    rules = [leaf("documents.cnic", "has", fixable=True)]
+    assert evaluate(rules, {"documents": {"cnic": True}}, None, TODAY, is_open=False)["tab"] == "ready"
+    assert evaluate(rules, {"documents": {"cnic": True}}, None, TODAY, is_open=True)["tab"] == "apply_now"
+    assert evaluate(rules, {"documents": {"cnic": True}}, None, TODAY, is_open=False)["score"] == 100

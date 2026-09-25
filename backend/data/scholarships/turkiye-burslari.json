@@ -57,9 +57,9 @@
         "ur": "انڈرگریجویٹ کے لیے عمر 21 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "intermediate"
+        "value": "undergraduate"
       }
     },
     {
@@ -72,9 +72,9 @@
         "ur": "ماسٹرز کے لیے عمر 30 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "bachelors"
+        "value": "masters"
       }
     },
     {
@@ -87,9 +87,9 @@
         "ur": "پی ایچ ڈی کے لیے عمر 35 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "masters"
+        "value": "phd"
       }
     },
     {
@@ -102,9 +102,9 @@
         "ur": "انڈرگریجویٹ کے لیے انٹرمیڈیٹ میں کم از کم 70% نمبر"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "intermediate"
+        "value": "undergraduate"
       }
     },
     {
@@ -117,11 +117,11 @@
         "ur": "ماسٹرز اور پی ایچ ڈی کے لیے سی جی پی اے 3.0 یا زیادہ"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "in",
         "value": [
-          "bachelors",
-          "masters"
+          "masters",
+          "phd"
         ]
       }
     },

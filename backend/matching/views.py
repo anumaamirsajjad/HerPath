@@ -8,10 +8,10 @@ from accounts.models import Profile
 from scholarships.models import Scholarship
 from scholarships.serializers import ScholarshipListSerializer
 
-from .engine import evaluate, unlocks
-from .services import evaluate_all, published_rows
+from .engine import unlocks
+from .services import evaluate_all, evaluate_scholarship, unlock_rows
 
-TABS = ["apply_now", "almost", "future", "not_eligible"]
+TABS = ["apply_now", "ready", "almost", "future", "not_eligible"]
 
 
 def _profile_data(user):
@@ -31,7 +31,8 @@ class MatchList(APIView):
             row = ScholarshipListSerializer(by_slug[slug], context={"request": request}).data
             row.update(score=res["score"], met_count=res["met_count"], total_count=res["total_count"],
                        gap_count=res["total_count"] - res["met_count"], tab=res["tab"],
-                       missing_count=res["missing_count"], needs_info=res["needs_info"])
+                       missing_count=res["missing_count"], needs_info=res["needs_info"],
+                       effective_deadline=res["deadline"], deadline_estimated=res["deadline_estimated"])
             tabs[res["tab"]].append(row)
         for t in TABS:
             tabs[t].sort(key=lambda r: (-(r["score"] or 0), r["name"]))
@@ -44,7 +45,7 @@ class MatchDetail(APIView):
         data = _profile_data(request.user)
         if data is None:
             return Response({"has_profile": False, "scholarship": slug})
-        res = evaluate(s.requirements, data, s.deadline, dt.date.today())
+        res = evaluate_scholarship(s, data, dt.date.today())
         return Response({"has_profile": True, "scholarship": slug, **res})
 
 
@@ -53,4 +54,4 @@ class Unlocks(APIView):
         data = _profile_data(request.user)
         if data is None:
             return Response({"unlocks": {}})
-        return Response({"unlocks": unlocks(data, published_rows(), dt.date.today())})
+        return Response({"unlocks": unlocks(data, unlock_rows(dt.date.today()), dt.date.today())})

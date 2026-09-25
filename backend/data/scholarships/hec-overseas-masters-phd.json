@@ -75,13 +75,13 @@
       "value": 35,
       "fixable": false,
       "message": {
-        "en": "Age 35 or under for Master's-leading-to-PhD applicants",
+        "en": "Age 35 or under for Master's applicants",
         "ur": "ماسٹرز سے پی ایچ ڈی کے لیے عمر 35 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "bachelors"
+        "value": "masters"
       }
     },
     {
@@ -94,9 +94,9 @@
         "ur": "پی ایچ ڈی کے لیے عمر 40 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "masters"
+        "value": "phd"
       }
     },
     {

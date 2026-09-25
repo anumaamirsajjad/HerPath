@@ -69,9 +69,9 @@
         "ur": "ماسٹرز کے لیے عمر 35 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "bachelors"
+        "value": "masters"
       }
     },
     {
@@ -84,9 +84,9 @@
         "ur": "پی ایچ ڈی کے لیے عمر 40 سال یا کم"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "masters"
+        "value": "phd"
       }
     },
     {

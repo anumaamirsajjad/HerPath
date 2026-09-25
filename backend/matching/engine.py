@@ -114,12 +114,14 @@ def _unmet_leaves(results):
     return out
 
 
-def evaluate(requirements, profile, deadline, today):
+def evaluate(requirements, profile, deadline, today, is_open=True):
     results = [r for r in (_eval_node(n, profile or {}, deadline, today) for n in requirements) if r]
     total = len(results)
     met = sum(r["status"] == "met" for r in results)
     worst = _worst(results) if results else "met"
     tab = {"met": "apply_now", "fixable": "almost", "fixable_later": "future", "not_eligible": "not_eligible"}[worst]
+    if tab == "apply_now" and not is_open:
+        tab = "ready"  # meets everything, but the cycle is not open yet
     score = None if tab == "not_eligible" else (round(100 * met / total) if total else 100)
     missing = len(_missing_leaves(results))
     blocked = [r for r in _unmet_leaves(results) if r["status"] == "not_eligible"]

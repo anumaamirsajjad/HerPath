@@ -79,6 +79,7 @@ class ProfileDataSerializer(serializers.Serializer):
     interPercent = StrictFloat(min_value=0, max_value=100, required=False, allow_null=True)
     interStream = serializers.ChoiceField(choices.STREAMS, required=False, allow_null=True)
     level = serializers.ChoiceField(choices.LEVELS, required=False, allow_null=True)
+    targetLevel = serializers.ChoiceField(choices.TARGET_LEVELS, required=False, allow_null=True)
     degree = serializers.CharField(max_length=120, allow_blank=True, required=False, allow_null=True)
     yearsOfEducation = StrictInt(min_value=10, max_value=22, required=False, allow_null=True)
     cgpa = StrictFloat(min_value=0, max_value=4, required=False, allow_null=True)

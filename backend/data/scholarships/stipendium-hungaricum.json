@@ -57,9 +57,9 @@
         "ur": "انڈرگریجویٹ کے لیے انٹرمیڈیٹ میں کم از کم 60% نمبر"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "==",
-        "value": "intermediate"
+        "value": "undergraduate"
       }
     },
     {
@@ -84,11 +84,11 @@
         "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
       },
       "appliesWhen": {
-        "field": "level",
+        "field": "targetLevel",
         "rule": "in",
         "value": [
-          "bachelors",
-          "masters"
+          "masters",
+          "phd"
         ]
       }
     },
