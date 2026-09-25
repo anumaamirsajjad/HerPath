@@ -1,0 +1,48 @@
+# Run the whole project:  docker compose up --build
+#   Site  http://localhost:3000     API  http://localhost:8000/api     Admin  http://localhost:8000/admin/
+# Admin login (once):      docker compose exec backend python manage.py createsuperuser
+# Backend tests:           docker compose exec backend pytest -q
+# Start over (wipe data):  docker compose down -v
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: herpath
+    ports:
+      - "5432:5432" # for psql / host-side tools; the app itself talks to db inside Docker
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  backend:
+    build: ./backend
+    environment:
+      DEBUG: "1"
+      DATABASE_URL: postgres://postgres:postgres@db:5432/herpath
+      ALLOWED_HOSTS: localhost,127.0.0.1,backend
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app # backend code edits reload without a rebuild
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build: ./frontend # production build; rebuild after frontend changes (or use `npm run dev` on the host)
+    environment:
+      API_URL: http://backend:8000/api # server-rendered pages reach the API inside the Docker network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

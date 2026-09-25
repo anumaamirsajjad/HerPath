@@ -1,7 +1,12 @@
 import { execSync } from "node:child_process";
 import { B, ok, user, open } from "./lib.mjs";
+import { existsSync } from "node:fs";
 const BACKEND = new URL("../../backend", import.meta.url).pathname;
-const dj = (py) => execSync(`cd ${BACKEND} && DEBUG=1 .venv/bin/python manage.py shell -c "${py}"`, { env: process.env });
+// Local virtualenv if there is one (CI, manual setup); otherwise the docker compose backend container.
+const MANAGE = process.env.E2E_MANAGE ?? (existsSync(`${BACKEND}/.venv`)
+  ? `cd ${BACKEND} && DEBUG=1 .venv/bin/python manage.py`
+  : `cd ${BACKEND}/.. && docker compose exec -T backend python manage.py`);
+const dj = (py) => execSync(`${MANAGE} shell -c "${py}"`, { env: process.env });
 
 const tok = await user({ targetLevel: "undergraduate", age: 19, domicile: "Punjab", interPercent: 78, level: "intermediate", monthlyIncome: 45000, universityType: "public", documents: { cnic: true } });
 const { browser, page, errors } = await open(tok);

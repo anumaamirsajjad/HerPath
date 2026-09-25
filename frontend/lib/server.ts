@@ -1,5 +1,6 @@
 // Server-side API reads for pages that must render with content (link previews, slow first loads).
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api";
+// API_URL is for the server when it reaches the API at a different address than browsers (e.g. inside Docker).
+const BASE = process.env.API_URL ?? process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000/api";
 
 /** GET a public API path in `lang`. Returns null on 404; throws on other failures so error.tsx shows. */
 export async function getJSON<T>(path: string, lang: string): Promise<T | null> {

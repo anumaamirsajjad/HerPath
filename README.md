@@ -407,12 +407,44 @@ HerPath measures success with anonymous aggregate counts and voluntary follow-up
 
 ## 14. Running HerPath locally
 
-Requirements: Python 3.12+, Node 24+ (npm 11, which the lockfile was written with), PostgreSQL 16 (or Docker).
+### With Docker (recommended)
+
+Requirements: Git and Docker. Nothing else.
 
 ```bash
-# Database
-docker run -d --name herpath-pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=herpath -p 5432:5432 postgres:16
+git clone https://github.com/otto-cr/HerPath.git
+cd HerPath
+docker compose up --build
+```
 
+This starts PostgreSQL, the Django API and the Next.js site, applies migrations and loads the 17 scholarships and 13 guides.
+
+| What | Where |
+|---|---|
+| Site | http://localhost:3000 |
+| API | http://localhost:8000/api |
+| Admin | http://localhost:8000/admin/ |
+
+```bash
+docker compose exec backend python manage.py createsuperuser   # admin login, once
+docker compose exec backend pytest -q                          # backend tests
+docker compose down                                            # stop (data is kept)
+docker compose down -v                                         # stop and wipe the database
+```
+
+Backend code changes reload automatically. The site runs as a production build, so run `docker compose up --build frontend` after changing frontend code, or use `npm run dev` from the manual setup below for live reload.
+
+Browser tests run on the host against the running stack, using your installed Google Chrome:
+
+```bash
+cd frontend && npm install && npm run e2e
+```
+
+### Without Docker
+
+Requirements: Python 3.12+, Node 24+ (npm 11, which the lockfile was written with) and PostgreSQL 16 with an empty `herpath` database.
+
+```bash
 # Backend (http://localhost:8000)
 cd backend
 python -m venv .venv && source .venv/bin/activate
@@ -430,9 +462,7 @@ cp .env.local.example .env.local   # NEXT_PUBLIC_API_URL=http://localhost:8000/a
 npm install
 npm run dev
 npm test && npm run lint
-
-# Browser tests (uses your installed Google Chrome; both servers running and seeded)
-E2E_WEB=http://localhost:3000 E2E_API=http://localhost:8000/api npm run e2e
+npm run e2e                        # browser tests; both servers running
 ```
 
 **Deploying.** Backend: Railway with a PostgreSQL plugin, root directory `backend`, and `SECRET_KEY`, `ALLOWED_HOSTS`, `CORS_ALLOWED_ORIGINS`, `FRONTEND_URL`, `NUM_PROXIES=1` and SMTP `EMAIL_BACKEND`/`EMAIL_*` variables set (the server refuses to start without a real email backend); run `python manage.py seed` once. Frontend: Vercel with root directory `frontend` and `NEXT_PUBLIC_API_URL` pointing at the Railway API. Set `NEXT_PUBLIC_ISSUES_URL` to show a public issue-tracker link next to "Report a problem".
