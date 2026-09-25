@@ -137,3 +137,35 @@ def test_throttle_ignores_spoofed_forwarded_for():
     a = f.post("/x", HTTP_X_FORWARDED_FOR="1.1.1.1", REMOTE_ADDR="10.0.0.1")
     b = f.post("/x", HTTP_X_FORWARDED_FOR="2.2.2.2", REMOTE_ADDR="10.0.0.1")
     assert t.get_ident(a) == t.get_ident(b)
+
+
+def test_signup_rejects_weak_password_all_same_char(client):
+    # All same characters (e.g., "aaaaaaaa") should be rejected
+    r = client.post("/api/auth/signup", {"email": "weak1@x.com", "password": "aaaaaaaa"}, format="json")
+    assert r.status_code == 400, f"Password 'aaaaaaaa' should be rejected, got {r.status_code}"
+    assert "password" in str(r.data).lower()
+
+
+def test_signup_rejects_weak_password_sequential(client):
+    # Sequential numbers (e.g., "12345678") should be rejected
+    r = client.post("/api/auth/signup", {"email": "weak2@x.com", "password": "12345678"}, format="json")
+    assert r.status_code == 400, f"Password '12345678' should be rejected, got {r.status_code}"
+    assert "password" in str(r.data).lower()
+
+
+def test_signup_rejects_weak_password_purely_numeric(client):
+    # Purely numeric passwords should be rejected
+    r = client.post("/api/auth/signup", {"email": "weak3@x.com", "password": "99999999"}, format="json")
+    assert r.status_code == 400, f"Numeric password should be rejected, got {r.status_code}"
+
+
+def test_signup_rejects_common_password(client):
+    # Common passwords should be rejected (e.g., "password")
+    r = client.post("/api/auth/signup", {"email": "weak4@x.com", "password": "password"}, format="json")
+    assert r.status_code == 400, f"Password 'password' should be rejected as common, got {r.status_code}"
+
+
+def test_signup_accepts_strong_password(client):
+    # Strong passwords with mixed characters should pass
+    r = client.post("/api/auth/signup", {"email": "strong@x.com", "password": "MyStrongPass123!"}, format="json")
+    assert r.status_code == 201, f"Strong password should be accepted, got {r.status_code}: {r.data}"
