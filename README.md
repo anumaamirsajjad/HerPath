@@ -407,7 +407,7 @@ HerPath measures success with anonymous aggregate counts and voluntary follow-up
 
 ## 14. Running HerPath locally
 
-Requirements: Python 3.12+, Node 22+, PostgreSQL 16 (or Docker).
+Requirements: Python 3.12+, Node 24+ (npm 11, which the lockfile was written with), PostgreSQL 16 (or Docker).
 
 ```bash
 # Database
