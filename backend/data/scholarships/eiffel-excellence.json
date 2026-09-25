@@ -1,0 +1,104 @@
+{
+  "slug": "eiffel-excellence",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "waiver_possible",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "French Ministry for Europe and Foreign Affairs / Campus France",
+  "location": "abroad",
+  "country": "France",
+  "name_en": "France Excellence Eiffel Scholarship",
+  "name_ur": "فرانس ایکسیلنس ایفل اسکالرشپ",
+  "summary_en": "French government scholarship for international Master's and PhD students, applied for through the French university that admits you.",
+  "summary_ur": "بین الاقوامی ماسٹرز اور پی ایچ ڈی طالبات کے لیے فرانسیسی حکومت کی اسکالرشپ، جس کے لیے درخواست آپ کو داخلہ دینے والی فرانسیسی یونیورسٹی کے ذریعے جاتی ہے۔",
+  "coverage_en": "A monthly allowance, return travel, health insurance and cultural activities. Tuition is not included.",
+  "coverage_ur": "ماہانہ الاؤنس، واپسی سفر، صحت انشورنس اور ثقافتی سرگرمیاں۔ ٹیوشن شامل نہیں۔",
+  "who_for_en": "Non-French citizens with excellent academic results. Age 29 or under for Master's and 35 or under for PhD. Master's applicants must not already be studying in France.",
+  "who_for_ur": "بہترین تعلیمی نتائج والی غیر فرانسیسی شہری۔ ماسٹرز کے لیے عمر 29 سال یا کم اور پی ایچ ڈی کے لیے 35 سال یا کم۔ ماسٹرز کی امیدوار پہلے سے فرانس میں زیرِ تعلیم نہ ہوں۔",
+  "application_steps_en": "1. Apply for admission to a Master's or PhD at a French institution.\n2. Ask that institution to nominate you for Eiffel; you cannot apply directly.\n3. The institution submits your file to Campus France, usually between October and January.\n4. Results are published in spring.",
+  "application_steps_ur": "1. کسی فرانسیسی ادارے میں ماسٹرز یا پی ایچ ڈی کے لیے داخلے کی درخواست دیں۔\n2. اس ادارے سے ایفل کے لیے اپنی نامزدگی کی درخواست کریں؛ براہِ راست درخواست ممکن نہیں۔\n3. ادارہ عام طور پر اکتوبر سے جنوری کے درمیان آپ کی فائل کیمپس فرانس کو بھیجتا ہے۔\n4. نتائج موسمِ بہار میں آتے ہیں۔",
+  "family_summary_en": "Eiffel is the French government's scholarship. It is free to apply. It pays your daughter a monthly allowance, travel and health insurance while she studies in France; the university fee is separate.",
+  "family_summary_ur": "ایفل فرانسیسی حکومت کی اسکالرشپ ہے۔ درخواست دینا مفت ہے۔ یہ فرانس میں تعلیم کے دوران آپ کی بیٹی کو ماہانہ خرچ، سفر اور صحت انشورنس دیتی ہے؛ یونیورسٹی فیس الگ ہے۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "funding": "partial",
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters"
+  ],
+  "requirements": [
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 29,
+      "fixable": false,
+      "message": {
+        "en": "Age 29 or under for Master's applicants",
+        "ur": "ماسٹرز کے لیے عمر 29 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "targetLevel",
+        "rule": "==",
+        "value": "masters"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 35,
+      "fixable": false,
+      "message": {
+        "en": "Age 35 or under for PhD applicants",
+        "ur": "پی ایچ ڈی کے لیے عمر 35 سال یا کم"
+      },
+      "appliesWhen": {
+        "field": "targetLevel",
+        "rule": "==",
+        "value": "phd"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    }
+  ],
+  "official_link": "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
+  "usual_opening_month": 10,
+  "next_check": "2027-09-15"
+}

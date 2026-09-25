@@ -1,0 +1,120 @@
+{
+  "slug": "beef-undergraduate",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [
+    "Balochistan"
+  ],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [
+    "orphan",
+    "bps1to4"
+  ],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Balochistan Education Endowment Fund",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "BEEF Scholarship (Balochistan)",
+  "name_ur": "بیف اسکالرشپ (بلوچستان)",
+  "summary_en": "Scholarships from the Government of Balochistan, with PEEF, for Balochistan-domiciled students in government institutions.",
+  "summary_ur": "حکومتِ بلوچستان کی پیف کے ساتھ اسکالرشپس، سرکاری اداروں میں پڑھنے والی بلوچستان ڈومیسائل طالبات کے لیے۔",
+  "coverage_en": "Tuition and study costs for undergraduate students; thousands of awards are made each year.",
+  "coverage_ur": "انڈرگریجویٹ طالبات کے لیے ٹیوشن اور تعلیمی اخراجات؛ ہر سال ہزاروں اسکالرشپس دی جاتی ہیں۔",
+  "who_for_en": "Students with Balochistan domicile enrolled in a government institution, with at least 60% in their last degree, aged 23 or under at admission and no study gap of 2 years or more. Orphans, children of martyrs and of low-grade government employees get special consideration.",
+  "who_for_ur": "بلوچستان ڈومیسائل والی طالبات جو سرکاری ادارے میں داخل ہوں، آخری ڈگری میں کم از کم 60% نمبر ہوں، داخلے کے وقت عمر 23 سال یا کم ہو اور 2 سال یا زیادہ کا تعلیمی وقفہ نہ ہو۔ یتیموں، شہداء اور کم گریڈ سرکاری ملازمین کے بچوں کو خصوصی رعایت ملتی ہے۔",
+  "application_steps_en": "1. Watch beef.org.pk and your college or university for the annual call.\n2. Fill the BEEF application form and attach domicile, CNIC or B-Form, results and income proof.\n3. Submit through your institution before the deadline.",
+  "application_steps_ur": "1. سالانہ اعلان کے لیے beef.org.pk اور اپنے کالج یا یونیورسٹی پر نظر رکھیں۔\n2. بیف درخواست فارم بھریں اور ڈومیسائل، شناختی کارڈ یا بے فارم، نتائج اور آمدنی کا ثبوت لگائیں۔\n3. آخری تاریخ سے پہلے اپنے ادارے کے ذریعے جمع کروائیں۔",
+  "family_summary_en": "BEEF is run by the Government of Balochistan. It is free to apply. It supports your daughter's studies at a government college or university.",
+  "family_summary_ur": "بیف حکومتِ بلوچستان کا ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ سرکاری کالج یا یونیورسٹی میں آپ کی بیٹی کی تعلیم میں مدد کرتا ہے۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need",
+    "merit"
+  ],
+  "covers": [
+    "tuition"
+  ],
+  "funding": "partial",
+  "university_type": "public",
+  "required_documents": [
+    "cnic",
+    "domicile",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "domicile",
+      "rule": "in",
+      "value": [
+        "Balochistan"
+      ],
+      "fixable": false,
+      "message": {
+        "en": "Only for students with Balochistan domicile",
+        "ur": "صرف بلوچستان ڈومیسائل والی طالبات کے لیے"
+      }
+    },
+    {
+      "field": "interPercent",
+      "rule": ">=",
+      "value": 60,
+      "fixable": false,
+      "message": {
+        "en": "At least 60% in your last degree",
+        "ur": "آخری ڈگری میں کم از کم 60% نمبر"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 23,
+      "fixable": false,
+      "message": {
+        "en": "Age 23 or under at admission",
+        "ur": "داخلے کے وقت عمر 23 سال یا کم"
+      }
+    },
+    {
+      "field": "universityType",
+      "rule": "==",
+      "value": "public",
+      "fixable": false,
+      "message": {
+        "en": "Must study at a government institution",
+        "ur": "سرکاری ادارے میں تعلیم ضروری ہے"
+      }
+    },
+    {
+      "field": "documents.domicile",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "domicile-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Domicile certificate",
+        "ur": "ڈومیسائل سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    }
+  ],
+  "official_link": "https://beef.org.pk",
+  "usual_opening_month": null,
+  "next_check": "2026-12-15"
+}

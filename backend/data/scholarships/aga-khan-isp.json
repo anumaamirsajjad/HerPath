@@ -1,0 +1,98 @@
+{
+  "slug": "aga-khan-isp",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Aga Khan Foundation",
+  "location": "abroad",
+  "country": "Various",
+  "name_en": "Aga Khan Foundation International Scholarship",
+  "name_ur": "آغا خان فاؤنڈیشن انٹرنیشنل اسکالرشپ",
+  "summary_en": "Postgraduate funding for outstanding students from Pakistan and other countries who have no other way to pay, as half grant and half loan.",
+  "summary_ur": "پاکستان اور دیگر ممالک کی ان نمایاں طالبات کے لیے پوسٹ گریجویٹ فنڈنگ جن کے پاس خرچ کا کوئی اور ذریعہ نہ ہو، آدھی گرانٹ اور آدھا قرض۔",
+  "coverage_en": "Tuition and living expenses for a full-time Master's (priority) or PhD. Half is a grant and half is a loan, repaid starting six months after you finish.",
+  "coverage_ur": "کل وقتی ماسٹرز (ترجیح) یا پی ایچ ڈی کے لیے ٹیوشن اور رہائشی اخراجات۔ آدھی رقم گرانٹ اور آدھی قرض ہے، جو تعلیم ختم ہونے کے چھ ماہ بعد واپس کرنا شروع ہوتا ہے۔",
+  "who_for_en": "Pakistani students with an excellent academic record and genuine financial need, admitted to a reputable full-time postgraduate programme and entering the first year. Preference goes to applicants under 30.",
+  "who_for_ur": "بہترین تعلیمی ریکارڈ اور حقیقی مالی ضرورت والی پاکستانی طالبات، جنہیں کسی معتبر کل وقتی پوسٹ گریجویٹ پروگرام کے پہلے سال میں داخلہ مل چکا ہو۔ 30 سال سے کم عمر درخواست دہندگان کو ترجیح۔",
+  "application_steps_en": "1. Get admission to a full-time postgraduate programme first.\n2. When the cycle opens in early 2027, request the application from the Aga Khan Foundation office in Pakistan or the AKDN website.\n3. Submit the form with transcripts, admission letter, financial documents and references.\n4. Shortlisted applicants are interviewed.",
+  "application_steps_ur": "1. پہلے کسی کل وقتی پوسٹ گریجویٹ پروگرام میں داخلہ لیں۔\n2. 2027 کے آغاز میں سائیکل کھلنے پر پاکستان میں آغا خان فاؤنڈیشن کے دفتر یا اے کے ڈی این ویب سائٹ سے درخواست حاصل کریں۔\n3. ٹرانسکرپٹس، داخلہ خط، مالی دستاویزات اور حوالہ جات کے ساتھ فارم جمع کروائیں۔\n4. منتخب امیدواروں کا انٹرویو ہوتا ہے۔",
+  "family_summary_en": "The Aga Khan Foundation is an international development organisation. It is free to apply. It pays for your daughter's Master's or PhD; half is a grant and half is a loan she repays after graduating.",
+  "family_summary_ur": "آغا خان فاؤنڈیشن ایک بین الاقوامی ترقیاتی ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ آپ کی بیٹی کے ماسٹرز یا پی ایچ ڈی کا خرچ دیتی ہے؛ آدھی رقم عطیہ اور آدھی قرض ہے جو وہ تعلیم کے بعد واپس کرتی ہے۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "need",
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "funding": "partial",
+  "required_documents": [
+    "passport",
+    "hecAttestation",
+    "recommendationLetters",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    }
+  ],
+  "official_link": "https://the.akdn/en/what-we-do/developing-human-capacity/education/international-scholarships",
+  "usual_opening_month": 1,
+  "next_check": "2026-12-15"
+}

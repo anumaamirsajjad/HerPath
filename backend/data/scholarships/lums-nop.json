@@ -1,0 +1,85 @@
+{
+  "slug": "lums-nop",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Lahore University of Management Sciences (LUMS)",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "LUMS National Outreach Programme (NOP)",
+  "name_ur": "لمز نیشنل آؤٹ ریچ پروگرام (این او پی)",
+  "summary_en": "Fully funded undergraduate study at LUMS for talented students from low-income families anywhere in Pakistan. You apply in your first year of Intermediate.",
+  "summary_ur": "پاکستان بھر کے کم آمدنی والے خاندانوں کی باصلاحیت طالبات کے لیے لمز میں مکمل فنڈڈ انڈرگریجویٹ تعلیم۔ درخواست انٹرمیڈیٹ کے پہلے سال میں دی جاتی ہے۔",
+  "coverage_en": "Tuition, hostel accommodation with meals, a book allowance and a living allowance for the full degree.",
+  "coverage_ur": "پوری ڈگری کے لیے ٹیوشن، کھانے سمیت ہاسٹل، کتابوں کا الاؤنس اور رہائشی الاؤنس۔",
+  "who_for_en": "Students with at least 80% in Matric (or equivalent O Levels) who can show genuine financial need. There is no regional quota. Selected students attend a summer coaching session, then must still qualify for LUMS on merit.",
+  "who_for_ur": "میٹرک (یا مساوی او لیول) میں کم از کم 80% نمبر والی طالبات جو حقیقی مالی ضرورت ثابت کر سکیں۔ کوئی علاقائی کوٹہ نہیں۔ منتخب طالبات سمر کوچنگ سیشن میں شرکت کرتی ہیں، پھر لمز میں میرٹ پر داخلہ لینا ہوتا ہے۔",
+  "application_steps_en": "1. Apply to the NOP Summer Coaching Session while in your first year of Intermediate or A Levels.\n2. Shortlisted students are informed by email around May or June.\n3. Attend the coaching session at LUMS in July or August.\n4. Take the LUMS admission test and apply for undergraduate admission after Intermediate.",
+  "application_steps_ur": "1. انٹرمیڈیٹ یا اے لیول کے پہلے سال میں این او پی سمر کوچنگ سیشن کے لیے درخواست دیں۔\n2. منتخب طالبات کو عام طور پر مئی یا جون میں ای میل سے اطلاع دی جاتی ہے۔\n3. جولائی یا اگست میں لمز میں کوچنگ سیشن میں شرکت کریں۔\n4. انٹرمیڈیٹ کے بعد لمز داخلہ ٹیسٹ دیں اور انڈرگریجویٹ داخلے کے لیے درخواست دیں۔",
+  "family_summary_en": "LUMS is one of Pakistan's leading universities in Lahore. This programme is free to apply for and pays for fees, a hostel room with meals, books and a monthly allowance. Your daughter would live on the LUMS campus.",
+  "family_summary_ur": "لمز لاہور میں پاکستان کی صفِ اول کی یونیورسٹیوں میں سے ہے۔ اس پروگرام کے لیے درخواست مفت ہے اور یہ فیس، کھانے سمیت ہاسٹل، کتابوں اور ماہانہ خرچ کی ادائیگی کرتا ہے۔ آپ کی بیٹی لمز کیمپس پر رہے گی۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "need",
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "hostel",
+    "books"
+  ],
+  "funding": "full",
+  "university_type": "private",
+  "required_documents": [
+    "cnic",
+    "incomeCertificate"
+  ],
+  "requirements": [
+    {
+      "field": "matricPercent",
+      "rule": ">=",
+      "value": 80,
+      "fixable": false,
+      "message": {
+        "en": "At least 80% in Matric or equivalent",
+        "ur": "میٹرک یا مساوی میں کم از کم 80% نمبر"
+      }
+    },
+    {
+      "field": "documents.incomeCertificate",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "income-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Income certificate",
+        "ur": "آمدنی سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    }
+  ],
+  "official_link": "https://nop.lums.edu.pk",
+  "usual_opening_month": null,
+  "next_check": "2026-12-15"
+}

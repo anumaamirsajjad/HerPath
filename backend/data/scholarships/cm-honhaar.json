@@ -1,0 +1,95 @@
+{
+  "slug": "cm-honhaar",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [
+    "Punjab"
+  ],
+  "income_limit": 299999,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Government of Punjab",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "CM Punjab Honhaar Scholarship",
+  "name_ur": "سی ایم پنجاب ہونہار اسکالرشپ",
+  "summary_en": "Punjab government scholarship that pays 100% of university tuition for Punjab-domiciled undergraduates with good marks.",
+  "summary_ur": "حکومتِ پنجاب کی اسکالرشپ جو اچھے نمبر والی پنجاب ڈومیسائل انڈرگریجویٹ طالبات کی یونیورسٹی ٹیوشن 100% ادا کرتی ہے۔",
+  "coverage_en": "100% of the tuition fee for the remaining semesters of the degree.",
+  "coverage_ur": "ڈگری کے باقی سمسٹرز کی 100% ٹیوشن فیس۔",
+  "who_for_en": "Students with Punjab domicile in the 3rd to 8th semester of a BS (or 2nd to 5th year of MBBS/BDS) in selected disciplines, with family income under PKR 300,000 a month. Public institutions need at least 70% marks for science or 65% for arts (60% for medical and dental).",
+  "who_for_ur": "پنجاب ڈومیسائل والی طالبات جو منتخب شعبوں میں بی ایس کے تیسرے سے آٹھویں سمسٹر (یا ایم بی بی ایس/بی ڈی ایس کے دوسرے سے پانچویں سال) میں ہوں، اور خاندان کی ماہانہ آمدنی 3 لاکھ روپے سے کم ہو۔ سرکاری اداروں میں سائنس کے لیے کم از کم 70% اور آرٹس کے لیے 65% (میڈیکل اور ڈینٹل کے لیے 60%) نمبر درکار ہیں۔",
+  "application_steps_en": "1. Check that your university and discipline are on the Honhaar list when a new phase is announced.\n2. Apply online on the Punjab government's Honhaar portal.\n3. Upload domicile, CNIC or B-Form, transcripts and an income affidavit.\n4. Your university verifies your record before the award.",
+  "application_steps_ur": "1. نئے مرحلے کے اعلان پر دیکھیں کہ آپ کی یونیورسٹی اور شعبہ ہونہار فہرست میں شامل ہیں۔\n2. حکومتِ پنجاب کے ہونہار پورٹل پر آن لائن درخواست دیں۔\n3. ڈومیسائل، شناختی کارڈ یا بے فارم، ٹرانسکرپٹس اور آمدنی کا بیانِ حلفی اپ لوڈ کریں۔\n4. ایوارڈ سے پہلے آپ کی یونیورسٹی ریکارڈ کی تصدیق کرتی ہے۔",
+  "family_summary_en": "This scholarship is run by the Government of Punjab. It is free to apply. It pays your daughter's full university tuition while she studies in Punjab.",
+  "family_summary_ur": "یہ اسکالرشپ حکومتِ پنجاب چلاتی ہے۔ درخواست دینا مفت ہے۔ یہ پنجاب میں تعلیم کے دوران آپ کی بیٹی کی پوری یونیورسٹی ٹیوشن ادا کرتی ہے۔",
+  "levels": [
+    "undergraduate"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition"
+  ],
+  "funding": "tuition_only",
+  "university_type": "any",
+  "required_documents": [
+    "cnic",
+    "domicile"
+  ],
+  "requirements": [
+    {
+      "field": "domicile",
+      "rule": "in",
+      "value": [
+        "Punjab"
+      ],
+      "fixable": false,
+      "message": {
+        "en": "Only for students with Punjab domicile",
+        "ur": "صرف پنجاب ڈومیسائل والی طالبات کے لیے"
+      }
+    },
+    {
+      "field": "monthlyIncome",
+      "rule": "<=",
+      "value": 299999,
+      "fixable": false,
+      "message": {
+        "en": "Family income under PKR 300,000 a month",
+        "ur": "خاندان کی ماہانہ آمدنی 3 لاکھ روپے سے کم"
+      }
+    },
+    {
+      "field": "documents.domicile",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "domicile-certificate",
+      "daysNeeded": 14,
+      "message": {
+        "en": "Domicile certificate",
+        "ur": "ڈومیسائل سرٹیفکیٹ"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    }
+  ],
+  "official_link": "https://smu.punjab.gov.pk/honhaar-scholarships",
+  "usual_opening_month": null,
+  "next_check": "2026-12-15"
+}

@@ -10,14 +10,14 @@ pytestmark = pytest.mark.django_db
 def test_seed_is_idempotent_and_valid():
     call_command("seed")
     n = Scholarship.objects.count()
-    assert n == 17
+    assert n == 26
     assert Guide.objects.count() == 13
-    assert ChangeLog.objects.count() == 17
+    assert ChangeLog.objects.count() == 26
     for s in Scholarship.objects.all():
         assert validate_requirements(s.requirements) == [], s.slug
         assert s.family_summary_ur, f"{s.slug} needs family_summary_ur"
     call_command("seed")
-    assert Scholarship.objects.count() == n and ChangeLog.objects.count() == 17
+    assert Scholarship.objects.count() == n and ChangeLog.objects.count() == 26
 
 
 def test_every_fix_guide_exists():

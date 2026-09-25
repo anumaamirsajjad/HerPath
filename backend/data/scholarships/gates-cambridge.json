@@ -1,0 +1,97 @@
+{
+  "slug": "gates-cambridge",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "open",
+  "deadline": "2026-12-08",
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Gates Cambridge Trust",
+  "location": "abroad",
+  "country": "UK",
+  "name_en": "Gates Cambridge Scholarship",
+  "name_ur": "گیٹس کیمبرج اسکالرشپ",
+  "summary_en": "Full scholarships for outstanding students from outside the UK to take any full-time postgraduate course at the University of Cambridge.",
+  "summary_ur": "برطانیہ سے باہر کی نمایاں طالبات کے لیے کیمبرج یونیورسٹی میں کسی بھی کل وقتی پوسٹ گریجویٹ کورس کی مکمل اسکالرشپ۔",
+  "coverage_en": "Full tuition, a maintenance allowance (GBP 22,050 a year at the 2025-26 rate), economy airfare at the start and end, and UK visa and health surcharge costs.",
+  "coverage_ur": "پوری ٹیوشن، رہائشی الاؤنس (2025-26 کی شرح پر 22,050 پاؤنڈ سالانہ)، شروع اور آخر میں ہوائی ٹکٹ، اور برطانوی ویزا و صحت سرچارج کے اخراجات۔",
+  "who_for_en": "Citizens of any country outside the UK applying to a full-time postgraduate course at Cambridge. Selection looks at intellectual ability, reasons for the course, commitment to improving others' lives and leadership. About 55 awards go to non-US international students each year.",
+  "who_for_ur": "برطانیہ کے علاوہ کسی بھی ملک کی شہری جو کیمبرج میں کل وقتی پوسٹ گریجویٹ کورس کے لیے درخواست دے۔ انتخاب ذہنی صلاحیت، کورس کی وجوہات، دوسروں کی زندگی بہتر بنانے کے عزم اور قیادت پر ہوتا ہے۔ ہر سال تقریباً 55 اسکالرشپس غیر امریکی بین الاقوامی طالبات کو ملتی ہیں۔",
+  "application_steps_en": "1. Choose your Cambridge course and check its deadline (8 December 2026 or 6 January 2027 for non-US applicants).\n2. Apply for admission through the Cambridge postgraduate application and tick the Gates Cambridge box.\n3. Write the Gates Cambridge statement and arrange references.\n4. Shortlisted candidates are interviewed.",
+  "application_steps_ur": "1. کیمبرج کا کورس چنیں اور اس کی آخری تاریخ دیکھیں (غیر امریکی درخواست دہندگان کے لیے 8 دسمبر 2026 یا 6 جنوری 2027)۔\n2. کیمبرج پوسٹ گریجویٹ درخواست کے ذریعے داخلے کے لیے درخواست دیں اور گیٹس کیمبرج کا خانہ منتخب کریں۔\n3. گیٹس کیمبرج بیان لکھیں اور حوالہ جات کا انتظام کریں۔\n4. منتخب امیدواروں کا انٹرویو ہوتا ہے۔",
+  "family_summary_en": "Gates Cambridge is one of the world's most respected scholarships, at the University of Cambridge in England. It is free to apply. It pays for everything: fees, living costs, flights and visa.",
+  "family_summary_ur": "گیٹس کیمبرج انگلینڈ کی کیمبرج یونیورسٹی میں دنیا کی معتبر ترین اسکالرشپس میں سے ہے۔ درخواست دینا مفت ہے۔ یہ سب کچھ ادا کرتی ہے: فیس، رہائش، ہوائی ٹکٹ اور ویزا۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare"
+  ],
+  "funding": "full",
+  "required_documents": [
+    "passport",
+    "recommendationLetters",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    }
+  ],
+  "official_link": "https://www.gatescambridge.org/apply/timeline/",
+  "usual_opening_month": 9,
+  "next_check": "2027-08-15"
+}

@@ -4,14 +4,14 @@ page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
 
 await page.goto(`${B}/en/scholarships`);
 await page.waitForSelector("h3");
-ok((await page.locator("h3").count()) === 17, "list shows 17 scholarships");
+ok((await page.locator("h3").count()) === 26, "list shows 26 scholarships");
 await page.getByLabel("Abroad").check();
 const abroad = await page.locator("h3").count();
-ok(abroad === 11, `abroad filter → ${abroad}`);
+ok(abroad === 16, `abroad filter → ${abroad}`);
 await page.getByLabel("Women only").check();
-ok((await page.locator("h3").count()) === 0, "women-only narrows to 0 (no seed row)");
+ok((await page.locator("h3").count()) === 1, "women-only narrows to AAUW");
 await page.getByText("Clear filters").first().click();
-ok((await page.locator("h3").count()) === 17, "clear restores 17");
+ok((await page.locator("h3").count()) === 26, "clear restores 26");
 
 await page.goto(`${B}/ur/scholarships`);
 await page.waitForSelector("h3");
@@ -38,7 +38,7 @@ ok(true, "missing guide shows coming soon");
 
 await page.goto(`${B}/en/changelog`);
 await page.waitForSelector("main ol li");
-ok((await page.locator("main ol li").count()) >= 17, "changelog entries");
+ok((await page.locator("main ol li").count()) >= 26, "changelog entries");
 
 // Server rendering: content and link-preview tags are in the HTML itself, before any JavaScript runs.
 const html = await (await fetch(`${B}/ur/scholarships/peef-undergraduate`)).text();

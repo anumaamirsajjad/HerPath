@@ -1,0 +1,129 @@
+{
+  "slug": "australia-awards-pakistan",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "required",
+  "special_categories": [],
+  "status": "closed",
+  "deadline": "2026-04-30",
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Australian Government (DFAT)",
+  "location": "abroad",
+  "country": "Australia",
+  "name_en": "Australia Awards Scholarship (Pakistan)",
+  "name_ur": "آسٹریلیا ایوارڈز اسکالرشپ (پاکستان)",
+  "summary_en": "Fully funded Master's in Australia for Pakistani professionals. Applications from women are explicitly encouraged and prioritised.",
+  "summary_ur": "پاکستانی پیشہ ور افراد کے لیے آسٹریلیا میں مکمل فنڈڈ ماسٹرز۔ خواتین کی درخواستوں کی خاص حوصلہ افزائی اور ترجیح دی جاتی ہے۔",
+  "coverage_en": "Full tuition, return airfare, an establishment allowance, living expenses, overseas student health cover, and academic or English support if needed.",
+  "coverage_ur": "پوری ٹیوشن، واپسی ہوائی ٹکٹ، آبادکاری الاؤنس، رہائشی اخراجات، طلبہ کی صحت انشورنس، اور ضرورت پر تعلیمی یا انگریزی معاونت۔",
+  "who_for_en": "Pakistani citizens living in Pakistan, aged 45 or under, with 16 years of education and about five years of relevant work experience, and IELTS 6.5 (no band below 6.0) or equivalent. Priority areas include climate, women and girls' empowerment, agriculture and water, infrastructure and inclusive growth. Awardees must return to Pakistan for at least two years.",
+  "who_for_ur": "پاکستان میں رہنے والی 45 سال یا کم عمر پاکستانی شہری، 16 سالہ تعلیم اور تقریباً پانچ سال متعلقہ کام کے تجربے کے ساتھ، اور آئیلٹس 6.5 (کوئی بینڈ 6.0 سے کم نہیں) یا مساوی۔ ترجیحی شعبوں میں ماحولیات، خواتین و لڑکیوں کی خودمختاری، زراعت و پانی، بنیادی ڈھانچہ اور جامع ترقی شامل ہیں۔ کامیاب امیدواروں کو کم از کم دو سال کے لیے پاکستان واپس آنا ہوتا ہے۔",
+  "application_steps_en": "1. Apply online on the OASIS portal when the round opens (1 February to 30 April for the 2027 intake).\n2. Upload your degrees, work evidence, CNIC or passport and English test result.\n3. Shortlisted applicants are interviewed; results come late in the year.",
+  "application_steps_ur": "1. راؤنڈ کھلنے پر اوایسس پورٹل پر آن لائن درخواست دیں (2027 کے داخلے کے لیے 1 فروری سے 30 اپریل)۔\n2. ڈگریاں، کام کا ثبوت، شناختی کارڈ یا پاسپورٹ اور انگریزی ٹیسٹ کا نتیجہ اپ لوڈ کریں۔\n3. منتخب امیدواروں کا انٹرویو ہوتا ہے؛ نتائج سال کے آخر میں آتے ہیں۔",
+  "family_summary_en": "Australia Awards are given by the Government of Australia. It is free to apply. They pay for everything: fees, flights, living costs and health cover. Your daughter studies in Australia and comes back to Pakistan for at least two years afterwards.",
+  "family_summary_ur": "آسٹریلیا ایوارڈز حکومتِ آسٹریلیا دیتی ہے۔ درخواست دینا مفت ہے۔ یہ سب کچھ ادا کرتی ہے: فیس، ہوائی ٹکٹ، رہائش اور صحت انشورنس۔ آپ کی بیٹی آسٹریلیا میں پڑھے گی اور بعد میں کم از کم دو سال کے لیے پاکستان واپس آئے گی۔",
+  "levels": [
+    "masters"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend",
+    "airfare",
+    "insurance"
+  ],
+  "funding": "full",
+  "required_documents": [
+    "cnic",
+    "passport",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "workYears",
+      "rule": ">=",
+      "value": 5,
+      "fixable": true,
+      "fixGuide": "work-experience",
+      "daysNeeded": 365,
+      "message": {
+        "en": "About five years of relevant work experience",
+        "ur": "تقریباً پانچ سال متعلقہ کام کا تجربہ"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 45,
+      "fixable": false,
+      "message": {
+        "en": "Age 45 or under when applying",
+        "ur": "درخواست کے وقت عمر 45 سال یا کم"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.5,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.5",
+            "ur": "آئیلٹس 6.5"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 79,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 79",
+            "ur": "ٹوفل 79"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.5 or TOEFL 79",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.5 یا ٹوفل 79"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    }
+  ],
+  "official_link": "https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries/pakistan-information-for-intake",
+  "usual_opening_month": 2,
+  "next_check": "2027-01-15"
+}

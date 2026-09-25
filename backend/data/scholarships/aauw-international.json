@@ -1,0 +1,125 @@
+{
+  "slug": "aauw-international",
+  "women_only": true,
+  "female_quota": false,
+  "allows_other_scholarship": true,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "waiver_possible",
+  "special_categories": [],
+  "status": "closed",
+  "deadline": "2026-09-17",
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "American Association of University Women (AAUW)",
+  "location": "abroad",
+  "country": "USA",
+  "name_en": "AAUW International Fellowship (women in STEM)",
+  "name_ur": "اے اے یو ڈبلیو انٹرنیشنل فیلوشپ (سائنس و ٹیکنالوجی میں خواتین)",
+  "summary_en": "Fellowships for women from outside the US studying a STEM Master's or doctorate in the United States.",
+  "summary_ur": "امریکہ سے باہر کی ان خواتین کے لیے فیلوشپ جو امریکہ میں سائنس، ٹیکنالوجی، انجینئرنگ یا ریاضی میں ماسٹرز یا ڈاکٹریٹ کر رہی ہوں۔",
+  "coverage_en": "USD 20,000 for a Master's or USD 25,000 for a doctorate, paid in two instalments. It helps with costs but is not a full scholarship.",
+  "coverage_ur": "ماسٹرز کے لیے 20,000 امریکی ڈالر یا ڈاکٹریٹ کے لیے 25,000 ڈالر، دو قسطوں میں۔ یہ اخراجات میں مدد ہے، مکمل اسکالرشپ نہیں۔",
+  "who_for_en": "Women who are not US citizens or permanent residents, admitted to or enrolled in their first Master's or doctorate in a STEM field at a US-accredited institution, with a bachelor's-equivalent degree and GPA of at least 3.5. English: TOEFL 79, IELTS 6.5, or an English-medium degree.",
+  "who_for_ur": "وہ خواتین جو امریکی شہری یا مستقل رہائشی نہ ہوں، امریکی تسلیم شدہ ادارے میں سائنس و ٹیکنالوجی کے پہلے ماسٹرز یا ڈاکٹریٹ میں داخل ہوں، بیچلرز کے مساوی ڈگری اور کم از کم 3.5 جی پی اے رکھتی ہوں۔ انگریزی: ٹوفل 79، آئیلٹس 6.5، یا انگریزی میڈیم ڈگری۔",
+  "application_steps_en": "1. Get admission to a STEM Master's or doctoral programme in the US.\n2. Apply online on the AAUW website when applications open in August.\n3. Submit transcripts, proof of English, essays and recommendations before the September deadline.\n4. Results are announced the following March.",
+  "application_steps_ur": "1. امریکہ میں سائنس و ٹیکنالوجی کے ماسٹرز یا ڈاکٹریٹ میں داخلہ لیں۔\n2. اگست میں درخواستیں کھلنے پر اے اے یو ڈبلیو ویب سائٹ پر آن لائن درخواست دیں۔\n3. ستمبر کی آخری تاریخ سے پہلے ٹرانسکرپٹس، انگریزی کا ثبوت، مضامین اور سفارشات جمع کروائیں۔\n4. نتائج اگلے مارچ میں آتے ہیں۔",
+  "family_summary_en": "AAUW is a long-established American organisation that supports women's education. It is free to apply. It gives your daughter money towards her science or technology degree in the United States.",
+  "family_summary_ur": "اے اے یو ڈبلیو خواتین کی تعلیم کی مدد کرنے والا ایک پرانا امریکی ادارہ ہے۔ درخواست دینا مفت ہے۔ یہ امریکہ میں سائنس یا ٹیکنالوجی کی ڈگری کے لیے آپ کی بیٹی کو رقم دیتا ہے۔",
+  "levels": [
+    "masters",
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "stipend"
+  ],
+  "funding": "stipend_only",
+  "required_documents": [
+    "passport",
+    "recommendationLetters",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 3.5,
+      "fixable": false,
+      "message": {
+        "en": "GPA of at least 3.5 in your highest degree",
+        "ur": "اعلیٰ ترین ڈگری میں کم از کم 3.5 جی پی اے"
+      }
+    },
+    {
+      "anyOf": [
+        {
+          "field": "tests.ielts",
+          "rule": ">=",
+          "value": 6.5,
+          "fixable": true,
+          "fixGuide": "ielts",
+          "daysNeeded": 60,
+          "message": {
+            "en": "IELTS 6.5",
+            "ur": "آئیلٹس 6.5"
+          }
+        },
+        {
+          "field": "tests.toefl",
+          "rule": ">=",
+          "value": 79,
+          "fixable": true,
+          "fixGuide": "toefl",
+          "daysNeeded": 60,
+          "message": {
+            "en": "TOEFL 79",
+            "ur": "ٹوفل 79"
+          }
+        },
+        {
+          "field": "documents.englishMediumLetter",
+          "rule": "has",
+          "fixable": true,
+          "fixGuide": "english-medium-letter",
+          "daysNeeded": 10,
+          "message": {
+            "en": "English-medium instruction letter",
+            "ur": "انگریزی میڈیم تعلیم کا خط"
+          }
+        }
+      ],
+      "message": {
+        "en": "Proof of English: IELTS 6.5 or TOEFL 79, or an English-medium degree",
+        "ur": "انگریزی کا ثبوت: آئیلٹس 6.5 یا ٹوفل 79، یا انگریزی میڈیم ڈگری"
+      }
+    },
+    {
+      "field": "documents.recommendationLetters",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "recommendation-letters",
+      "daysNeeded": 21,
+      "message": {
+        "en": "Recommendation letters",
+        "ur": "سفارشی خطوط"
+      }
+    },
+    {
+      "field": "documents.passport",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "passport",
+      "daysNeeded": 30,
+      "message": {
+        "en": "Valid passport",
+        "ur": "درست پاسپورٹ"
+      }
+    }
+  ],
+  "official_link": "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships/",
+  "usual_opening_month": 8,
+  "next_check": "2027-07-15"
+}

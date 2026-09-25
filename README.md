@@ -210,13 +210,14 @@ Bookmark scholarships and see a countdown to each deadline. When two saved schol
 ## 5. Scholarship Data
 
 ### 5.1 Coverage
-HerPath's database is **hand-curated and verified**, with every listing linked to its official source and marked with a "last verified" date. Version 1 launches with 17 scholarships, chosen for the number of girls they can reach:
+HerPath's database is **hand-curated and verified**, with every listing linked to its official source and marked with a "last verified" date. Version 1 launches with 26 scholarships, chosen for the number of girls they can reach:
 
 **In Pakistan**
 - HEC Need-Based Scholarships
 - Benazir Undergraduate Scholarship (formerly Ehsaas), which reserves **50% of scholarships for female students** ([PASS](https://pass.gov.pk/Detail/OTgzMGI5NzgtNjM0NC00ODM2LWIzMWUtOGEyZDUyODhhZjdl))
-- Provincial endowment funds such as the Punjab Educational Endowment Fund (PEEF) and Sindh Educational Endowment Fund
-- University-level merit and need-based scholarships
+- Provincial scholarships: Punjab Educational Endowment Fund (PEEF), Sindh Educational Endowment Fund, Balochistan Education Endowment Fund (BEEF) and the CM Punjab Honhaar Scholarship
+- University-level merit and need-based scholarships, including the LUMS National Outreach Programme and NUST need-based aid
+- HEC Indigenous PhD Fellowship for doctoral study in Pakistan
 - Interest-free education loan programs
 
 **Abroad**
@@ -229,6 +230,9 @@ HerPath's database is **hand-curated and verified**, with every listing linked t
 - Erasmus Mundus (Europe)
 - Global Korea Scholarship (South Korea)
 - MEXT (Japan)
+- Gates Cambridge (UK), France Excellence Eiffel (France) and Australia Awards Pakistan, which prioritises women
+- AAUW International Fellowships (USA), for women in STEM
+- Aga Khan Foundation International Scholarship (half grant, half loan)
 - HEC overseas scholarship programs
 
 ### 5.2 Why verification matters
@@ -417,7 +421,7 @@ cd HerPath
 docker compose up --build
 ```
 
-This starts PostgreSQL, the Django API and the Next.js site, applies migrations and loads the 17 scholarships and 13 guides.
+This starts PostgreSQL, the Django API and the Next.js site, applies migrations and loads the 26 scholarships and 13 guides.
 
 | What | Where |
 |---|---|
@@ -451,7 +455,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 export DEBUG=1 DATABASE_URL=postgres://postgres:postgres@localhost:5432/herpath
 python manage.py migrate
-python manage.py seed              # 17 scholarships, 13 fix-it guides
+python manage.py seed              # 26 scholarships, 13 fix-it guides
 python manage.py createsuperuser   # for /admin/
 python manage.py runserver
 pytest -q

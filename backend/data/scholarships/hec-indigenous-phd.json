@@ -1,0 +1,110 @@
+{
+  "slug": "hec-indigenous-phd",
+  "women_only": false,
+  "female_quota": false,
+  "allows_other_scholarship": false,
+  "provinces": [],
+  "income_limit": null,
+  "test_requirement": "none",
+  "special_categories": [],
+  "status": "expected",
+  "deadline": null,
+  "last_verified": "2026-09-25",
+  "is_published": true,
+  "provider": "Higher Education Commission",
+  "location": "pakistan",
+  "country": "Pakistan",
+  "name_en": "HEC Indigenous PhD Fellowship",
+  "name_ur": "ایچ ای سی انڈیجینس پی ایچ ڈی فیلوشپ",
+  "summary_en": "HEC fellowships for MS leading to PhD, or PhD, at universities in Pakistan.",
+  "summary_ur": "پاکستان کی یونیورسٹیوں میں ایم ایس سے پی ایچ ڈی یا پی ایچ ڈی کے لیے ایچ ای سی فیلوشپس۔",
+  "coverage_en": "Tuition and a monthly stipend while you study for your MS/PhD in Pakistan. Check the current phase for amounts.",
+  "coverage_ur": "پاکستان میں ایم ایس/پی ایچ ڈی کے دوران ٹیوشن اور ماہانہ وظیفہ۔ رقم کے لیے موجودہ مرحلہ دیکھیں۔",
+  "who_for_en": "Pakistani or AJK nationals with 16 years of education and no third division in their career. Direct PhD applicants need CGPA 3.0 (or first division) in MS/MPhil. Age limit 35, or 40 for public-sector faculty and employees. You cannot hold another HEC or government scholarship at the same time.",
+  "who_for_ur": "16 سالہ تعلیم اور پورے تعلیمی سفر میں تھرڈ ڈویژن کے بغیر پاکستانی یا آزاد کشمیر کی شہری۔ براہِ راست پی ایچ ڈی کے لیے ایم ایس/ایم فل میں سی جی پی اے 3.0 (یا فرسٹ ڈویژن)۔ عمر کی حد 35 سال، سرکاری اساتذہ اور ملازمین کے لیے 40 سال۔ ساتھ میں کوئی اور ایچ ای سی یا سرکاری اسکالرشپ نہیں رکھ سکتیں۔",
+  "application_steps_en": "1. Watch the HEC scholarships page for the next Indigenous PhD phase.\n2. Apply on the HEC e-portal and upload your degrees, CNIC and domicile.\n3. Take the test the call asks for, then join an MS/PhD programme at an HEC-recognised university.",
+  "application_steps_ur": "1. اگلے انڈیجینس پی ایچ ڈی مرحلے کے لیے ایچ ای سی اسکالرشپ صفحہ دیکھتی رہیں۔\n2. ایچ ای سی ای پورٹل پر درخواست دیں اور ڈگریاں، شناختی کارڈ اور ڈومیسائل اپ لوڈ کریں۔\n3. اعلان میں مانگا گیا ٹیسٹ دیں، پھر ایچ ای سی کی تسلیم شدہ یونیورسٹی میں ایم ایس/پی ایچ ڈی میں داخلہ لیں۔",
+  "family_summary_en": "This is a Government of Pakistan fellowship from the Higher Education Commission. It is free to apply. It pays for your daughter's PhD studies at a university in Pakistan, so she can study close to home.",
+  "family_summary_ur": "یہ ہائر ایجوکیشن کمیشن کی حکومتِ پاکستان کی فیلوشپ ہے۔ درخواست دینا مفت ہے۔ یہ پاکستان کی یونیورسٹی میں آپ کی بیٹی کی پی ایچ ڈی کا خرچ دیتی ہے، تاکہ وہ گھر کے قریب پڑھ سکے۔",
+  "levels": [
+    "phd"
+  ],
+  "types": [
+    "merit"
+  ],
+  "covers": [
+    "tuition",
+    "stipend"
+  ],
+  "funding": "full",
+  "university_type": "any",
+  "required_documents": [
+    "cnic",
+    "domicile",
+    "hecAttestation"
+  ],
+  "requirements": [
+    {
+      "field": "yearsOfEducation",
+      "rule": ">=",
+      "value": 16,
+      "fixable": true,
+      "fixGuide": "sixteen-years",
+      "daysNeeded": 730,
+      "message": {
+        "en": "16 years of education required (BS or Master's)",
+        "ur": "16 سالہ تعلیم درکار ہے (بی ایس یا ماسٹرز)"
+      }
+    },
+    {
+      "field": "age",
+      "rule": "<=",
+      "value": 35,
+      "fixable": false,
+      "message": {
+        "en": "Age 35 or under (40 for public-sector faculty and employees)",
+        "ur": "عمر 35 سال یا کم (سرکاری اساتذہ اور ملازمین کے لیے 40)"
+      }
+    },
+    {
+      "field": "cgpa",
+      "rule": ">=",
+      "value": 3.0,
+      "fixable": false,
+      "message": {
+        "en": "CGPA 3.0 or first division in MS/MPhil for direct PhD",
+        "ur": "براہِ راست پی ایچ ڈی کے لیے ایم ایس/ایم فل میں سی جی پی اے 3.0 یا فرسٹ ڈویژن"
+      },
+      "appliesWhen": {
+        "field": "level",
+        "rule": "==",
+        "value": "masters"
+      }
+    },
+    {
+      "field": "documents.hecAttestation",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "hec-attestation",
+      "daysNeeded": 21,
+      "message": {
+        "en": "HEC-attested degree",
+        "ur": "ایچ ای سی سے تصدیق شدہ ڈگری"
+      }
+    },
+    {
+      "field": "documents.cnic",
+      "rule": "has",
+      "fixable": true,
+      "fixGuide": "cnic-bform",
+      "daysNeeded": 7,
+      "message": {
+        "en": "CNIC or B-Form",
+        "ur": "شناختی کارڈ یا بے فارم"
+      }
+    }
+  ],
+  "official_link": "https://www.hec.gov.pk/english/scholarshipsgrants/IPHDFP5000F/Pages/Eligibility-Criteria.aspx",
+  "usual_opening_month": null,
+  "next_check": "2026-12-15"
+}
