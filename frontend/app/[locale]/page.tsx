@@ -38,9 +38,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   ];
 
   return (
-    <div className="space-y-20">
-      {/* Hero: the one orchestrated moment on the site. */}
-      <section className="pt-4">
+    <div className="-mt-8">
+      {/* Hero: the one orchestrated moment on the site, on embroidered cloth. */}
+      <section className="bleed cloth overflow-hidden">
+        <Bagh className="pointer-events-none absolute -end-10 top-24 hidden h-56 w-56 rotate-12 opacity-20 lg:block" />
+        <Bagh className="pointer-events-none absolute -start-8 bottom-40 hidden h-28 w-28 -rotate-6 opacity-15 lg:block" petal="#1e8a5b" heart="#1f2a6b" />
+        <div className="mx-auto max-w-5xl px-4 pb-16 pt-12">
         <h1 className="font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight text-indigo sm:text-6xl">
           <span className="block">{t("line1")}</span>
           <span className="block text-rani">{t("line2")}</span>
@@ -63,14 +66,16 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </ol>
         </div>
         {n && n.total > 0 && (
-          <p className="mt-10 rounded-2xl bg-indigo px-5 py-4 text-lg text-white">
+          <p className="mt-10 rounded-2xl bg-indigo px-5 py-4 text-lg text-white shadow-[var(--shadow-lift)]">
             {t("numbers", { total: n.total, pk: n.pk, abroad: n.abroad, full: n.full })}
           </p>
         )}
+        </div>
       </section>
 
       {/* Worked example of the gap analysis, the heart of the product. */}
-      <section className="grid items-start gap-8 md:grid-cols-[1fr_1.1fr]">
+      <section className="bleed border-y border-line bg-card">
+      <div className="mx-auto max-w-5xl px-4 grid items-start gap-8 py-16 md:grid-cols-[1fr_1.1fr]">
         <div>
           <h2 className="font-display text-3xl font-bold tracking-tight text-indigo">{t("exampleTitle")}</h2>
           <p className="mt-3 text-muted">{t("exampleLead")}</p>
@@ -101,10 +106,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             ))}
           </ul>
         </div>
+      </div>
       </section>
 
       {/* Families and teachers: the people who decide and the people who guide. */}
-      <section className="grid gap-5 md:grid-cols-2">
+      <section className="grid gap-5 py-16 md:grid-cols-2">
         <div className={`${card} relative overflow-hidden p-6`}>
           <Bagh className="absolute -end-4 -top-4 h-24 w-24 opacity-90" />
           <Users className="h-8 w-8 text-rani" />
@@ -123,19 +129,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      <section>
+      <section className="bleed bg-indigo-soft">
+      <div className="mx-auto max-w-5xl px-4 py-16">
         <h2 className="font-display text-3xl font-bold tracking-tight text-indigo">{t("promiseTitle")}</h2>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
           {([[Gift, "free"], [Scale, "rules"], [CloudOff, "docs"], [BadgeCheck, "verified"]] as const).map(([Icon, k]) => (
             <li key={k} className="flex gap-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-saffron-soft text-[#8a5a00]"><Icon className="h-5 w-5" /></span>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-card text-rani shadow-[var(--shadow-lift)]"><Icon className="h-5 w-5" /></span>
               <p className="pt-2">{t(`promise.${k}`)}</p>
             </li>
           ))}
         </ul>
+      </div>
       </section>
 
-      <section className="overflow-hidden rounded-[2rem] bg-indigo text-white">
+      <section className="pt-16">
+      <div className="overflow-hidden rounded-[2rem] bg-indigo text-white">
         <Hem className="h-3 w-full" />
         <div className="flex flex-col items-start gap-5 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between">
           <div>
@@ -144,6 +153,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
           <Link href="/signup" className={btn.accent}>{t("start")}</Link>
         </div>
+      </div>
       </section>
     </div>
   );
