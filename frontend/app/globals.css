@@ -1,17 +1,73 @@
 @import "tailwindcss";
 
+/* HerPath tokens: phulkari embroidery colours on a cool paper ground. */
 @theme inline {
-  --font-latin: var(--font-inter), system-ui, sans-serif;
+  --color-paper: #f7f6fb;
+  --color-card: #ffffff;
+  --color-ink: #1b1d2e;
+  --color-muted: #5b5f78;
+  --color-line: #e3e1ee;
+  --color-indigo: #1f2a6b;
+  --color-indigo-soft: #e8eaf7;
+  --color-saffron: #f2a516;
+  --color-saffron-soft: #fdf1d6;
+  --color-rani: #d6246e;
+  --color-rani-soft: #fbe4ee;
+  --color-leaf: #1e8a5b;
+  --color-leaf-soft: #dff3e9;
+  --color-sky: #3b6fd8;
+  --color-sky-soft: #e3ecfb;
+
+  --font-display: var(--font-bricolage), var(--font-atkinson), system-ui, sans-serif;
+  --font-latin: var(--font-atkinson), system-ui, sans-serif;
   --font-urdu: var(--font-naskh), serif;
+
+  --radius-card: 1.25rem;
+  --shadow-lift: 0 1px 2px rgb(31 42 107 / 0.06), 0 8px 24px -12px rgb(31 42 107 / 0.18);
 }
 
+html { scroll-behavior: smooth; }
 body {
-  background: #ffffff;
-  color: #171717;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
 }
+/* Urdu: Naskh everywhere (headings too), with room for the tall letterforms. */
+html[lang="ur"] body { font-family: var(--font-urdu); line-height: 2; }
+html[lang="ur"] .font-display { font-family: var(--font-urdu); letter-spacing: 0; }
 
-article h2 { @apply mt-4 mb-1 text-lg font-semibold; }
-article h3 { @apply mt-3 font-semibold; }
-article ul { @apply list-disc ps-5; }
-article ol { @apply list-decimal ps-5; }
-article p { @apply my-2; }
+::selection { background: var(--color-saffron-soft); }
+:focus-visible { outline: 3px solid var(--color-saffron); outline-offset: 2px; border-radius: 6px; }
+
+/* Long-form guide and scholarship text. */
+.prose-hp { max-width: 68ch; }
+.prose-hp h2 { margin: 1.75rem 0 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--color-indigo); }
+.prose-hp h3 { margin: 1.25rem 0 0.4rem; font-weight: 700; }
+.prose-hp p { margin: 0.6rem 0; }
+.prose-hp ul { list-style: disc; padding-inline-start: 1.25rem; margin: 0.6rem 0; }
+.prose-hp ol { list-style: decimal; padding-inline-start: 1.25rem; margin: 0.6rem 0; }
+.prose-hp li { margin: 0.3rem 0; }
+.prose-hp li::marker { color: var(--color-rani); }
+.prose-hp strong { color: var(--color-indigo); }
+
+/* The stitch: a dashed thread used as the brand's line. */
+.stitch { stroke-dasharray: 10 8; stroke-linecap: round; }
+
+/* The one orchestrated moment: the hero thread stitches itself in. */
+@keyframes sew { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+@keyframes knot { 0% { transform: scale(0); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+.sew { stroke-dasharray: var(--len); animation: sew 2.4s cubic-bezier(.6,.05,.3,1) .2s both; }
+.knot { transform-box: fill-box; transform-origin: center; animation: knot .45s ease-out both; }
+
+/* Responses to taps: small, quick, and only where something changed. */
+@keyframes pop { 0% { transform: scale(.6); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+.pop { animation: pop .22s ease-out both; }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+.rise { animation: rise .28s ease-out both; }
+@keyframes shimmer { from { background-position: -200% 0; } to { background-position: 200% 0; } }
+.skeleton { background: linear-gradient(90deg, #eceaf4 25%, #f6f5fb 50%, #eceaf4 75%); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; border-radius: .75rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .sew { stroke-dasharray: none; }
+}

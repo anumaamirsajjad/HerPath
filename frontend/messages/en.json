@@ -10,14 +10,63 @@
     "logout": "Log out",
     "settings": "Settings",
     "changelog": "Change log",
-    "language": "اردو"
+    "language": "اردو",
+    "guides": "Guides",
+    "home": "Home",
+    "menu": "Menu",
+    "explore": "Explore"
   },
   "landing": {
     "title": "Know where you stand. Know what's missing. Know your next step.",
-    "subtitle": "HerPath checks Pakistani and foreign scholarships against your profile and shows exactly what you need to do next.",
+    "subtitle": "HerPath checks Pakistani and foreign scholarships against your profile, shows exactly which requirements you meet, and gives you a dated plan for the rest.",
     "browse": "Browse scholarships",
-    "start": "Create my profile (3 minutes)",
-    "free": "Free. No documents uploaded. Built for girls in Pakistan."
+    "start": "Check my eligibility",
+    "free": "Free. No documents uploaded. Built for girls in Pakistan.",
+    "line1": "Know where you stand.",
+    "line2": "Know what's missing.",
+    "line3": "Know your next step.",
+    "steps": [
+      "Tell us about you in about 3 minutes",
+      "See what you meet and what's missing",
+      "Fix each gap with a step-by-step guide",
+      "Apply before the deadline"
+    ],
+    "numbers": "{total} scholarships to check today: {pk} in Pakistan and {abroad} abroad, {full} of them fully funded.",
+    "exampleTitle": "Not a list. A plan.",
+    "exampleLead": "Every scholarship is checked requirement by requirement. This is what a graduate with a 2-year BA sees for Fulbright.",
+    "example": {
+      "name": "Fulbright Master's (USA)",
+      "met": "3 of 5 requirements met",
+      "r1": "Pakistani citizen living in Pakistan",
+      "r2": "Field of study eligible",
+      "r3": "16 years of education needed. You have 14.",
+      "f3": "Fix: complete a BS or a 2-year Master's first.",
+      "r4": "GRE General score needed",
+      "f4": "Fix: free GRE preparation guide. Start by 15 January.",
+      "r5": "Willing to return to Pakistan after study"
+    },
+    "legendTitle": "Every requirement gets one of four answers",
+    "legend": {
+      "met": "You already meet it.",
+      "fixable": "You can fix it before the deadline.",
+      "later": "You can fix it, but for the next cycle.",
+      "no": "A fixed rule you can't change, said plainly."
+    },
+    "familyTitle": "A page your parents can read in Urdu",
+    "familyText": "One tap makes a simple page for your family: what the scholarship pays for in rupees, that applying is free, who runs it, and where you would live. Share it on WhatsApp.",
+    "familyCta": "See an example",
+    "teacherTitle": "For teachers and counsellors",
+    "teacherText": "Sit with a student, fill her profile in a few minutes on your phone, and send her results on WhatsApp. Our guides cover income certificates, domicile, HEC attestation, passports and more.",
+    "teacherCta": "Read the guides",
+    "promiseTitle": "Built to be trusted",
+    "promise": {
+      "free": "Free, always. No one pays to find or apply.",
+      "rules": "No AI. Clear rules you can read on every page.",
+      "docs": "No documents uploaded. Only a yes or no for each one.",
+      "verified": "Every listing links to its official source and shows when it was last checked."
+    },
+    "finalTitle": "Your first step takes three minutes",
+    "finalText": "Create a free account, answer a few questions, and see which scholarships you can apply for."
   },
   "auth": {
     "email": "Email",
@@ -30,7 +79,10 @@
     "resetSent": "If that email exists, a reset link is on its way.",
     "resetDone": "Password changed. You can log in now.",
     "noAccount": "No account yet?",
-    "haveAccount": "Already have an account?"
+    "haveAccount": "Already have an account?",
+    "loginLead": "Welcome back. Your profile and results are waiting.",
+    "signupLead": "Free, and takes about three minutes. We only ask for an email and a password.",
+    "forgotLead": "Enter your account email and we'll send you a link to choose a new password."
   },
   "filters": {
     "title": "Filters",
@@ -60,7 +112,7 @@
     "test": "English test",
     "required": "Required",
     "waiver_possible": "Waiver possible",
-    "none": "No test",
+    "none": "No scholarships match these filters.",
     "women": "For women",
     "women_only": "Women only",
     "female_quota": "Female quota",
@@ -72,7 +124,10 @@
     "myIncome": "Within my income",
     "myCategories": "My special categories",
     "clear": "Clear filters",
-    "count": "{count} scholarships"
+    "count": "{count} scholarships",
+    "search": "Search by name, organisation or country",
+    "show": "Show {count} scholarships",
+    "forYou": "For you"
   },
   "scholarship": {
     "covers": "What it covers",
@@ -112,7 +167,18 @@
     "estimated": "Next deadline expected around {date} (estimated from the usual opening month)",
     "days": "~{count} days",
     "reportPublic": "Or report it on our public issue tracker",
-    "readyNote": "You meet every requirement. Apply as soon as it opens."
+    "readyNote": "You meet every requirement. Apply as soon as it opens.",
+    "funding": "Funding",
+    "when": "When",
+    "combine": "Other scholarships",
+    "combineYes": "Can be combined",
+    "combineNo": "Can't be combined",
+    "back": "All scholarships",
+    "levels": "For",
+    "yourMatch": "Your match",
+    "options": "Any one of these",
+    "allOf": "All of these",
+    "loginToCheckCta": "Log in to check"
   },
   "status": {
     "met": "Met",
@@ -175,12 +241,29 @@
       "preferredCountries": "Preferred countries (comma separated)",
       "fields": "Fields of interest (comma separated)",
       "targetLevel": "What do you want to study next?"
+    },
+    "lead": "Answer what you can. Every answer makes your results more exact, and you can change them anytime.",
+    "progress": "{done} of {total} sections started",
+    "stepOf": "Step {n} of {total}",
+    "hints": {
+      "personal": "Where you're from and what you want to study next decide most eligibility rules.",
+      "school": "Your Matric and Intermediate results.",
+      "university": "Your degree so far, if you have one.",
+      "tests": "Scores for tests you've already taken. Leave the rest empty.",
+      "finances": "Many need-based scholarships have an income limit.",
+      "experience": "Some Master's scholarships ask for work experience.",
+      "documents": "Tick what you already have. You don't upload anything.",
+      "preferences": "Helps you focus on scholarships that suit you."
     }
   },
   "checklist": {
     "title": "My documents",
     "unlocks": "Get this and {count} more scholarships open up",
-    "have": "I have this"
+    "have": "I have this",
+    "lead": "Tick the documents you already have. HerPath shows which missing one opens the most scholarships, so you know what to get first.",
+    "progress": "{have} of {total} documents ready",
+    "startHere": "Start here",
+    "unlocksShort": "+{count} scholarships"
   },
   "documents": {
     "cnic": "CNIC or B-Form",
@@ -199,7 +282,11 @@
     "noDeadline": "No deadline announced yet",
     "conflict": "These two cannot be held together: {a} and {b}",
     "empty": "You have not saved anything yet.",
-    "remove": "Remove"
+    "remove": "Remove",
+    "lead": "Your shortlist, ordered by deadline.",
+    "daysShort": "days",
+    "browse": "Browse scholarships",
+    "emptyLead": "Tap Save on any scholarship to keep it here with a countdown to its deadline."
   },
   "family": {
     "title": "Information for parents",
@@ -207,7 +294,14 @@
     "covers": "What it pays for",
     "where": "Where she would study",
     "share": "Share on WhatsApp",
-    "readUrdu": "اردو میں پڑھیں"
+    "readUrdu": "اردو میں پڑھیں",
+    "lead": "Everything a family needs to know, in plain words.",
+    "safe": "Why you can trust it",
+    "point": {
+      "free": "Nobody should ask you for money to apply.",
+      "official": "The link below goes to the organisation's own official website.",
+      "verified": "HerPath checked these details on {date}."
+    }
   },
   "settings": {
     "title": "Settings",
@@ -215,11 +309,17 @@
     "counters": "Help HerPath count how many girls it helps (anonymous numbers only, never your details)",
     "delete": "Delete my account and all my data",
     "deleteConfirm": "This cannot be undone. Delete everything?",
-    "deleted": "Your account was deleted."
+    "deleted": "Your account was deleted.",
+    "lead": "Language, privacy and your account.",
+    "privacy": "Privacy",
+    "account": "Account",
+    "danger": "Delete account",
+    "dangerLead": "Removes your account, profile and saved scholarships for good."
   },
   "changelog": {
     "title": "Change log",
-    "intro": "Every change to a listing, with its date and source."
+    "intro": "Every change to a listing, with its date and source.",
+    "empty": "No changes recorded yet."
   },
   "common": {
     "loading": "Loading…",
@@ -237,7 +337,8 @@
       "October",
       "November",
       "December"
-    ]
+    ],
+    "retry": "Try again"
   },
   "options": {
     "provinces": {
@@ -296,5 +397,44 @@
     "Various": "Several countries",
     "South Korea": "South Korea",
     "Japan": "Japan"
+  },
+  "footer": {
+    "tagline": "Know where you stand. Know what's missing. Know your next step.",
+    "promise": "Free for every girl. No AI, no ads, no documents uploaded.",
+    "data": "Scholarship details are checked against official sources. See the change log for every update.",
+    "made": "Made for girls in Pakistan"
+  },
+  "list": {
+    "title": "Scholarships",
+    "lead": "Pakistani and foreign scholarships for undergraduate and graduate study, each checked against its official source.",
+    "signupHint": "Create a free profile to see which of these you qualify for."
+  },
+  "card": {
+    "covers": "Covers",
+    "opens": "Opens {month}"
+  },
+  "results": {
+    "title": "My results",
+    "lead": "Every scholarship checked against your profile. Open one to see exactly what's missing and when to start.",
+    "overview": "Where you stand across {total} scholarships",
+    "updateProfile": "Update my profile",
+    "needsInfoLead": "These depend on questions you haven't answered yet.",
+    "notEligibleLead": "A fixed rule rules these out. Open one to see which."
+  },
+  "guides": {
+    "title": "Fix-it guides",
+    "lead": "Short, practical steps for the documents and tests scholarships ask for, written for Pakistan.",
+    "time": "About {count} days",
+    "back": "All guides",
+    "share": "Send this guide on WhatsApp",
+    "groups": {
+      "documents": "Documents",
+      "tests": "English and entrance tests",
+      "profile": "Building your profile"
+    }
+  },
+  "notFound": {
+    "title": "We couldn't find that page",
+    "lead": "It may have moved. Try the scholarship list instead."
   }
 }

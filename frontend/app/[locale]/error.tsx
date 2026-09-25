@@ -1,12 +1,13 @@
 "use client";
+import { RotateCw } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Empty, btn } from "@/components/ui";
 
 export default function Error({ reset }: { reset: () => void }) {
   const t = useTranslations("common");
   return (
-    <div className="space-y-3 py-10 text-center">
-      <p role="alert">{t("error")}</p>
-      <button onClick={reset} className="rounded border px-3 py-2">↻</button>
+    <div className="mx-auto max-w-lg py-10" role="alert">
+      <Empty title={t("error")}><button onClick={reset} className={btn.primary}><RotateCw className="h-5 w-5" />{t("retry")}</button></Empty>
     </div>
   );
 }

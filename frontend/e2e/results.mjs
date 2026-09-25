@@ -16,7 +16,7 @@ await page.waitForSelector("[role=tab]");
 await page.getByRole("tab", { name: /Almost there/ }).click();
 const almost = await page.locator("[role=tabpanel] h3").allInnerTexts();
 ok(almost.includes("PEEF Undergraduate Scholarship"), `PEEF in Almost there (${almost.length} rows)`);
-const peefCard = page.locator("[role=tabpanel] > div", { hasText: "PEEF Undergraduate" });
+const peefCard = page.locator("[role=tabpanel] article", { hasText: "PEEF Undergraduate" });
 ok((await peefCard.innerText()).includes("2 gaps"), "PEEF shows 2 gaps");
 
 await page.getByRole("link", { name: "PEEF Undergraduate Scholarship" }).click();
@@ -54,7 +54,7 @@ const tok2 = await user({ domicile: "Punjab", monthlyIncome: 45000, age: 19, doc
 await page.evaluate((t) => { localStorage.setItem("access", t.access); localStorage.setItem("refresh", t.refresh); }, tok2);
 await page.goto(`${B}/en/results`);
 await page.waitForSelector("text=Needs more information");
-const needs = page.locator("section", { hasText: "Needs more information" });
+const needs = page.locator("section", { has: page.getByRole("heading", { name: /Needs more information/ }) });
 ok((await needs.innerText()).includes("PEEF Undergraduate Scholarship"), "PEEF under needs-info when Inter % missing");
 await page.goto(`${B}/en/scholarships/turkiye-burslari`);
 await page.waitForSelector("text=Add what you want to study next");

@@ -34,6 +34,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    healthcheck: # ready once migrations and seeding are done and Django answers
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health/')"]
+      interval: 3s
+      timeout: 5s
+      retries: 40
+      start_period: 10s
 
   frontend:
     build: ./frontend # production build; rebuild after frontend changes (or use `npm run dev` on the host)
@@ -42,7 +48,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
 volumes:
   pgdata:

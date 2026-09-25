@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { applyFilters, emptyFilters, type FilterState } from "./filters.ts";
+import { activeCount, applyFilters, emptyFilters, type FilterState } from "./filters.ts";
 import type { ScholarshipRow } from "./types.ts";
 
 const base: ScholarshipRow = {
@@ -44,4 +44,14 @@ test("profile-aware filters", () => {
   assert.deepEqual(slugs(applyFilters(rows, f({ myProvince: true }), profile)), ["a"]);
   assert.deepEqual(slugs(applyFilters(rows, f({ myIncome: true }), profile)), ["b"]);
   assert.deepEqual(slugs(applyFilters([{ ...base, special_categories: ["orphan"] }, rows[1]], f({ myCategories: true }), profile)), ["a"]);
+});
+
+test("search matches name, provider or country, ignoring case", () => {
+  assert.deepEqual(slugs(applyFilters([base, { ...base, slug: "b", country: "Japan" }], f({ q: "japan" }))), ["b"]);
+  assert.deepEqual(slugs(applyFilters([{ ...base, name: "Fulbright Master's" }], f({ q: "FULB" }))), ["a"]);
+  assert.deepEqual(slugs(applyFilters([{ ...base, provider: "HEC" }], f({ q: "hec" }))), ["a"]);
+  assert.deepEqual(slugs(applyFilters(rows, f({ q: "  " }))), ["a", "b"]);
+});
+test("activeCount counts chosen filters, not the search", () => {
+  assert.equal(activeCount(f({ where: "abroad", levels: ["masters", "phd"], myIncome: true, q: "x" })), 4);
 });

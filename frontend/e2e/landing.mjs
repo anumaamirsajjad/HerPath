@@ -3,7 +3,7 @@ const { browser, page, errors } = await open(null);
 await page.goto(`${B}/ur`);
 ok((await page.locator("h1").innerText()).includes("جانیں آپ کہاں کھڑی ہیں"), "urdu landing headline");
 await page.goto(`${B}/en`);
-await page.getByRole("link", { name: "Create my profile (3 minutes)" }).click();
+await page.getByRole("link", { name: "Check my eligibility" }).first().click();
 await page.waitForURL(/\/en\/signup/);
 ok(true, "landing CTA goes to signup");
 const r = await page.goto(`${B}/en/no-such-page`);

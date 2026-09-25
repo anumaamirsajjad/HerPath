@@ -5,13 +5,12 @@ page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
 await page.goto(`${B}/en/scholarships`);
 await page.waitForSelector("h3");
 ok((await page.locator("h3").count()) === 17, "list shows 17 scholarships");
-await page.click("summary");
 await page.getByLabel("Abroad").check();
 const abroad = await page.locator("h3").count();
 ok(abroad === 11, `abroad filter → ${abroad}`);
 await page.getByLabel("Women only").check();
 ok((await page.locator("h3").count()) === 0, "women-only narrows to 0 (no seed row)");
-await page.getByText("Clear filters").click();
+await page.getByText("Clear filters").first().click();
 ok((await page.locator("h3").count()) === 17, "clear restores 17");
 
 await page.goto(`${B}/ur/scholarships`);
@@ -38,8 +37,8 @@ await page.waitForSelector("text=Guide coming soon");
 ok(true, "missing guide shows coming soon");
 
 await page.goto(`${B}/en/changelog`);
-await page.waitForSelector("li");
-ok((await page.locator("li").count()) >= 17, "changelog entries");
+await page.waitForSelector("main ol li");
+ok((await page.locator("main ol li").count()) >= 17, "changelog entries");
 
 // Server rendering: content and link-preview tags are in the HTML itself, before any JavaScript runs.
 const html = await (await fetch(`${B}/ur/scholarships/peef-undergraduate`)).text();
@@ -50,8 +49,8 @@ ok(fam.includes('og:description') && fam.includes("حکومتِ پنجاب"), "f
 ok((await fetch(`${B}/en/scholarships/no-such-slug`)).status === 404, "unknown scholarship returns 404");
 ok((await (await fetch(`${B}/en/scholarships`)).text()).includes("PEEF Undergraduate Scholarship"), "list server-rendered");
 await page.goto(`${B}/ur/changelog`);
-await page.waitForSelector("li");
-ok(/ستمبر/.test(await page.locator("li").first().innerText()), "changelog dates in Urdu");
+await page.waitForSelector("main ol li");
+ok(/ستمبر/.test(await page.locator("main ol li").first().innerText()), "changelog dates in Urdu");
 
 const real = errors.filter((e) => !e.includes("404") && !e.includes("429"));
 ok(real.length === 0, `no console/page errors ${JSON.stringify(real)}`);

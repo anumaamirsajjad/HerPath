@@ -6,7 +6,7 @@ await page.getByRole("link", { name: "Page for my parents" }).click();
 await page.waitForURL(/\/ur\/family\/peef-undergraduate/);
 await page.waitForSelector("h1");
 ok((await page.locator("html").getAttribute("dir")) === "rtl", "family page opens in Urdu, RTL");
-ok((await page.locator("h1").innerText()).includes("والدین کے لیے معلومات"), "urdu heading");
+ok((await page.locator("header").last().innerText()).includes("والدین کے لیے معلومات") && (await page.locator("h1").innerText()).includes("پیف"), "urdu heading");
 ok((await page.locator("article").innerText()).includes("حکومتِ پنجاب"), "urdu family summary");
 const before = await count();
 const [popup] = await Promise.all([page.waitForEvent("popup"), page.getByRole("button", { name: "واٹس ایپ پر شیئر کریں" }).click()]);
