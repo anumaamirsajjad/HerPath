@@ -102,7 +102,7 @@ class ProfileDataSerializer(serializers.Serializer):
     universityType = serializers.ChoiceField(choices.UNIVERSITY_TYPES, required=False, allow_null=True)
     enrolledUniversity = serializers.CharField(max_length=120, allow_blank=True, required=False, allow_null=True)
     tests = TestsSerializer(required=False)
-    monthlyIncome = StrictInt(min_value=0, required=False, allow_null=True)
+    monthlyIncome = StrictInt(min_value=0, max_value=10000000, required=False, allow_null=True)  # ~$35k USD
     workYears = StrictFloat(min_value=0, max_value=50, required=False, allow_null=True)
     volunteering = serializers.BooleanField(required=False)
     leadership = serializers.BooleanField(required=False)

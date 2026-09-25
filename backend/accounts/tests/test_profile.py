@@ -111,3 +111,17 @@ def test_test_score_at_max_boundary(auth_client):
     good = dict(GOOD, tests={"ielts": 9, "gre": 340, "toefl": 120, "mdcat": 200})
     r = auth_client.put("/api/profile", {"data": good}, format="json")
     assert r.status_code == 200, f"Max boundary values should be accepted, got {r.status_code}: {r.data}"
+
+
+def test_monthly_income_max_bound(auth_client):
+    # monthlyIncome max is 10M PKR
+    bad = dict(GOOD, monthlyIncome=10000001)
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"Income 10000001 should be rejected, got {r.status_code}"
+
+
+def test_monthly_income_at_max_boundary(auth_client):
+    # Boundary: exact max should pass
+    good = dict(GOOD, monthlyIncome=10000000)
+    r = auth_client.put("/api/profile", {"data": good}, format="json")
+    assert r.status_code == 200, f"Max income should be accepted, got {r.status_code}: {r.data}"
