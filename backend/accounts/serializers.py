@@ -58,10 +58,24 @@ class StrictInt(serializers.IntegerField):
 
 
 class TestsSerializer(serializers.Serializer):
+    # Real-world bounds for each standardized test
+    TEST_BOUNDS = {
+        "mdcat": (0, 200),
+        "ecat": (0, 300),
+        "nat": (0, 200),
+        "gat": (0, 100),
+        "hat": (0, 100),
+        "ielts": (0, 9),
+        "toefl": (0, 120),
+        "duolingo": (0, 160),
+        "gre": (0, 340),
+    }
+
     def __init__(self, *a, **k):
         super().__init__(*a, **k)
         for t in choices.TESTS:
-            self.fields[t] = StrictFloat(required=False, allow_null=True)
+            min_v, max_v = self.TEST_BOUNDS.get(t, (0, 1000))
+            self.fields[t] = StrictFloat(min_value=min_v, max_value=max_v, required=False, allow_null=True)
 
 
 class DocumentsSerializer(serializers.Serializer):

@@ -68,3 +68,46 @@ def test_patch_rejects_data_key(auth_client):
     r = auth_client.patch("/api/profile", {"data": {"documents": {"passport": True}}}, format="json")
     assert r.status_code == 400
     assert auth_client.get("/api/profile").data["data"]["domicile"] == "Punjab"
+
+
+def test_test_score_bounds_ielts(auth_client):
+    # IELTS max is 9
+    bad = dict(GOOD, tests={"ielts": 9.5})
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"IELTS 9.5 should be rejected, got {r.status_code}"
+    assert "ielts" in str(r.data).lower()
+
+
+def test_test_score_bounds_gre(auth_client):
+    # GRE max is 340
+    bad = dict(GOOD, tests={"gre": 341})
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"GRE 341 should be rejected, got {r.status_code}"
+
+
+def test_test_score_bounds_toefl(auth_client):
+    # TOEFL max is 120
+    bad = dict(GOOD, tests={"toefl": 121})
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"TOEFL 121 should be rejected, got {r.status_code}"
+
+
+def test_test_score_bounds_mdcat(auth_client):
+    # MDCAT max is 200
+    bad = dict(GOOD, tests={"mdcat": 201})
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"MDCAT 201 should be rejected, got {r.status_code}"
+
+
+def test_test_score_negative(auth_client):
+    # No negative scores
+    bad = dict(GOOD, tests={"mdcat": -1})
+    r = auth_client.put("/api/profile", {"data": bad}, format="json")
+    assert r.status_code == 400, f"Negative MDCAT should be rejected, got {r.status_code}"
+
+
+def test_test_score_at_max_boundary(auth_client):
+    # Boundary: exact max should pass
+    good = dict(GOOD, tests={"ielts": 9, "gre": 340, "toefl": 120, "mdcat": 200})
+    r = auth_client.put("/api/profile", {"data": good}, format="json")
+    assert r.status_code == 200, f"Max boundary values should be accepted, got {r.status_code}: {r.data}"
