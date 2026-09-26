@@ -97,7 +97,10 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
 }
 
-CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+from urllib.parse import urlparse
+
+_cors_origins = os.environ.get("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+CORS_ALLOWED_ORIGINS = [f"{urlparse(o).scheme}://{urlparse(o).netloc}" for o in _cors_origins]
 
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "Asia/Karachi"
