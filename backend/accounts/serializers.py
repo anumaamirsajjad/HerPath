@@ -24,21 +24,6 @@ class SignupSerializer(serializers.Serializer):
         return User.objects.create_user(**data)
 
 
-class PasswordResetSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    lang = serializers.ChoiceField(["en", "ur"], default="en")
-
-
-class PasswordResetConfirmSerializer(serializers.Serializer):
-    uid = serializers.CharField()
-    token = serializers.CharField()
-    password = serializers.CharField()
-
-    def validate_password(self, v):
-        validate_password(v)
-        return v
-
-
 from . import choices  # noqa: E402
 from .models import Profile  # noqa: E402
 
