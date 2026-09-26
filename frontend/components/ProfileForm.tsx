@@ -121,7 +121,7 @@ export default function ProfileForm() {
                         }}
                         className={`${input} flex-1`}
                         defaultValue="">
-                        <option value="">{t("addSubject")}</option>
+                        <option value="">+ {t("addSubject")}</option>
                         {C.CAMBRIDGE_SUBJECTS.map((s) => (
                           <option key={s} value={s} disabled={!!d.cambridgeSubjects?.[s]}>
                             {s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1')}
