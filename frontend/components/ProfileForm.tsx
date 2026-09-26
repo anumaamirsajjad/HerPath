@@ -112,7 +112,7 @@ export default function ProfileForm() {
               <input type="text" placeholder={t("subjectName")} id="newSubject" className={input} />
               <button type="button" onClick={() => { const el = document.getElementById("newSubject") as HTMLInputElement;
                 if(el?.value) { set("cambridgeSubjects", {...d.cambridgeSubjects, [el.value]: null}); el.value = ""; } }}
-                className={`${btn.secondary} whitespace-nowrap`}>+ {t("addSubject")}</button>
+                className={`${btn.ghost} whitespace-nowrap`}>+ {t("addSubject")}</button>
             </div>
           </fieldset>
           <p className="text-xs text-gray-600">{t("ibccNote")}</p>
