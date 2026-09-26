@@ -96,68 +96,75 @@ export default function ProfileForm() {
           </fieldset>
           {d.cambridgeLevel && (
             <>
-              <fieldset className="space-y-3">
+              <fieldset className="space-y-4 rounded-xl border-2 border-indigo-soft bg-indigo-soft/20 p-4">
                 <div className="flex items-baseline justify-between gap-4">
-                  <legend className="font-bold">{t("enterSubjects")}</legend>
-                  <span className="text-sm text-muted">
-                    {Object.keys(d.cambridgeSubjects || {}).length} / {d.cambridgeLevel === "O-Levels" ? "8" : "3"}
-                  </span>
+                  <legend className="font-bold text-lg">{t("enterSubjects")}</legend>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-indigo">{Object.keys(d.cambridgeSubjects || {}).length}</span>
+                    <span className="text-muted">/ {d.cambridgeLevel === "O-Levels" ? "8" : "3"}</span>
+                  </div>
                 </div>
 
-                {/* Subject Dropdown */}
+                {/* Add Subject Button */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium">Select subjects</label>
-                  <select
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        const maxSubjects = d.cambridgeLevel === "O-Levels" ? 8 : 3;
-                        if (Object.keys(d.cambridgeSubjects || {}).length < maxSubjects) {
-                          set("cambridgeSubjects", { ...d.cambridgeSubjects, [e.target.value]: null });
-                          e.target.value = "";
-                        }
-                      }
-                    }}
-                    className={input}
-                    defaultValue="">
-                    <option value="">+ {t("addSubject")}</option>
-                    {C.CAMBRIDGE_SUBJECTS.map((s) => (
-                      <option key={s} value={s} disabled={!!d.cambridgeSubjects?.[s]}>
-                        {s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1')}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Selected Subjects */}
-                <div className="space-y-2 max-h-60 overflow-y-auto">
-                  {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
-                    <div key={subject} className="flex gap-2 items-center bg-card p-3 rounded-lg border border-line">
-                      <span className="flex-1 text-sm font-medium">
-                        {subject.charAt(0).toUpperCase() + subject.slice(1).replace(/([A-Z])/g, ' $1')}
-                      </span>
-                      <select value={grade ?? ""}
-                        onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
-                        className="text-sm px-2 py-1 rounded border border-line bg-white">
-                        <option value="">Grade</option>
-                        {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
+                  {Object.keys(d.cambridgeSubjects || {}).length < (d.cambridgeLevel === "O-Levels" ? 8 : 3) ? (
+                    <div className="flex gap-2">
+                      <select
+                        onChange={(e) => {
+                          if (e.target.value) {
+                            const maxSubjects = d.cambridgeLevel === "O-Levels" ? 8 : 3;
+                            if (Object.keys(d.cambridgeSubjects || {}).length < maxSubjects) {
+                              set("cambridgeSubjects", { ...d.cambridgeSubjects, [e.target.value]: null });
+                              e.target.value = "";
+                            }
+                          }
+                        }}
+                        className={`${input} flex-1`}
+                        defaultValue="">
+                        <option value="">{t("addSubject")}</option>
+                        {C.CAMBRIDGE_SUBJECTS.map((s) => (
+                          <option key={s} value={s} disabled={!!d.cambridgeSubjects?.[s]}>
+                            {s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1')}
+                          </option>
+                        ))}
                       </select>
-                      <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
-                        className="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold">×</button>
                     </div>
-                  ))}
+                  ) : (
+                    <p className="rounded-lg bg-leaf-soft/30 px-3 py-2 text-sm font-semibold text-leaf">
+                      ✓ All {d.cambridgeLevel === "O-Levels" ? "8" : "3"} subjects added
+                    </p>
+                  )}
                 </div>
 
-                {Object.keys(d.cambridgeSubjects || {}).length > 0 && (
-                  <p className="text-xs text-muted text-right">
-                    {d.cambridgeLevel === "O-Levels" ? "Maximum 8 subjects" : "Maximum 3 subjects"}
-                  </p>
+                {/* Selected Subjects Grid */}
+                {Object.entries(d.cambridgeSubjects || {}).length > 0 && (
+                  <div className="space-y-3 rounded-lg bg-white/50 p-4">
+                    <p className="text-xs font-semibold text-muted uppercase">Added Subjects & Grades</p>
+                    <div className="space-y-2">
+                      {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
+                        <div key={subject} className="flex items-center gap-3 rounded-lg border-2 border-line bg-white p-3 transition hover:border-indigo-soft">
+                          <span className="flex-1 font-medium">
+                            {subject.charAt(0).toUpperCase() + subject.slice(1).replace(/([A-Z])/g, ' $1')}
+                          </span>
+                          <select value={grade ?? ""}
+                            onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
+                            className={`rounded border-2 px-3 py-1.5 font-semibold ${grade ? "border-leaf bg-leaf-soft text-leaf" : "border-line bg-white"}`}>
+                            <option value="">—</option>
+                            {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
+                          </select>
+                          <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
+                            className="rounded px-2 py-1.5 font-bold text-ink transition hover:bg-red-soft hover:text-red-600">×</button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 )}
               </fieldset>
 
               {/* IBCC Equivalence Field */}
-              <fieldset className="space-y-2 border-t border-dashed border-line pt-4">
+              <fieldset className="space-y-3 rounded-xl border-2 border-line bg-paper p-4">
                 <legend className="font-bold">{t("ibccEquivalence")}</legend>
-                <label className="block text-sm text-muted">{t("ibccEquivalenceHint")}</label>
+                <p className="text-sm text-muted">{t("ibccEquivalenceHint")}</p>
                 <input
                   type="text"
                   placeholder={t("ibccEquivalencePlaceholder")}
