@@ -84,98 +84,19 @@ export default function ProfileForm() {
     school: <>
       {selField("board", C.BOARDS)}
       {d.board === "Cambridge" ? (
-        <>
-          <fieldset className="space-y-3"><legend className="font-bold">Cambridge level</legend>
-            {["O-Levels", "A-Levels"].map((level) => (
-              <label key={level} className="flex items-center gap-2 font-normal">
-                <input type="radio" name="cambridgeLevel" value={level} checked={d.cambridgeLevel === level}
-                  onChange={(e) => set("cambridgeLevel", e.target.value)} />
-                {level}
-              </label>
-            ))}
-          </fieldset>
-          {d.cambridgeLevel && (
-            <>
-              <fieldset className="space-y-4 rounded-xl border-2 border-indigo-soft bg-indigo-soft/20 p-4">
-                <div className="flex items-baseline justify-between gap-4">
-                  <legend className="font-bold text-lg">{t("enterSubjects")}</legend>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-indigo">{Object.keys(d.cambridgeSubjects || {}).length}</span>
-                    <span className="text-muted">/ {d.cambridgeLevel === "O-Levels" ? "8" : "3"}</span>
-                  </div>
-                </div>
-
-                {/* Add Subject Button */}
-                <div className="space-y-2">
-                  {Object.keys(d.cambridgeSubjects || {}).length < (d.cambridgeLevel === "O-Levels" ? 8 : 3) ? (
-                    <div className="flex gap-2">
-                      <select
-                        onChange={(e) => {
-                          if (e.target.value) {
-                            const maxSubjects = d.cambridgeLevel === "O-Levels" ? 8 : 3;
-                            if (Object.keys(d.cambridgeSubjects || {}).length < maxSubjects) {
-                              set("cambridgeSubjects", { ...d.cambridgeSubjects, [e.target.value]: null });
-                              e.target.value = "";
-                            }
-                          }
-                        }}
-                        className={`${input} flex-1`}
-                        defaultValue="">
-                        <option value="">+ {t("addSubject")}</option>
-                        {C.CAMBRIDGE_SUBJECTS.map((s) => (
-                          <option key={s} value={s} disabled={!!d.cambridgeSubjects?.[s]}>
-                            {s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1')}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  ) : (
-                    <p className="rounded-lg bg-leaf-soft/30 px-3 py-2 text-sm font-semibold text-leaf">
-                      ✓ All {d.cambridgeLevel === "O-Levels" ? "8" : "3"} subjects added
-                    </p>
-                  )}
-                </div>
-
-                {/* Selected Subjects Grid */}
-                {Object.entries(d.cambridgeSubjects || {}).length > 0 && (
-                  <div className="space-y-3 rounded-lg bg-white/50 p-4">
-                    <p className="text-xs font-semibold text-muted uppercase">Added Subjects & Grades</p>
-                    <div className="space-y-2">
-                      {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
-                        <div key={subject} className="flex items-center gap-3 rounded-lg border-2 border-line bg-white p-3 transition hover:border-indigo-soft">
-                          <span className="flex-1 font-medium">
-                            {subject.charAt(0).toUpperCase() + subject.slice(1).replace(/([A-Z])/g, ' $1')}
-                          </span>
-                          <select value={grade ?? ""}
-                            onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
-                            className={`rounded border-2 px-3 py-1.5 font-semibold ${grade ? "border-leaf bg-leaf-soft text-leaf" : "border-line bg-white"}`}>
-                            <option value="">—</option>
-                            {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
-                          </select>
-                          <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
-                            className="rounded px-2 py-1.5 font-bold text-ink transition hover:bg-red-soft hover:text-red-600">×</button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </fieldset>
-
-              {/* IBCC Equivalence Field */}
-              <fieldset className="space-y-3 rounded-xl border-2 border-line bg-paper p-4">
-                <legend className="font-bold">{t("ibccEquivalence")}</legend>
-                <p className="text-sm text-muted">{t("ibccEquivalenceHint")}</p>
-                <input
-                  type="text"
-                  placeholder={t("ibccEquivalencePlaceholder")}
-                  value={d.ibccEquivalence ?? ""}
-                  onChange={(e) => set("ibccEquivalence", e.target.value || null)}
-                  className={input}
-                />
-              </fieldset>
-            </>
-          )}
-        </>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {C.CAMBRIDGE_SUBJECTS?.map((subject) => (
+            <label key={subject} className="block font-bold">
+              {to(subject)}
+              <select value={d.cambridgeSubjects?.[subject] ?? ""}
+                onChange={(e) => set("cambridgeSubjects", { ...d.cambridgeSubjects, [subject]: e.target.value || null })}
+                className={input}>
+                <option value="">Not taken</option>
+                {C.GRADES?.map((grade) => <option key={grade} value={grade}>{grade.toUpperCase()}</option>)}
+              </select>
+            </label>
+          ))}
+        </div>
       ) : (
         <>{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>
       )}
