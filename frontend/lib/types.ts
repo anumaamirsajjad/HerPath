@@ -37,6 +37,7 @@ export interface ProfileData {
   board?: string | null; matricPercent?: number | null; interPercent?: number | null; interStream?: string | null;
   cambridgeLevel?: string | null;  // "O-Levels" or "A-Levels" for Cambridge board
   cambridgeSubjects?: Record<string, string | null>;  // For Cambridge students: subject -> grade
+  ibccEquivalence?: string | null;  // Optional IBCC equivalence certificate info
   level?: string | null; targetLevel?: string | null; degree?: string | null; yearsOfEducation?: number | null; cgpa?: number | null;
   universityType?: string | null; enrolledUniversity?: string | null;
   tests?: Record<string, number | null>; monthlyIncome?: number | null; workYears?: number | null;

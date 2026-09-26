@@ -97,6 +97,7 @@ class ProfileDataSerializer(serializers.Serializer):
     interStream = serializers.ChoiceField(choices.STREAMS, required=False, allow_null=True)
     cambridgeLevel = serializers.ChoiceField(["O-Levels", "A-Levels"], required=False, allow_null=True)
     cambridgeSubjects = CambridgeSubjectsSerializer(required=False)  # For O/A-Level students
+    ibccEquivalence = serializers.CharField(max_length=200, allow_blank=True, required=False, allow_null=True)
     level = serializers.ChoiceField(choices.LEVELS, required=False, allow_null=True)
     targetLevel = serializers.ChoiceField(choices.TARGET_LEVELS, required=False, allow_null=True)
     degree = serializers.CharField(max_length=120, allow_blank=True, required=False, allow_null=True)

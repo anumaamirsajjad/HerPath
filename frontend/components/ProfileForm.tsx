@@ -85,7 +85,7 @@ export default function ProfileForm() {
       {selField("board", C.BOARDS)}
       {d.board === "Cambridge" ? (
         <>
-          <fieldset className="space-y-3"><legend className="font-bold">{t("cambridgeLevel")}</legend>
+          <fieldset className="space-y-3"><legend className="font-bold">Cambridge level</legend>
             {["O-Levels", "A-Levels"].map((level) => (
               <label key={level} className="flex items-center gap-2 font-normal">
                 <input type="radio" name="cambridgeLevel" value={level} checked={d.cambridgeLevel === level}
@@ -94,28 +94,80 @@ export default function ProfileForm() {
               </label>
             ))}
           </fieldset>
-          <fieldset className="space-y-2"><legend className="font-bold">{t("enterSubjects")}</legend>
-            {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
-              <div key={subject} className="flex gap-2 items-center">
-                <input type="text" value={subject} disabled className="flex-1 text-sm px-2 py-1 opacity-50 bg-gray-100 rounded" />
-                <select value={grade ?? ""}
-                  onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
-                  className={input}>
-                  <option value="">Grade</option>
-                  {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
-                </select>
-                <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
-                  className="text-red-600 hover:bg-red-50 px-2 py-1 rounded">×</button>
-              </div>
-            ))}
-            <div className="flex gap-2">
-              <input type="text" placeholder={t("subjectName")} id="newSubject" className={input} />
-              <button type="button" onClick={() => { const el = document.getElementById("newSubject") as HTMLInputElement;
-                if(el?.value) { set("cambridgeSubjects", {...d.cambridgeSubjects, [el.value]: null}); el.value = ""; } }}
-                className={`${btn.ghost} whitespace-nowrap`}>+ {t("addSubject")}</button>
-            </div>
-          </fieldset>
-          <p className="text-xs text-gray-600">{t("ibccNote")}</p>
+          {d.cambridgeLevel && (
+            <>
+              <fieldset className="space-y-3">
+                <div className="flex items-baseline justify-between gap-4">
+                  <legend className="font-bold">{t("enterSubjects")}</legend>
+                  <span className="text-sm text-muted">
+                    {Object.keys(d.cambridgeSubjects || {}).length} / {d.cambridgeLevel === "O-Levels" ? "8" : "3"}
+                  </span>
+                </div>
+
+                {/* Subject Dropdown */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium">Select subjects</label>
+                  <select
+                    onChange={(e) => {
+                      if (e.target.value) {
+                        const maxSubjects = d.cambridgeLevel === "O-Levels" ? 8 : 3;
+                        if (Object.keys(d.cambridgeSubjects || {}).length < maxSubjects) {
+                          set("cambridgeSubjects", { ...d.cambridgeSubjects, [e.target.value]: null });
+                          e.target.value = "";
+                        }
+                      }
+                    }}
+                    className={input}
+                    defaultValue="">
+                    <option value="">+ {t("addSubject")}</option>
+                    {C.CAMBRIDGE_SUBJECTS.map((s) => (
+                      <option key={s} value={s} disabled={!!d.cambridgeSubjects?.[s]}>
+                        {s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1')}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Selected Subjects */}
+                <div className="space-y-2 max-h-60 overflow-y-auto">
+                  {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
+                    <div key={subject} className="flex gap-2 items-center bg-card p-3 rounded-lg border border-line">
+                      <span className="flex-1 text-sm font-medium">
+                        {subject.charAt(0).toUpperCase() + subject.slice(1).replace(/([A-Z])/g, ' $1')}
+                      </span>
+                      <select value={grade ?? ""}
+                        onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
+                        className="text-sm px-2 py-1 rounded border border-line bg-white">
+                        <option value="">Grade</option>
+                        {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
+                      </select>
+                      <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
+                        className="text-red-600 hover:bg-red-50 px-2 py-1 rounded font-bold">×</button>
+                    </div>
+                  ))}
+                </div>
+
+                {Object.keys(d.cambridgeSubjects || {}).length > 0 && (
+                  <p className="text-xs text-muted text-right">
+                    {d.cambridgeLevel === "O-Levels" ? "Maximum 8 subjects" : "Maximum 3 subjects"}
+                  </p>
+                )}
+              </fieldset>
+
+              {/* IBCC Equivalence Field */}
+              <fieldset className="space-y-2 border-t border-dashed border-line pt-4">
+                <legend className="font-bold">{t("ibccEquivalence")}</legend>
+                <label className="block text-sm text-muted">{t("ibccEquivalenceHint")}</label>
+                <input
+                  type="text"
+                  placeholder={t("ibccEquivalencePlaceholder")}
+                  value={d.ibccEquivalence ?? ""}
+                  onChange={(e) => set("ibccEquivalence", e.target.value || null)}
+                  className={input}
+                />
+              </fieldset>
+            </>
+          )}
         </>
       ) : (
         <>{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>
