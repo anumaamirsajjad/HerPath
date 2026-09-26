@@ -79,10 +79,19 @@ class TestsSerializer(serializers.Serializer):
 
 
 class CambridgeSubjectsSerializer(serializers.Serializer):
-    def __init__(self, *a, **k):
-        super().__init__(*a, **k)
-        for s in choices.CAMBRIDGE_SUBJECTS:
-            self.fields[s] = serializers.ChoiceField(choices.GRADES, required=False, allow_null=True)
+    # Dynamic subject-to-grade mapping (student types subject name, selects grade)
+    def to_internal_value(self, data):
+        if not isinstance(data, dict):
+            raise serializers.ValidationError("Must be an object mapping subjects to grades")
+        result = {}
+        for subject, grade in data.items():
+            # Subject name: free text (max 60 chars), Grade: must be valid choice
+            if not isinstance(subject, str) or len(subject) > 60:
+                raise serializers.ValidationError(f"Subject '{subject}' must be a string under 60 chars")
+            if grade is not None and grade not in choices.GRADES:
+                raise serializers.ValidationError(f"Grade '{grade}' is not valid. Must be one of: {', '.join(choices.GRADES)}")
+            result[subject] = grade
+        return result
 
 
 class DocumentsSerializer(serializers.Serializer):
@@ -101,6 +110,7 @@ class ProfileDataSerializer(serializers.Serializer):
     matricPercent = StrictFloat(min_value=0, max_value=100, required=False, allow_null=True)
     interPercent = StrictFloat(min_value=0, max_value=100, required=False, allow_null=True)
     interStream = serializers.ChoiceField(choices.STREAMS, required=False, allow_null=True)
+    cambridgeLevel = serializers.ChoiceField(["O-Levels", "A-Levels"], required=False, allow_null=True)
     cambridgeSubjects = CambridgeSubjectsSerializer(required=False)  # For O/A-Level students
     level = serializers.ChoiceField(choices.LEVELS, required=False, allow_null=True)
     targetLevel = serializers.ChoiceField(choices.TARGET_LEVELS, required=False, allow_null=True)

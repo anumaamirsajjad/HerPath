@@ -84,22 +84,40 @@ export default function ProfileForm() {
     school: <>
       {selField("board", C.BOARDS)}
       {d.board === "Cambridge" ? (
-        // Cambridge O/A-Levels: show subjects and grades
-        <div className="grid gap-4 sm:grid-cols-2">
-          {C.CAMBRIDGE_SUBJECTS?.map((subject) => (
-            <label key={subject} className="block font-bold">
-              {to(subject)}
-              <select value={d.cambridgeSubjects?.[subject] ?? ""}
-                onChange={(e) => set("cambridgeSubjects", { ...d.cambridgeSubjects, [subject]: e.target.value || null })}
-                className={input}>
-                <option value="">Not taken</option>
-                {C.GRADES?.map((grade) => <option key={grade} value={grade}>{grade.toUpperCase()}</option>)}
-              </select>
-            </label>
-          ))}
-        </div>
+        <>
+          <fieldset className="space-y-3"><legend className="font-bold">{t("cambridgeLevel")}</legend>
+            {["O-Levels", "A-Levels"].map((level) => (
+              <label key={level} className="flex items-center gap-2 font-normal">
+                <input type="radio" name="cambridgeLevel" value={level} checked={d.cambridgeLevel === level}
+                  onChange={(e) => set("cambridgeLevel", e.target.value)} />
+                {level}
+              </label>
+            ))}
+          </fieldset>
+          <fieldset className="space-y-2"><legend className="font-bold">{t("enterSubjects")}</legend>
+            {Object.entries(d.cambridgeSubjects || {}).map(([subject, grade]) => (
+              <div key={subject} className="flex gap-2 items-center">
+                <input type="text" value={subject} disabled className="flex-1 text-sm px-2 py-1 opacity-50 bg-gray-100 rounded" />
+                <select value={grade ?? ""}
+                  onChange={(e) => { const u = {...d.cambridgeSubjects}; u[subject] = e.target.value || null; set("cambridgeSubjects", u); }}
+                  className={input}>
+                  <option value="">Grade</option>
+                  {C.GRADES?.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
+                </select>
+                <button type="button" onClick={() => { const u = {...d.cambridgeSubjects}; delete u[subject]; set("cambridgeSubjects", u); }}
+                  className="text-red-600 hover:bg-red-50 px-2 py-1 rounded">×</button>
+              </div>
+            ))}
+            <div className="flex gap-2">
+              <input type="text" placeholder={t("subjectName")} id="newSubject" className={input} />
+              <button type="button" onClick={() => { const el = document.getElementById("newSubject") as HTMLInputElement;
+                if(el?.value) { set("cambridgeSubjects", {...d.cambridgeSubjects, [el.value]: null}); el.value = ""; } }}
+                className={`${btn.secondary} whitespace-nowrap`}>+ {t("addSubject")}</button>
+            </div>
+          </fieldset>
+          <p className="text-xs text-gray-600">{t("ibccNote")}</p>
+        </>
       ) : (
-        // BISE/FBISE: show percentage-based system
         <>{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>
       )}
     </>,

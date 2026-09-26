@@ -35,7 +35,8 @@ export interface MatchList { has_profile: boolean; tabs: Record<Tab, MatchRow[]>
 export interface ProfileData {
   age?: number | null; domicile?: string | null; district?: string | null; categories?: string[];
   board?: string | null; matricPercent?: number | null; interPercent?: number | null; interStream?: string | null;
-  cambridgeSubjects?: Record<string, string | null>;  // For O/A-Level students: subject -> grade
+  cambridgeLevel?: string | null;  // "O-Levels" or "A-Levels" for Cambridge board
+  cambridgeSubjects?: Record<string, string | null>;  // For Cambridge students: subject -> grade
   level?: string | null; targetLevel?: string | null; degree?: string | null; yearsOfEducation?: number | null; cgpa?: number | null;
   universityType?: string | null; enrolledUniversity?: string | null;
   tests?: Record<string, number | null>; monthlyIncome?: number | null; workYears?: number | null;
