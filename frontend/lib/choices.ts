@@ -9,3 +9,5 @@ export const TESTS = ["mdcat", "ecat", "nat", "gat", "hat", "ielts", "toefl", "d
 export const DOCUMENTS = ["cnic", "domicile", "passport", "incomeCertificate", "hecAttestation", "ibccEquivalence", "recommendationLetters", "englishMediumLetter"];
 export const STUDY_IN = ["pakistan", "abroad", "both"];
 export const TARGET_LEVELS = ["undergraduate", "masters", "phd"];
+export const CAMBRIDGE_SUBJECTS = ["english", "mathematics", "physics", "chemistry", "biology", "computerScience", "economics", "accountancy", "businessStudies", "generalPaper", "urdu", "islamiat"];
+export const GRADES = ["a*", "a", "b", "c", "d", "e", "u"];
