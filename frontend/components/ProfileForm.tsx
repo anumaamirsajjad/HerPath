@@ -1,5 +1,5 @@
 "use client";
-import { ArrowLeft, ArrowRight, Banknote, Briefcase, Check, FileCheck2, GraduationCap, Heart, NotebookPen, School, UserRound } from "lucide-react";
+import { ArrowLeft, ArrowRight, Banknote, Briefcase, Check, FileCheck2, GraduationCap, Heart, NotebookPen, School, UserRound, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ErrorNote, Loading, PageTitle, btn, card, field } from "@/components/ui";
 import { useTranslations } from "next-intl";
@@ -17,7 +17,7 @@ const STEP_ICON = { personal: UserRound, school: School, university: GraduationC
 // Real-world max bounds for standardized tests
 const TEST_BOUNDS: Record<string, number> = { ielts: 9, toefl: 120, gre: 340, mdcat: 200, ecat: 300, nat: 200, gat: 100, hat: 100, duolingo: 160 };
 const STEP_FIELDS: Record<(typeof STEPS)[number], (keyof ProfileData)[]> = {
-  personal: ["targetLevel", "age", "domicile", "district", "categories"], school: ["board", "matricPercent", "interPercent", "interStream"],
+  personal: ["targetLevel", "age", "domicile", "district", "categories"], school: ["board", "matricPercent", "interPercent", "interStream", "cambridgeSubjects"],
   university: ["level", "degree", "yearsOfEducation", "cgpa", "universityType", "enrolledUniversity"], tests: ["tests"], finances: ["monthlyIncome"],
   experience: ["workYears", "volunteering", "leadership"], documents: ["documents"], preferences: ["studyIn", "preferredCountries", "fields"],
 };
@@ -48,7 +48,7 @@ export default function ProfileForm() {
   useEffect(() => {
     // Only a 404 means "no profile yet". Any other failure must not show an empty form she could save over her data.
     api<Profile>("profile")
-      .then((p) => { setD({ ...EMPTY, ...p.data }); setLoaded(true); })
+      .then((p) => { setD({ ...EMPTY, ...p.data, cambridgeSubjects: C.renameLegacySubjects(p.data.cambridgeSubjects, p.data.cambridgeLevel) }); setLoaded(true); })
       .catch((e) => setLoaded(e instanceof ApiError && e.status === 404 ? true : "error"));
   }, []);
   const set = <K extends keyof ProfileData>(k: K, v: ProfileData[K]) => setD((prev) => ({ ...prev, [k]: v }));
@@ -84,19 +84,52 @@ export default function ProfileForm() {
     school: <>
       {selField("board", C.BOARDS)}
       {d.board === "Cambridge" ? (
-        <div className="grid gap-4 sm:grid-cols-2">
-          {C.CAMBRIDGE_SUBJECTS?.map((subject) => (
-            <label key={subject} className="block font-bold">
-              {to(subject)}
-              <select value={d.cambridgeSubjects?.[subject] ?? ""}
-                onChange={(e) => set("cambridgeSubjects", { ...d.cambridgeSubjects, [subject]: e.target.value || null })}
-                className={input}>
-                <option value="">Not taken</option>
-                {C.GRADES?.map((grade) => <option key={grade} value={grade}>{grade.toUpperCase()}</option>)}
-              </select>
-            </label>
-          ))}
-        </div>
+        <>
+          <fieldset className="space-y-3"><legend className="font-bold">{tf("cambridgeLevel")}</legend>
+            {Object.keys(C.CAMBRIDGE_SUBJECTS).map((level) => (
+              <label key={level} className="flex items-center gap-2 font-normal">
+                <input type="radio" name="cambridgeLevel" value={level} checked={d.cambridgeLevel === level}
+                  onChange={(e) => set("cambridgeLevel", e.target.value)} />
+                {level}
+              </label>
+            ))}
+          </fieldset>
+          {d.cambridgeLevel && (
+            <>
+              <fieldset className="space-y-2"><legend className="mb-2 font-bold">{tf("enterSubjects")}</legend>
+                {Object.entries(d.cambridgeSubjects ?? {}).map(([subject, grade]) => (
+                  <div key={subject} className={`flex items-center gap-3 rounded-xl border-2 px-3 py-2 ${grade ? "border-leaf bg-leaf-soft" : "border-line bg-card"}`}>
+                    <span className="flex-1 font-medium">{subject}</span>
+                    <select value={grade ?? ""} aria-label={`${subject} ${tf("grade")}`} className="rounded border-2 border-line bg-card px-2 py-1 font-semibold"
+                      onChange={(e) => set("cambridgeSubjects", { ...d.cambridgeSubjects, [subject]: e.target.value || null })}>
+                      <option value="">{tf("grade")}</option>
+                      {C.GRADES.map((g) => <option key={g} value={g}>{g.toUpperCase()}</option>)}
+                    </select>
+                    <button type="button" aria-label={`${tf("removeSubject")} ${subject}`} className="rounded p-1 text-muted hover:bg-rani-soft hover:text-rani"
+                      onClick={() => { const u = { ...d.cambridgeSubjects }; delete u[subject]; set("cambridgeSubjects", u); }}><X className="h-4 w-4" /></button>
+                  </div>
+                ))}
+                <select value="" className={input} onChange={(e) => e.target.value && set("cambridgeSubjects", { ...d.cambridgeSubjects, [e.target.value]: null })}>
+                  <option value="">+ {tf("addSubject")}</option>
+                  {C.CAMBRIDGE_SUBJECTS[d.cambridgeLevel]?.filter((s) => !(s in (d.cambridgeSubjects ?? {}))).map((s) => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </fieldset>
+
+              {/* IBCC Equivalence Field */}
+              <fieldset className="space-y-3 rounded-xl border-2 border-line bg-paper p-4">
+                <legend className="font-bold">{tf("ibccEquivalence")}</legend>
+                <p className="text-sm text-muted">{tf("ibccEquivalenceHint")}</p>
+                <input
+                  type="text"
+                  placeholder={tf("ibccEquivalencePlaceholder")}
+                  value={d.ibccEquivalence ?? ""}
+                  onChange={(e) => set("ibccEquivalence", e.target.value || null)}
+                  className={input}
+                />
+              </fieldset>
+            </>
+          )}
+        </>
       ) : (
         <>{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>
       )}

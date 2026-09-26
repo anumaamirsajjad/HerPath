@@ -227,8 +227,7 @@
       "categories": "Special categories",
       "board": "Board",
       "cambridgeLevel": "Which level did you take?",
-      "enterSubjects": "What subjects did you take?",
-      "addSubject": "Pick a subject",
+      "enterSubjects": "Add each subject you took, then pick your grade",
       "subjectName": "Subject name (e.g., English, Mathematics)",
       "ibccEquivalence": "Has IBCC recognized this? (Optional)",
       "ibccEquivalenceHint": "Tell us if your Cambridge qualifications were officially recognized by IBCC with a certificate or letter.",
@@ -250,7 +249,10 @@
       "studyIn": "I want to study in",
       "preferredCountries": "Preferred countries (comma separated)",
       "fields": "Fields of interest (comma separated)",
-      "targetLevel": "What do you want to study next?"
+      "targetLevel": "What do you want to study next?",
+      "addSubject": "Add a subject",
+      "removeSubject": "Remove",
+      "grade": "Grade"
     },
     "lead": "Answer what you can. Every answer makes your results more exact, and you can change them anytime.",
     "progress": "{done} of {total} sections started",

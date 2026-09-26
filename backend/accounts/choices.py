@@ -9,8 +9,5 @@ TESTS = ["mdcat", "ecat", "nat", "gat", "hat", "ielts", "toefl", "duolingo", "gr
 DOCUMENTS = ["cnic", "domicile", "passport", "incomeCertificate", "hecAttestation",
              "ibccEquivalence", "recommendationLetters", "englishMediumLetter"]
 STUDY_IN = ["pakistan", "abroad", "both"]
-# Cambridge O/A-Level common subjects
-CAMBRIDGE_SUBJECTS = ["english", "mathematics", "physics", "chemistry", "biology", "computerScience",
-                      "economics", "accountancy", "businessStudies", "generalPaper", "urdu", "islamiat"]
 # A* A B C D E U (ungraded)
 GRADES = ["a*", "a", "b", "c", "d", "e", "u"]
