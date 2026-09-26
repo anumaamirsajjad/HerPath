@@ -10,7 +10,7 @@ import * as C from "@/lib/choices";
 import type { Profile, ProfileData } from "@/lib/types";
 
 const STEPS = ["personal", "school", "university", "tests", "finances", "experience", "documents", "preferences"] as const;
-const EMPTY: ProfileData = { categories: [], tests: {}, documents: {}, preferredCountries: [], fields: [] };
+const EMPTY: ProfileData = { categories: [], tests: {}, documents: {}, cambridgeSubjects: {}, preferredCountries: [], fields: [] };
 const num = (v: string) => (v === "" ? null : Number(v));
 const input = field;
 const STEP_ICON = { personal: UserRound, school: School, university: GraduationCap, tests: NotebookPen, finances: Banknote, experience: Briefcase, documents: FileCheck2, preferences: Heart } as const;
@@ -81,7 +81,28 @@ export default function ProfileForm() {
           <ChipBox key={cat} label={to(`categories.${cat}`)} checked={!!d.categories?.includes(cat)}
             onChange={(v) => set("categories", v ? [...(d.categories ?? []), cat] : (d.categories ?? []).filter((x) => x !== cat))} />))}
       </fieldset></>,
-    school: <>{selField("board", C.BOARDS)}{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>,
+    school: <>
+      {selField("board", C.BOARDS)}
+      {d.board === "Cambridge" ? (
+        // Cambridge O/A-Levels: show subjects and grades
+        <div className="grid gap-4 sm:grid-cols-2">
+          {C.CAMBRIDGE_SUBJECTS?.map((subject) => (
+            <label key={subject} className="block font-bold">
+              {to(subject)}
+              <select value={d.cambridgeSubjects?.[subject] ?? ""}
+                onChange={(e) => set("cambridgeSubjects", { ...d.cambridgeSubjects, [subject]: e.target.value || null })}
+                className={input}>
+                <option value="">Not taken</option>
+                {C.GRADES?.map((grade) => <option key={grade} value={grade}>{grade.toUpperCase()}</option>)}
+              </select>
+            </label>
+          ))}
+        </div>
+      ) : (
+        // BISE/FBISE: show percentage-based system
+        <>{numField("matricPercent", "0.01", 100)}{numField("interPercent", "0.01", 100)}{selField("interStream", C.STREAMS, "streams")}</>
+      )}
+    </>,
     university: <>{selField("level", C.LEVELS, "levels")}{txtField("degree")}{numField("yearsOfEducation")}{numField("cgpa", "0.01", 4)}
       {selField("universityType", C.UNIVERSITY_TYPES, "universityTypes")}{txtField("enrolledUniversity")}</>,
     tests: <div className="grid gap-4 sm:grid-cols-3">{C.TESTS.map((k) => (

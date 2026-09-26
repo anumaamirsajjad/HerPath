@@ -78,6 +78,13 @@ class TestsSerializer(serializers.Serializer):
             self.fields[t] = StrictFloat(min_value=min_v, max_value=max_v, required=False, allow_null=True)
 
 
+class CambridgeSubjectsSerializer(serializers.Serializer):
+    def __init__(self, *a, **k):
+        super().__init__(*a, **k)
+        for s in choices.CAMBRIDGE_SUBJECTS:
+            self.fields[s] = serializers.ChoiceField(choices.GRADES, required=False, allow_null=True)
+
+
 class DocumentsSerializer(serializers.Serializer):
     def __init__(self, *a, **k):
         super().__init__(*a, **k)
@@ -94,6 +101,7 @@ class ProfileDataSerializer(serializers.Serializer):
     matricPercent = StrictFloat(min_value=0, max_value=100, required=False, allow_null=True)
     interPercent = StrictFloat(min_value=0, max_value=100, required=False, allow_null=True)
     interStream = serializers.ChoiceField(choices.STREAMS, required=False, allow_null=True)
+    cambridgeSubjects = CambridgeSubjectsSerializer(required=False)  # For O/A-Level students
     level = serializers.ChoiceField(choices.LEVELS, required=False, allow_null=True)
     targetLevel = serializers.ChoiceField(choices.TARGET_LEVELS, required=False, allow_null=True)
     degree = serializers.CharField(max_length=120, allow_blank=True, required=False, allow_null=True)
